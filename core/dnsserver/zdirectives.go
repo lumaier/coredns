@@ -60,4 +60,5 @@ var Directives = []string{
 	"on",
 	"sign",
 	"bloomsec",
+	"bloomfile",
 }
