@@ -4,15 +4,12 @@ import (
 	"fmt"
 	"math/rand"
 	"path/filepath"
+	"strconv"
 	"time"
 
 	"github.com/coredns/caddy"
 	"github.com/coredns/coredns/core/dnsserver"
 	"github.com/coredns/coredns/plugin"
-)
-
-const (
-	falsePositiveRate = float64(0.001)
 )
 
 func init() { plugin.Register("bloomsec", setup) }
@@ -65,7 +62,7 @@ func parse(c *caddy.Controller) (*Sign, error) {
 				directory:   "/var/lib/coredns",
 				stop:        make(chan struct{}),
 				signedfile:  fmt.Sprintf("db.%ssigned", origins[i]), // origins[i] is a fqdn, so it ends with a dot, hence %ssigned.
-				fp:          falsePositiveRate,
+				fp:          0.001,
 			}
 		}
 
@@ -93,6 +90,18 @@ func parse(c *caddy.Controller) (*Sign, error) {
 				for i := range signers {
 					signers[i].directory = dir[0]
 					signers[i].signedfile = fmt.Sprintf("db.%ssigned", signers[i].origin)
+				}
+			case "FPrate":
+				fprate := c.RemainingArgs()
+				if len(fprate) != 1 {
+					return sign, fmt.Errorf("can only be one argument after %q", "FPrate")
+				}
+				f, err := strconv.ParseFloat(fprate[0], 64)
+				if err != nil {
+					return sign, err
+				}
+				for i := range signers {
+					signers[i].fp = f
 				}
 			default:
 				return nil, c.Errf("unknown property '%s'", c.Val())
