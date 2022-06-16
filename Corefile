@@ -1,7 +1,6 @@
 miek.nl {
-    file ./plugin/sign/testdata/db.miek.nl.signed miek.nl
-    sign ./plugin/sign/testdata/db.miek.nl {
-        key file ./plugin/sign/testdata/Kmiek.nl.+013+59725
-        directory ./plugin/sign/testdata
+    bloomsec ./plugin/bloomsec/testdata/db.miek.nl {
+        key file ./plugin/bloomsec/testdata/Kmiek.nl.+013+59725
+        directory ./plugin/bloomsec/testdata
     }
 }
