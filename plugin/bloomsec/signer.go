@@ -72,6 +72,9 @@ func (s *Signer) Sign(now time.Time) (*file.Zone, error) {
 		}
 	}
 
+	names := names(z)
+	ln := len(names)
+
 	// First we have to find out how many elements are gonna be inserted into the Bloom filter
 	i := 0
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
@@ -100,8 +103,12 @@ func (s *Signer) Sign(now time.Time) (*file.Zone, error) {
 		types := e.Types()
 		if e.Name() == s.origin {
 			types = append(types, dns.TypeNS, dns.TypeSOA, dns.TypeRRSIG)
+			nsec := NSEC(e.Name(), names[(ln+i)%ln], mttl, append(e.Types(), dns.TypeNS, dns.TypeSOA, dns.TypeRRSIG, dns.TypeNSEC))
+			z.Insert(nsec)
 		} else {
 			types = append(types, dns.TypeRRSIG)
+			nsec := NSEC(e.Name(), names[(ln+i)%ln], mttl, append(e.Types(), dns.TypeRRSIG, dns.TypeNSEC))
+			z.Insert(nsec)
 		}
 
 		for _, t := range types {
@@ -125,7 +132,6 @@ func (s *Signer) Sign(now time.Time) (*file.Zone, error) {
 	}
 
 	// we sign the records we are authoritative for
-	// FIXME: are the TXT records also signed? are we authoritative for them?
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
 		if !auth {
 			return nil

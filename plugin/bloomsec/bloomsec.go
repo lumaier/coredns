@@ -2,6 +2,7 @@ package bloomsec
 
 import (
 	"fmt"
+	"sort"
 
 	"github.com/coredns/coredns/plugin/file"
 	"github.com/coredns/coredns/plugin/file/tree"
@@ -72,4 +73,15 @@ func stringsToBits(strings *[]string) *[]bool {
 		}
 	}
 	return &b
+}
+
+// NSEC returns an NSEC record according to name, next, ttl and bitmap. Note that the bitmap is sorted before use.
+func NSEC(name, next string, ttl uint32, bitmap []uint16) *dns.NSEC {
+	sort.Slice(bitmap, func(i, j int) bool { return bitmap[i] < bitmap[j] })
+
+	return &dns.NSEC{
+		Hdr:        dns.RR_Header{Name: name, Ttl: ttl, Rrtype: dns.TypeNSEC, Class: dns.ClassINET},
+		NextDomain: next,
+		TypeBitMap: bitmap,
+	}
 }
