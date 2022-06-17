@@ -1,7 +1,7 @@
 package bloomfile
 
 import (
-	"github.com/coredns/coredns/plugin/file/tree"
+	"github.com/coredns/coredns/plugin/bloomfile/tree"
 	"github.com/coredns/coredns/plugin/transfer"
 
 	"github.com/miekg/dns"
