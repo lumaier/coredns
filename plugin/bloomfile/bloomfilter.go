@@ -3,7 +3,9 @@ package bloomfile
 import (
 	"crypto/sha512"
 	"encoding/binary"
+	"fmt"
 	"math"
+	"strconv"
 
 	"github.com/coredns/coredns/plugin/bloomfile/rrutil"
 )
@@ -79,4 +81,40 @@ func (bf *bloomfilter) calculateIndices(data []byte) []uint64 {
 	}
 
 	return indices
+}
+
+func isBfTxtChunk(origin, name string) bool {
+	k := len(name)
+	n := len(origin)
+	if name[:3] == "_bf" && name[k-n:] == origin {
+		return true
+	}
+	return false
+}
+
+func extractGlobalIndex(origin, name string) (uint64, error) {
+	k := len(name)
+	n := len(origin)
+	i := name[3 : k-n-1]
+	r, err := strconv.ParseUint(i, 10, 64)
+	if err != nil {
+		return 0, fmt.Errorf(err.Error())
+	}
+	return r, nil
+}
+
+func stringsToBits(strings *[]string) *[]bool {
+	b := make([]bool, chunkSize)
+	var temp byte
+	for i := 0; i < len(*strings); i++ {
+		for j := 0; j < 255; j++ {
+			temp = byte((*strings)[i][j])
+			for k := 0; k < 8; k++ {
+				if (temp<<uint(k%8))&0x80 == 0x80 {
+					b[i*(255*8)+j*8+k] = true
+				}
+			}
+		}
+	}
+	return &b
 }
