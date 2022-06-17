@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/coredns/coredns/plugin/file"
-	"github.com/coredns/coredns/plugin/file/tree"
+	"github.com/coredns/coredns/plugin/bloomfile"
+	"github.com/coredns/coredns/plugin/bloomfile/tree"
 
 	"github.com/miekg/dns"
 )
 
 // names returns the elements of the zone in nsec order.
-func names(z *file.Zone) []string {
+func names(z *bloomfile.Zone) []string {
 	// There will also be apex records other than NS and SOA (who are kept separate), as we
 	// are adding DNSKEY and CDS/CDNSKEY records in the apex *before* we sign.
 	n := []string{}

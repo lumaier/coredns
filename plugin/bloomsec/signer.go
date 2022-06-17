@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/coredns/coredns/plugin/file"
-	"github.com/coredns/coredns/plugin/file/tree"
+	"github.com/coredns/coredns/plugin/bloomfile"
+	"github.com/coredns/coredns/plugin/bloomfile/tree"
 	clog "github.com/coredns/coredns/plugin/pkg/log"
 
 	"github.com/miekg/dns"
@@ -32,7 +32,7 @@ type Signer struct {
 
 // Sign signs a zone file according to the parameters in s.
 // Additionaly it creates the Bloomfilter and the corresponding TXT records
-func (s *Signer) Sign(now time.Time) (*file.Zone, error) {
+func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 	rd, err := os.Open(s.dbfile)
 	if err != nil {
 		return nil, err

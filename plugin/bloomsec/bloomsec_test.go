@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/coredns/coredns/plugin/file"
+	"github.com/coredns/coredns/plugin/bloomfile"
 )
 
 func TestNames(t *testing.T) {
@@ -12,7 +12,7 @@ func TestNames(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	z, err := file.Parse(f, "db.miek.nl_ns", "miek.nl", 0)
+	z, err := bloomfile.Parse(f, "db.miek.nl_ns", "miek.nl", 0)
 	if err != nil {
 		t.Error(err)
 	}

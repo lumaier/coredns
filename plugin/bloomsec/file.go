@@ -6,14 +6,14 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/coredns/coredns/plugin/file"
-	"github.com/coredns/coredns/plugin/file/tree"
+	"github.com/coredns/coredns/plugin/bloomfile"
+	"github.com/coredns/coredns/plugin/bloomfile/tree"
 
 	"github.com/miekg/dns"
 )
 
 // write writes out the zone file to a temporary file which is then moved into the correct place.
-func (s *Signer) write(z *file.Zone) error {
+func (s *Signer) write(z *bloomfile.Zone) error {
 	f, err := os.CreateTemp(s.directory, "signed-")
 	if err != nil {
 		return err
@@ -28,7 +28,7 @@ func (s *Signer) write(z *file.Zone) error {
 	return os.Rename(f.Name(), filepath.Join(s.directory, s.signedfile))
 }
 
-func write(w io.Writer, z *file.Zone) error {
+func write(w io.Writer, z *bloomfile.Zone) error {
 	if _, err := io.WriteString(w, z.Apex.SOA.String()); err != nil {
 		return err
 	}
@@ -59,10 +59,10 @@ func write(w io.Writer, z *file.Zone) error {
 // is similar to the Parse function in the *file* plugin. However when parsing
 // the record types DNSKEY, RRSIG, CDNSKEY and CDS are *not* included in the returned
 // zone (if encountered).
-func Parse(f io.Reader, origin, fileName string) (*file.Zone, error) {
+func Parse(f io.Reader, origin, fileName string) (*bloomfile.Zone, error) {
 	zp := dns.NewZoneParser(f, dns.Fqdn(origin), fileName)
 	zp.SetIncludeAllowed(true)
-	z := file.NewZone(origin, fileName)
+	z := bloomfile.NewZone(origin, fileName)
 	seenSOA := false
 
 	for rr, ok := zp.Next(); ok; rr, ok = zp.Next() {
