@@ -135,6 +135,10 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 	zp.SetIncludeAllowed(true)
 	z := NewZone(origin, fileName)
 	seenSOA := false
+
+	// this list holds all chunks that correspond to bloom filter chunks in TXT records including its global index
+	chunks := [](*dns.TXT){}
+
 	for rr, ok := zp.Next(); ok; rr, ok = zp.Next() {
 		if err := zp.Err(); err != nil {
 			return nil, err
@@ -155,9 +159,32 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 		if err := z.Insert(rr); err != nil {
 			return nil, err
 		}
+
+		// check whether it is a bloomfilter chunk
+		if s, ok := rr.(*dns.TXT); ok && isBfTxtChunk(origin, rr.Header().Name) {
+			chunks = append(chunks, s)
+		}
 	}
 	if !seenSOA {
 		return nil, fmt.Errorf("file %q has no SOA record for origin %s", fileName, origin)
+	}
+
+	// create the bloomfilter
+	m := chunkSize * uint64(len(chunks))
+	// FIXME: at the moment this is hardcoded
+	k := uint64(16)
+
+	z.bf = *newBloomfilter(m, k)
+	for _, c := range chunks {
+		globalIndex, err := extractGlobalIndex(origin, c.Hdr.Name)
+		if err != nil {
+			return nil, fmt.Errorf("something went wrong during extraction of bloomfilter (global index)")
+		}
+		bitArray := stringsToBits(&c.Txt)
+		k := copy(z.bf.bitArray[globalIndex*chunkSize:(globalIndex+1)*chunkSize], *bitArray)
+		if k != int(chunkSize) {
+			return nil, fmt.Errorf("something went wrong during extraction of bloomfilter (copying)")
+		}
 	}
 
 	return z, nil
