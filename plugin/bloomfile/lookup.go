@@ -2,10 +2,11 @@ package bloomfile
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/coredns/coredns/core/dnsserver"
-	"github.com/coredns/coredns/plugin/file/rrutil"
-	"github.com/coredns/coredns/plugin/file/tree"
+	"github.com/coredns/coredns/plugin/bloomfile/rrutil"
+	"github.com/coredns/coredns/plugin/bloomfile/tree"
 	"github.com/coredns/coredns/request"
 
 	"github.com/miekg/dns"
@@ -260,6 +261,7 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 
 	ret := ap.soa(do)
 	if do {
+		// Proof of existence of closest encloser always done using a NSEC record
 		deny, found := tr.Prev(qname)
 		if !found {
 			goto Out
@@ -278,10 +280,22 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 			// wildcard denial
 			wildcard := "*." + ce.Name()
 			if ss, found := tr.Prev(wildcard); found {
-				// Only add this nsec if it is different than the one already added
+				// Only add this nsec or txt if it is different than the one already added
 				if ss.Name() != deny.Name() {
-					nsec := typeFromElem(ss, dns.TypeNSEC, do)
-					ret = append(ret, nsec...)
+					// first look whether we got a false positive
+					if i, b := z.bf.lookup([]byte(wildcard)); !b {
+						globalIndex := i / chunkSize
+						chunk, found_chunk := tr.Search("_bf" + fmt.Sprint(globalIndex) + "." + z.origin)
+						if !found_chunk {
+							return nil, nil, nil, ServerFailure
+						}
+						txt := typeFromElem(chunk, dns.TypeTXT, do)
+						ret = append(ret, txt...)
+					} else {
+						// use NSEC as backup
+						nsec := typeFromElem(ss, dns.TypeNSEC, do)
+						ret = append(ret, nsec...)
+					}
 				}
 			}
 		}
