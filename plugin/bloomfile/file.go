@@ -169,12 +169,18 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 		return nil, fmt.Errorf("file %q has no SOA record for origin %s", fileName, origin)
 	}
 
-	_, m, k, err := stringsToBits(&chunks[0].Txt)
-	if err != nil {
-		return nil, fmt.Errorf(err.Error())
+	hasBF := len(chunks) > 0
+	var m, k uint64
+	var err error
+
+	if hasBF {
+		_, m, k, err = stringsToBits(&chunks[0].Txt)
+		if err != nil {
+			return nil, fmt.Errorf(err.Error())
+		}
+		z.bf = *newBloomfilter(m, k)
 	}
 
-	z.bf = *newBloomfilter(m, k)
 	for _, c := range chunks {
 		globalIndex, err := extractGlobalIndex(origin, c.Hdr.Name)
 		if err != nil {
