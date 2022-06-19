@@ -32,7 +32,7 @@ func bloomTXT(apexname string, chunk *bfChunk, ttl uint32) (*dns.TXT, error) {
 	name := "_bf" + fmt.Sprint(chunk.globalIndex) + "." + apexname
 
 	n_strings := len(chunk.bitArray) / (255 * 8)
-	if n_strings != (int(chunkSize-128) / (255 * 8)) {
+	if n_strings != (int(chunkSize) / (255 * 8)) {
 		return nil, fmt.Errorf("not correct length")
 	}
 
