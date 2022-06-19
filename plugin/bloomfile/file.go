@@ -169,10 +169,10 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 		return nil, fmt.Errorf("file %q has no SOA record for origin %s", fileName, origin)
 	}
 
-	// create the bloomfilter
-	m := chunkSize * uint64(len(chunks))
-	// FIXME: at the moment this is hardcoded
-	k := uint64(16)
+	_, m, k, err := stringsToBits(&chunks[0].Txt)
+	if err != nil {
+		return nil, fmt.Errorf(err.Error())
+	}
 
 	z.bf = *newBloomfilter(m, k)
 	for _, c := range chunks {
@@ -180,9 +180,12 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 		if err != nil {
 			return nil, fmt.Errorf("something went wrong during extraction of bloomfilter (global index)")
 		}
-		bitArray := stringsToBits(&c.Txt)
-		k := copy(z.bf.bitArray[globalIndex*chunkSize:(globalIndex+1)*chunkSize], *bitArray)
-		if k != int(chunkSize) {
+		bitArray, _, _, err := stringsToBits(&c.Txt)
+		if err != nil {
+			return nil, fmt.Errorf(err.Error())
+		}
+		nr_bits := copy(z.bf.bitArray[globalIndex*chunkSize:(globalIndex+1)*chunkSize], *bitArray)
+		if nr_bits != int(chunkSize) {
 			return nil, fmt.Errorf("something went wrong during extraction of bloomfilter (copying)")
 		}
 	}

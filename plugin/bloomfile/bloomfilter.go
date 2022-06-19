@@ -103,10 +103,11 @@ func extractGlobalIndex(origin, name string) (uint64, error) {
 	return r, nil
 }
 
-func stringsToBits(strings *[]string) *[]bool {
+func stringsToBits(strings *[]string) (*[]bool, uint64, uint64, error) {
 	b := make([]bool, chunkSize)
 	var temp byte
-	for i := 0; i < len(*strings); i++ {
+	l := len(*strings) - 2 // the last two strings correspond to m and k
+	for i := 0; i < l; i++ {
 		for j := 0; j < 255; j++ {
 			temp = byte((*strings)[i][j])
 			for k := 0; k < 8; k++ {
@@ -116,5 +117,13 @@ func stringsToBits(strings *[]string) *[]bool {
 			}
 		}
 	}
-	return &b
+	result1, err := strconv.ParseUint((*strings)[l], 10, 64)
+	if err != nil {
+		return nil, 0, 0, err
+	}
+	result2, err := strconv.ParseUint((*strings)[l+1], 10, 64)
+	if err != nil {
+		return nil, 0, 0, err
+	}
+	return &b, result1, result2, err
 }
