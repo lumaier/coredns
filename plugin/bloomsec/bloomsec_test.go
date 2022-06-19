@@ -28,10 +28,21 @@ func TestNames(t *testing.T) {
 
 func TestConversion(t *testing.T) {
 	b := make([]bool, chunkSize)
+	k := uint64(20)
+	m := uint64(10)
 	for i := 0; i < int(chunkSize); i++ {
 		b[i] = randBool()
 	}
-	calc := stringsToBits(bitsToStrings(&b, 14))
+	calc, r1, r2, err := stringsToBits(bitsToStrings(&b, 14, m, k))
+	if err != nil {
+		t.Error("We got an error")
+	}
+	if m != r1 {
+		t.Errorf("m not equal")
+	}
+	if k != r2 {
+		t.Errorf("k not equal")
+	}
 
 	if len(*calc) != len(b) {
 		t.Errorf("Length not equal")
@@ -41,5 +52,4 @@ func TestConversion(t *testing.T) {
 			t.Errorf("Bit %d not equal", i)
 		}
 	}
-
 }

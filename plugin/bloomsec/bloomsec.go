@@ -3,6 +3,7 @@ package bloomsec
 import (
 	"fmt"
 	"sort"
+	"strconv"
 
 	"github.com/coredns/coredns/plugin/bloomfile"
 	"github.com/coredns/coredns/plugin/bloomfile/tree"
@@ -31,11 +32,11 @@ func bloomTXT(apexname string, chunk *bfChunk, ttl uint32) (*dns.TXT, error) {
 	name := "_bf" + fmt.Sprint(chunk.globalIndex) + "." + apexname
 
 	n_strings := len(chunk.bitArray) / (255 * 8)
-	if n_strings != (int(chunkSize) / (255 * 8)) {
-		return nil, fmt.Errorf("")
+	if n_strings != (int(chunkSize-128) / (255 * 8)) {
+		return nil, fmt.Errorf("not correct length")
 	}
 
-	strings := bitsToStrings(&chunk.bitArray, n_strings)
+	strings := bitsToStrings(&chunk.bitArray, n_strings, chunk.m, chunk.k)
 
 	return &dns.TXT{
 		Hdr: dns.RR_Header{Name: name, Ttl: ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET},
@@ -43,8 +44,8 @@ func bloomTXT(apexname string, chunk *bfChunk, ttl uint32) (*dns.TXT, error) {
 	}, nil
 }
 
-func bitsToStrings(b *[]bool, n_strings int) *[]string {
-	strings := make([]string, n_strings)
+func bitsToStrings(b *[]bool, n_strings int, m, k uint64) *[]string {
+	strings := make([]string, n_strings+2)
 	for i := 0; i < n_strings; i++ {
 		temp := make([]byte, 255)
 		for j := 0; j < 255; j++ {
@@ -56,13 +57,16 @@ func bitsToStrings(b *[]bool, n_strings int) *[]string {
 		}
 		strings[i] = string(temp)
 	}
+	strings[n_strings] = fmt.Sprint(m)
+	strings[n_strings+1] = fmt.Sprint(k)
 	return &strings
 }
 
-func stringsToBits(strings *[]string) *[]bool {
+func stringsToBits(strings *[]string) (*[]bool, uint64, uint64, error) {
 	b := make([]bool, chunkSize)
 	var temp byte
-	for i := 0; i < len(*strings); i++ {
+	l := len(*strings) - 2 // the last two strings correspond to m and k
+	for i := 0; i < l; i++ {
 		for j := 0; j < 255; j++ {
 			temp = byte((*strings)[i][j])
 			for k := 0; k < 8; k++ {
@@ -72,7 +76,15 @@ func stringsToBits(strings *[]string) *[]bool {
 			}
 		}
 	}
-	return &b
+	result1, err := strconv.ParseUint((*strings)[l], 10, 64)
+	if err != nil {
+		return nil, 0, 0, err
+	}
+	result2, err := strconv.ParseUint((*strings)[l+1], 10, 64)
+	if err != nil {
+		return nil, 0, 0, err
+	}
+	return &b, result1, result2, err
 }
 
 // NSEC returns an NSEC record according to name, next, ttl and bitmap. Note that the bitmap is sorted before use.

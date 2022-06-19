@@ -16,6 +16,8 @@ const (
 type bfChunk struct {
 	globalIndex uint64
 	bitArray    []bool
+	m           uint64
+	k           uint64
 }
 
 type bloomfilter struct {
@@ -168,7 +170,7 @@ func (bf *bloomfilter) chunking() (*[]bfChunk, error) {
 	}
 	chunks := make([]bfChunk, n_chunks)
 	for i := uint64(0); i < n_chunks; i++ {
-		chunks[i] = bfChunk{i, bf.bitArray[i*chunkSize : (i+1)*chunkSize]}
+		chunks[i] = bfChunk{i, bf.bitArray[i*chunkSize : (i+1)*chunkSize], bf.m, bf.k}
 	}
 	return &chunks, nil
 }
