@@ -11,8 +11,9 @@ func max(a, b uint64) uint64 {
 	return a
 }
 
-func randomBytes(size int) []byte {
-	b := make([]byte, size)
+// creates a slice of random bytes of length s (used for testing)
+func randomBytes(s int) []byte {
+	b := make([]byte, s)
 	rand.Read(b)
 	return b
 }

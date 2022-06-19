@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// Sign contains signers that sign the zones files.
+// Sign contains signers that sign the zones files and create Bloom filters.
 type Sign struct {
 	signers []*Signer
 }

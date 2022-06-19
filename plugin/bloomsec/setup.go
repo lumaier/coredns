@@ -62,7 +62,7 @@ func parse(c *caddy.Controller) (*Sign, error) {
 				directory:   "/var/lib/coredns",
 				stop:        make(chan struct{}),
 				signedfile:  fmt.Sprintf("db.%ssigned", origins[i]), // origins[i] is a fqdn, so it ends with a dot, hence %ssigned.
-				fp:          0.001,
+				fp_prob:     0.001,
 			}
 		}
 
@@ -101,7 +101,7 @@ func parse(c *caddy.Controller) (*Sign, error) {
 					return sign, err
 				}
 				for i := range signers {
-					signers[i].fp = f
+					signers[i].fp_prob = f
 				}
 			default:
 				return nil, c.Errf("unknown property '%s'", c.Val())

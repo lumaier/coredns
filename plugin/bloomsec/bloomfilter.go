@@ -8,9 +8,7 @@ import (
 )
 
 const (
-	// smaller than 4kB
-	// a multiple of 255*8 to nicely fit into 255 char strings
-	chunkSize = uint64(14 * 8 * 255)
+	chunkSize = uint64(14 * 8 * 255) // smaller than 4kB and a multiple of 255*8 to nicely fit into 255 char strings
 )
 
 type bfChunk struct {
@@ -23,14 +21,14 @@ type bfChunk struct {
 type bloomfilter struct {
 	n                  uint64  // number of items in the Bloomfilter
 	m                  uint64  // size of bitarray
-	k                  uint64  // number of hashfunctions used
+	k                  uint64  // number of indices used
 	l                  uint64  // number of invocations used of SHA512
 	bitArray           []bool  // Bloomfilter
 	fprate             float64 // actual estimated false positive rate (given n, m and k)
 	nr_bytes_per_index uint64  // number of bytes of SHA512 output used to create index
 }
 
-// create a new bloom filter
+// creates a new bloom filter
 func newBloomfilter(n uint64, falsePositiveProb float64) *bloomfilter {
 	bf := bloomfilter{}
 	bf.n = n
@@ -161,8 +159,8 @@ func (bf *bloomfilter) falsePositiveRate(n uint64) float64 {
 	return float64(fp) / float64(nr_tests)
 }
 
-// chunking divides the Bloomfilter into n_chunks equally sized chunks (of length chunkSize) and returns them
-// the global index corresponds to the position in the global Bloom filter (indexed 0, 1, 2, etc...)
+// Divides the Bloomfilter into equally sized chunks (of length chunkSize) and returns them.
+// The global index corresponds to the position in the global Bloom filter (indexed 0, 1, 2, etc...)
 func (bf *bloomfilter) chunking() (*[]bfChunk, error) {
 	n_chunks := bf.m / chunkSize
 	if bf.m%chunkSize != 0 {

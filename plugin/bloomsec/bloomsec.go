@@ -26,14 +26,14 @@ func names(z *bloomfile.Zone) []string {
 	return n
 }
 
-// bloomTXT: given a bloomfilter chunk it returns the corresponding TXT record
-// it assumes that the bitarray length is equal the chunkSize
+// Given a Bloom filter chunk it returns the corresponding TXT record.
+// It assumes that the bitarray length is equal the chunkSize
 func bloomTXT(apexname string, chunk *bfChunk, ttl uint32) (*dns.TXT, error) {
 	name := "_bf" + fmt.Sprint(chunk.globalIndex) + "." + apexname
 
 	n_strings := len(chunk.bitArray) / (255 * 8)
 	if n_strings != (int(chunkSize) / (255 * 8)) {
-		return nil, fmt.Errorf("not correct length")
+		return nil, fmt.Errorf("The bitarray in the chunk %d has not the correct length.", chunk.globalIndex)
 	}
 
 	strings := bitsToStrings(&chunk.bitArray, n_strings, chunk.m, chunk.k)
@@ -44,6 +44,8 @@ func bloomTXT(apexname string, chunk *bfChunk, ttl uint32) (*dns.TXT, error) {
 	}, nil
 }
 
+// Given a slice of bits it returns a slice of strings encoding the slice of bits. The last two strings contain the length of the
+// Bloom filter (m) and the number of indices used (k)
 func bitsToStrings(b *[]bool, n_strings int, m, k uint64) *[]string {
 	strings := make([]string, n_strings+2)
 	for i := 0; i < n_strings; i++ {
@@ -62,6 +64,8 @@ func bitsToStrings(b *[]bool, n_strings int, m, k uint64) *[]string {
 	return &strings
 }
 
+// Decodes a slice of strings into a slice of bits, the total length of the Bloom filter and the number of indices used.
+// Throws an error when the last two strings can't be parsed into an uint64.
 func stringsToBits(strings *[]string) (*[]bool, uint64, uint64, error) {
 	b := make([]bool, chunkSize)
 	var temp byte
@@ -87,7 +91,7 @@ func stringsToBits(strings *[]string) (*[]bool, uint64, uint64, error) {
 	return &b, result1, result2, err
 }
 
-// NSEC returns an NSEC record according to name, next, ttl and bitmap. Note that the bitmap is sorted before use.
+// Returns an NSEC record according to name, next, ttl and bitmap. Note that the bitmap is sorted before use.
 func NSEC(name, next string, ttl uint32, bitmap []uint16) *dns.NSEC {
 	sort.Slice(bitmap, func(i, j int) bool { return bitmap[i] < bitmap[j] })
 

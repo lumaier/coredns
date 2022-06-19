@@ -24,14 +24,14 @@ type Signer struct {
 	directory   string
 	jitterIncep time.Duration
 	jitterExpir time.Duration
-	fp          float64
+	fp_prob     float64
 
 	signedfile string
 	stop       chan struct{}
 }
 
 // Sign signs a zone file according to the parameters in s.
-// Additionaly it creates the Bloomfilter and the corresponding TXT records
+// Additionally it creates the Bloomfilter and the corresponding TXT records.
 func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 	rd, err := os.Open(s.dbfile)
 	if err != nil {
@@ -75,8 +75,8 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 		}
 	}
 
-	// First we have to find out how many elements are gonna be inserted into the Bloom filter
-	nr_elements := 0
+	// find out how many elements are gonna be inserted into the Bloom filter
+	n := 0
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
 		if !auth {
 			return nil
@@ -89,12 +89,12 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 			types = append(types, dns.TypeRRSIG)
 		}
 
-		nr_elements += len(types)
+		n += len(types)
 		return nil
 	})
 
-	// now we create the Bloom filter and insert all elements
-	bf := newBloomfilter(uint64(nr_elements), s.fp)
+	// create the Bloom filter and insert all elements
+	bf := newBloomfilter(uint64(n), s.fp_prob)
 	i := 1
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
 		if !auth {
@@ -119,7 +119,7 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 		return nil
 	})
 
-	// we create and insert the TXT records representing the Bloom filter
+	// create and insert the TXT records representing the Bloom filter
 	chunks, err := bf.chunking()
 	if err != nil {
 		return nil, err
@@ -133,7 +133,7 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 		z.Insert(txt_record)
 	}
 
-	// we sign the records we are authoritative for
+	// sign the records we are authoritative for
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
 		if !auth {
 			return nil
