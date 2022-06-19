@@ -56,6 +56,9 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 		z.Insert(pair.Public.ToCDNSKEY())
 	}
 
+	names := names(z)
+	ln := len(names)
+
 	for _, pair := range s.keys {
 		rrsig, err := pair.signRRs([]dns.RR{z.Apex.SOA}, s.origin, ttl, inception, expiration)
 		if err != nil {
@@ -72,11 +75,8 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 		}
 	}
 
-	names := names(z)
-	ln := len(names)
-
 	// First we have to find out how many elements are gonna be inserted into the Bloom filter
-	i := 0
+	nr_elements := 0
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
 		if !auth {
 			return nil
@@ -89,12 +89,13 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 			types = append(types, dns.TypeRRSIG)
 		}
 
-		i += len(types)
+		nr_elements += len(types)
 		return nil
 	})
 
 	// now we create the Bloom filter and insert all elements
-	bf := newBloomfilter(uint64(i), s.fp)
+	bf := newBloomfilter(uint64(nr_elements), s.fp)
+	i := 1
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
 		if !auth {
 			return nil
@@ -114,6 +115,7 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 		for _, t := range types {
 			bf.insert([]byte(e.Name() + fmt.Sprint(t)))
 		}
+		i++
 		return nil
 	})
 
