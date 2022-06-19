@@ -7,10 +7,6 @@ import (
 	"math"
 )
 
-const (
-	chunkSize = uint64(14 * 8 * 255) // smaller than 4kB and a multiple of 255*8 to nicely fit into 255 char strings
-)
-
 type bfChunk struct {
 	globalIndex uint64
 	bitArray    []bool
@@ -26,12 +22,14 @@ type bloomfilter struct {
 	bitArray           []bool  // Bloomfilter
 	fprate             float64 // actual estimated false positive rate (given n, m and k)
 	nr_bytes_per_index uint64  // number of bytes of SHA512 output used to create index
+	chunkSize          uint64  // number of bits in bitarray per chunk
 }
 
 // creates a new bloom filter
-func newBloomfilter(n uint64, falsePositiveProb float64) *bloomfilter {
+func newBloomfilter(n uint64, falsePositiveProb float64, chunkSize uint64) *bloomfilter {
 	bf := bloomfilter{}
 	bf.n = n
+	bf.chunkSize = chunkSize
 	bf.estimateParameters(falsePositiveProb)
 	// set m to the next multiple of chunkSize (for nice chunking)
 	bf.m = uint64(math.Ceil((float64(bf.m) / float64(chunkSize)))) * chunkSize
@@ -162,13 +160,13 @@ func (bf *bloomfilter) falsePositiveRate(n uint64) float64 {
 // Divides the Bloomfilter into equally sized chunks (of length chunkSize) and returns them.
 // The global index corresponds to the position in the global Bloom filter (indexed 0, 1, 2, etc...)
 func (bf *bloomfilter) chunking() (*[]bfChunk, error) {
-	n_chunks := bf.m / chunkSize
-	if bf.m%chunkSize != 0 {
+	n_chunks := bf.m / bf.chunkSize
+	if bf.m%bf.chunkSize != 0 {
 		return nil, fmt.Errorf("Bloom filter could not be chunked into equally sized chunks.")
 	}
 	chunks := make([]bfChunk, n_chunks)
 	for i := uint64(0); i < n_chunks; i++ {
-		chunks[i] = bfChunk{i, bf.bitArray[i*chunkSize : (i+1)*chunkSize], bf.m, bf.k}
+		chunks[i] = bfChunk{i, bf.bitArray[i*bf.chunkSize : (i+1)*bf.chunkSize], bf.m, bf.k}
 	}
 	return &chunks, nil
 }

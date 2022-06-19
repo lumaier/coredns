@@ -28,7 +28,7 @@ func names(z *bloomfile.Zone) []string {
 
 // Given a Bloom filter chunk it returns the corresponding TXT record.
 // It assumes that the bitarray length is equal the chunkSize
-func bloomTXT(apexname string, chunk *bfChunk, ttl uint32) (*dns.TXT, error) {
+func bloomTXT(apexname string, chunk *bfChunk, ttl uint32, chunkSize uint64) (*dns.TXT, error) {
 	name := "_bf" + fmt.Sprint(chunk.globalIndex) + "." + apexname
 
 	n_strings := len(chunk.bitArray) / (255 * 8)
@@ -66,7 +66,7 @@ func bitsToStrings(b *[]bool, n_strings int, m, k uint64) *[]string {
 
 // Decodes a slice of strings into a slice of bits, the total length of the Bloom filter and the number of indices used.
 // Throws an error when the last two strings can't be parsed into an uint64.
-func stringsToBits(strings *[]string) (*[]bool, uint64, uint64, error) {
+func stringsToBits(strings *[]string, chunkSize uint64) (*[]bool, uint64, uint64, error) {
 	b := make([]bool, chunkSize)
 	var temp byte
 	l := len(*strings) - 2 // the last two strings correspond to m and k

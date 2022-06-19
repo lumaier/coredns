@@ -63,6 +63,7 @@ func parse(c *caddy.Controller) (*Sign, error) {
 				stop:        make(chan struct{}),
 				signedfile:  fmt.Sprintf("db.%ssigned", origins[i]), // origins[i] is a fqdn, so it ends with a dot, hence %ssigned.
 				fp_prob:     0.001,
+				chunkSize:   uint64(14 * 8 * 255),
 			}
 		}
 
@@ -91,7 +92,7 @@ func parse(c *caddy.Controller) (*Sign, error) {
 					signers[i].directory = dir[0]
 					signers[i].signedfile = fmt.Sprintf("db.%ssigned", signers[i].origin)
 				}
-			case "FPrate":
+			case "fp_rate":
 				fprate := c.RemainingArgs()
 				if len(fprate) != 1 {
 					return sign, fmt.Errorf("can only be one argument after %q", "FPrate")
@@ -102,6 +103,21 @@ func parse(c *caddy.Controller) (*Sign, error) {
 				}
 				for i := range signers {
 					signers[i].fp_prob = f
+				}
+			case "chunksize":
+				chunksize := c.RemainingArgs()
+				if len(chunksize) != 1 {
+					return sign, fmt.Errorf("can only be one argument after %q", "chunksize")
+				}
+				c, err := strconv.ParseUint(chunksize[0], 10, 64)
+				if err != nil {
+					return sign, err
+				}
+				if c%(255*8) != 0 {
+					return sign, fmt.Errorf("chunksize needs to be a multiple of %d", 255*8)
+				}
+				for i := range signers {
+					signers[i].chunkSize = c
 				}
 			default:
 				return nil, c.Errf("unknown property '%s'", c.Val())

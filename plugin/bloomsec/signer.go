@@ -24,7 +24,9 @@ type Signer struct {
 	directory   string
 	jitterIncep time.Duration
 	jitterExpir time.Duration
-	fp_prob     float64
+
+	fp_prob   float64
+	chunkSize uint64
 
 	signedfile string
 	stop       chan struct{}
@@ -94,7 +96,7 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 	})
 
 	// create the Bloom filter and insert all elements
-	bf := newBloomfilter(uint64(n), s.fp_prob)
+	bf := newBloomfilter(uint64(n), s.fp_prob, s.chunkSize)
 	i := 1
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
 		if !auth {
@@ -126,7 +128,7 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 	}
 
 	for _, c := range *chunks {
-		txt_record, err := bloomTXT(s.origin, &c, mttl)
+		txt_record, err := bloomTXT(s.origin, &c, mttl, s.chunkSize)
 		if err != nil {
 			return nil, err
 		}
