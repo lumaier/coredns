@@ -11,7 +11,7 @@ import (
 )
 
 func TestSign(t *testing.T) {
-	input := `sign testdata/db.miek.nl miek.nl {
+	input := `bloomsec testdata/db.miek.nl miek.nl {
 		key file testdata/Kmiek.nl.+013+59725
 		directory testdata
 	}`
@@ -53,9 +53,11 @@ $ORIGIN example.org.
 		t.Fatal(err)
 	}
 	defer os.Remove("db.apex-test.example.org")
-	input := `sign db.apex-test.example.org example.org {
+	input := `bloomsec db.apex-test.example.org example.org {
 		key file testdata/Kmiek.nl.+013+59725
 		directory testdata
+		fp_rate 0.05
+		chunksize 2040
 	}`
 	c := caddy.NewTestController("dns", input)
 	sign, err := parse(c)
@@ -99,10 +101,26 @@ $ORIGIN example.org.
 			}
 		}
 	}
+	el, _ = z.Search("_bf0.example.org.")
+	txts := el.Type(dns.TypeTXT)
+	if len(txts) != 1 {
+		t.Errorf("Expected 1 TXT for %s, got %d", "example.org.", len(txts))
+	}
+	sigs = el.Type(dns.TypeRRSIG)
+	for _, s := range sigs {
+		if s.(*dns.RRSIG).TypeCovered == dns.TypeDNSKEY {
+			if s.(*dns.RRSIG).OrigTtl != dnskey[0].Header().Ttl {
+				t.Errorf("Expected RRSIG original TTL to match DNSKEY TTL, but %d != %d", s.(*dns.RRSIG).OrigTtl, dnskey[0].Header().Ttl)
+			}
+			if s.(*dns.RRSIG).SignerName != dnskey[0].Header().Name {
+				t.Errorf("Expected RRSIG signer name to match DNSKEY ownername, but %s != %s", s.(*dns.RRSIG).SignerName, dnskey[0].Header().Name)
+			}
+		}
+	}
 }
 
 func TestSignGlue(t *testing.T) {
-	input := `sign testdata/db.miek.nl miek.nl {
+	input := `bloomsec testdata/db.miek.nl miek.nl {
                key file testdata/Kmiek.nl.+013+59725
                directory testdata
        }`
@@ -127,7 +145,7 @@ func TestSignGlue(t *testing.T) {
 }
 
 func TestSignDS(t *testing.T) {
-	input := `sign testdata/db.miek.nl_ns miek.nl {
+	input := `bloomsec testdata/db.miek.nl_ns miek.nl {
                key file testdata/Kmiek.nl.+013+59725
                directory testdata
        }`
