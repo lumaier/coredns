@@ -2,7 +2,7 @@
 
 ## Name
 
-*bloomsec* - adds DNSSEC records and Bloom filter TXT to zone files.
+*bloomsec* - adds DNSSEC records and Bloom filter TXT records to zone files.
 
 ## Description
 
@@ -59,7 +59,7 @@ A generated zone is written out in a file named `db.<name>.signed` in the direct
 ## Syntax
 
 ~~~
-sign DBFILE [ZONES...] {
+bloomsec DBFILE [ZONES...] {
     key file|directory KEY...|DIR...
     directory DIR
     fp_rate FPRATE
