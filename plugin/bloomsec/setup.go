@@ -113,8 +113,8 @@ func parse(c *caddy.Controller) (*Sign, error) {
 				if err != nil {
 					return sign, err
 				}
-				if c%(255*8) != 0 {
-					return sign, fmt.Errorf("chunksize needs to be a multiple of %d", 255*8)
+				if c%bitsEncoded != 0 {
+					return sign, fmt.Errorf("chunksize needs to be a multiple of %d", bitsEncoded)
 				}
 				for i := range signers {
 					signers[i].chunkSize = c

@@ -10,12 +10,6 @@ import (
 	"github.com/coredns/coredns/plugin/bloomfile/rrutil"
 )
 
-const (
-	// smaller than 4kB
-	// a multiple of 255*8 to nicely fit into 255 char strings
-	chunkSize = uint64(14 * 8 * 255)
-)
-
 type bfChunk struct {
 	globalIndex uint64
 	bitArray    []bool
@@ -103,27 +97,16 @@ func extractGlobalIndex(origin, name string) (uint64, error) {
 	return r, nil
 }
 
-func stringsToBits(strings *[]string) (*[]bool, uint64, uint64, error) {
-	b := make([]bool, chunkSize)
-	var temp byte
-	l := len(*strings) - 2 // the last two strings correspond to m and k
+// Decodes a slice of bytes into a slice of bits
+func bytesToBits(bytes *[]byte) *[]bool {
+	l := len(*bytes)
+	bits := make([]bool, l*8)
 	for i := 0; i < l; i++ {
-		for j := 0; j < 255; j++ {
-			temp = byte((*strings)[i][j])
-			for k := 0; k < 8; k++ {
-				if (temp<<uint(k%8))&0x80 == 0x80 {
-					b[i*(255*8)+j*8+k] = true
-				}
+		for j := 0; j < 8; j++ {
+			if ((*bytes)[i]<<uint(j))&0x80 == 0x80 {
+				bits[i*8+j] = true
 			}
 		}
 	}
-	result1, err := strconv.ParseUint((*strings)[l], 10, 64)
-	if err != nil {
-		return nil, 0, 0, err
-	}
-	result2, err := strconv.ParseUint((*strings)[l+1], 10, 64)
-	if err != nil {
-		return nil, 0, 0, err
-	}
-	return &b, result1, result2, err
+	return &bits
 }

@@ -3,6 +3,7 @@ package rrutil
 
 import (
 	"crypto/rand"
+	"encoding/base64"
 
 	"github.com/miekg/dns"
 )
@@ -46,4 +47,12 @@ func RandBool() bool {
 	b := make([]byte, 1)
 	rand.Read(b)
 	return b[0]&0x80 == 0x80
+}
+
+func ToBase64(b []byte) string {
+	return base64.StdEncoding.EncodeToString(b)
+}
+
+func FromBase64(s string) ([]byte, error) {
+	return base64.StdEncoding.DecodeString(s)
 }

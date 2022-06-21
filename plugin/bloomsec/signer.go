@@ -128,7 +128,7 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 	}
 
 	for _, c := range *chunks {
-		txt_record, err := bloomTXT(s.origin, &c, mttl, s.chunkSize)
+		txt_record, err := bloomTXT(s.origin, &c, mttl)
 		if err != nil {
 			return nil, err
 		}

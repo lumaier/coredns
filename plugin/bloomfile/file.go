@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"strconv"
 
 	"github.com/coredns/coredns/plugin"
 	clog "github.com/coredns/coredns/plugin/pkg/log"
@@ -12,6 +13,8 @@ import (
 	"github.com/coredns/coredns/request"
 
 	"github.com/miekg/dns"
+
+	"github.com/coredns/coredns/plugin/bloomfile/rrutil"
 )
 
 var log = clog.NewWithPlugin("file")
@@ -172,13 +175,15 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 	hasBF := len(chunks) > 0
 	var m, k uint64
 	var err error
+	var b *[]bool
 
 	if hasBF {
-		_, m, k, err = stringsToBits(&chunks[0].Txt)
+		b, m, k, err = decodeBloomTxt(chunks[0])
 		if err != nil {
 			return nil, fmt.Errorf(err.Error())
 		}
 		z.bf = *newBloomfilter(m, k)
+		z.chunkSize = uint64(len(*b))
 	}
 
 	for _, c := range chunks {
@@ -186,15 +191,45 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 		if err != nil {
 			return nil, fmt.Errorf("something went wrong during extraction of bloomfilter (global index)")
 		}
-		bitArray, _, _, err := stringsToBits(&c.Txt)
+		bitArray, _, _, err := decodeBloomTxt(c)
 		if err != nil {
 			return nil, fmt.Errorf(err.Error())
 		}
-		nr_bits := copy(z.bf.bitArray[globalIndex*chunkSize:(globalIndex+1)*chunkSize], *bitArray)
-		if nr_bits != int(chunkSize) {
+		l := uint64(len(*bitArray))
+		if l != z.chunkSize {
+			return nil, fmt.Errorf("chunksize different to length of this bitarray")
+		}
+		nr_bits := copy(z.bf.bitArray[globalIndex*l:(globalIndex+1)*l], *bitArray)
+		if nr_bits != int(l) {
 			return nil, fmt.Errorf("something went wrong during extraction of bloomfilter (copying)")
 		}
 	}
 
 	return z, nil
+}
+
+func decodeBloomTxt(txt_rr *dns.TXT) (*[]bool, uint64, uint64, error) {
+	l := len(txt_rr.Txt)
+	m, err := strconv.ParseUint((txt_rr.Txt)[l-2], 10, 64)
+	if err != nil {
+		return nil, 0, 0, err
+	}
+	k, err := strconv.ParseUint((txt_rr.Txt)[l-1], 10, 64)
+	if err != nil {
+		return nil, 0, 0, err
+	}
+
+	bloom_string := ""
+	for _, s := range txt_rr.Txt[:l-2] {
+		bloom_string += s
+	}
+
+	decoded_bytes, err := rrutil.FromBase64(bloom_string)
+	if err != nil {
+		return nil, 0, 0, err
+	}
+
+	b := bytesToBits(&decoded_bytes)
+
+	return b, m, k, nil
 }

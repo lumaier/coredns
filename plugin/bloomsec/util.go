@@ -2,10 +2,18 @@ package bloomsec
 
 import (
 	"crypto/rand"
+	"encoding/base64"
 )
 
 func max(a, b uint64) uint64 {
 	if a <= b {
+		return b
+	}
+	return a
+}
+
+func min(a, b int) int {
+	if a > b {
 		return b
 	}
 	return a
@@ -30,4 +38,12 @@ func randBool() bool {
 	b := make([]byte, 1)
 	rand.Read(b)
 	return b[0]&0x80 == 0x80
+}
+
+func toBase64(b []byte) string {
+	return base64.StdEncoding.EncodeToString(b)
+}
+
+func fromBase64(s string) ([]byte, error) {
+	return base64.StdEncoding.DecodeString(s)
 }

@@ -3,12 +3,15 @@ package bloomsec
 import (
 	"fmt"
 	"sort"
-	"strconv"
 
 	"github.com/coredns/coredns/plugin/bloomfile"
 	"github.com/coredns/coredns/plugin/bloomfile/tree"
 
 	"github.com/miekg/dns"
+)
+
+const (
+	bitsEncoded = 24 // results in 4 chars
 )
 
 // names returns the elements of the zone in nsec order.
@@ -27,68 +30,64 @@ func names(z *bloomfile.Zone) []string {
 }
 
 // Given a Bloom filter chunk it returns the corresponding TXT record.
-// It assumes that the bitarray length is equal the chunkSize
-func bloomTXT(apexname string, chunk *bfChunk, ttl uint32, chunkSize uint64) (*dns.TXT, error) {
+// It assumes that the bitarray length of the chunk is a multiple of 24
+func bloomTXT(apexname string, chunk *bfChunk, ttl uint32) (*dns.TXT, error) {
 	name := "_bf" + fmt.Sprint(chunk.globalIndex) + "." + apexname
 
-	n_strings := len(chunk.bitArray) / (255 * 8)
-	if n_strings != (int(chunkSize) / (255 * 8)) {
-		return nil, fmt.Errorf("The bitarray in the chunk %d has not the correct length.", chunk.globalIndex)
+	if len(chunk.bitArray)%24 != 0 {
+		return nil, fmt.Errorf("The bitarray length in the chunk %d is not a multiple of 24.\n", chunk.globalIndex)
 	}
 
-	strings := bitsToStrings(&chunk.bitArray, n_strings, chunk.m, chunk.k)
+	bitarray_bytes, err := bitsToBytes(&chunk.bitArray)
+	if err != nil {
+		return nil, err
+	}
+	encoded_bitarray := toBase64(*bitarray_bytes)
+
+	txt_data := []string{}
+	for i := 0; i < len(encoded_bitarray); i += 255 {
+		txt_data = append(txt_data, encoded_bitarray[i:min(i+255, len(encoded_bitarray))])
+	}
+
+	txt_data = append(txt_data, fmt.Sprint(chunk.m), fmt.Sprint(chunk.k))
 
 	return &dns.TXT{
 		Hdr: dns.RR_Header{Name: name, Ttl: ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET},
-		Txt: *strings,
+		Txt: txt_data,
 	}, nil
 }
 
-// Given a slice of bits it returns a slice of strings encoding the slice of bits. The last two strings contain the length of the
-// Bloom filter (m) and the number of indices used (k). n_strings is without the last two strings for m and k.
-func bitsToStrings(b *[]bool, n_strings int, m, k uint64) *[]string {
-	strings := make([]string, n_strings+2)
-	for i := 0; i < n_strings; i++ {
-		temp := make([]byte, 255)
-		for j := 0; j < 255; j++ {
-			for k := 0; k < 8; k++ {
-				if (*b)[i*(255*8)+j*8+k] {
-					temp[j] |= 0x80 >> uint(k%8)
-				}
+// Given a slice of bits it returns a slice of bytes encoding the slice of bits. len(b) must be a multiple of 8.
+func bitsToBytes(b *[]bool) (*[]byte, error) {
+	l := len(*b)
+	if l%8 != 0 {
+		return nil, fmt.Errorf("The bit slice length is not a multiple of 8.\n")
+	}
+	l /= 8
+	bytes := make([]byte, l)
+	for i := 0; i < l; i++ {
+		for j := 0; j < 8; j++ {
+			if (*b)[i*8+j] {
+				bytes[i] |= 0x80 >> uint(j)
 			}
 		}
-		strings[i] = string(temp)
 	}
-	strings[n_strings] = fmt.Sprint(m)
-	strings[n_strings+1] = fmt.Sprint(k)
-	return &strings
+
+	return &bytes, nil
 }
 
-// Decodes a slice of strings into a slice of bits, the total length of the Bloom filter and the number of indices used.
-// Throws an error when the last two strings can't be parsed into an uint64.
-func stringsToBits(strings *[]string, chunkSize uint64) (*[]bool, uint64, uint64, error) {
-	b := make([]bool, chunkSize)
-	var temp byte
-	l := len(*strings) - 2 // the last two strings correspond to m and k
+// Decodes a slice of bytes into a slice of bits
+func bytesToBits(bytes *[]byte) *[]bool {
+	l := len(*bytes)
+	bits := make([]bool, l*8)
 	for i := 0; i < l; i++ {
-		for j := 0; j < 255; j++ {
-			temp = byte((*strings)[i][j])
-			for k := 0; k < 8; k++ {
-				if (temp<<uint(k%8))&0x80 == 0x80 {
-					b[i*(255*8)+j*8+k] = true
-				}
+		for j := 0; j < 8; j++ {
+			if ((*bytes)[i]<<uint(j))&0x80 == 0x80 {
+				bits[i*8+j] = true
 			}
 		}
 	}
-	result1, err := strconv.ParseUint((*strings)[l], 10, 64)
-	if err != nil {
-		return nil, 0, 0, err
-	}
-	result2, err := strconv.ParseUint((*strings)[l+1], 10, 64)
-	if err != nil {
-		return nil, 0, 0, err
-	}
-	return &b, result1, result2, err
+	return &bits
 }
 
 // Returns an NSEC record according to name, next, ttl and bitmap. Note that the bitmap is sorted before use.

@@ -284,7 +284,7 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 				if ss.Name() != deny.Name() {
 					// first look whether we got a false positive
 					if i, b := z.bf.lookup([]byte(wildcard)); !b {
-						globalIndex := i / chunkSize
+						globalIndex := i / z.chunkSize
 						chunk, found_chunk := tr.Search("_bf" + fmt.Sprint(globalIndex) + "." + z.origin)
 						if !found_chunk {
 							return nil, nil, nil, ServerFailure
