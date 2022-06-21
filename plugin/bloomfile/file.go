@@ -186,6 +186,10 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 		z.chunkSize = uint64(len(*b))
 	}
 
+	if len(chunks)*int(z.chunkSize) != int(z.bf.m) {
+		return nil, fmt.Errorf("not all chunks in the zone")
+	}
+
 	for _, c := range chunks {
 		globalIndex, err := extractGlobalIndex(origin, c.Hdr.Name)
 		if err != nil {
