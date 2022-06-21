@@ -82,7 +82,7 @@ bloomsec DBFILE [ZONES...] {
 * `fp_rate` specifies the **FPRATE** which should be guaranteed by the Bloom filter. This parameter must be a floating point number between (excluding) 0 and 1.
     If not given this defaults to `0.001`.
 * `chunksize` specifies the **CHUNKSIZE** in bits. This is the number of bits included in the data section of the TXT resource record. This parameter is an integer larger or equal than 2040 that needs to be a multiple of 2040.
-    If not given this defaults to `28560`.
+    If not given this defaults to `28800`.
 
 Keys can be generated with `coredns-keygen`, to create one for use in the *sign* plugin, use:
 `coredns-keygen example.org` or `dnssec-keygen -a ECDSAP256SHA256 -f KSK example.org`.

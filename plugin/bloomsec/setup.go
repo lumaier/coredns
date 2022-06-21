@@ -63,7 +63,7 @@ func parse(c *caddy.Controller) (*Sign, error) {
 				stop:        make(chan struct{}),
 				signedfile:  fmt.Sprintf("db.%ssigned", origins[i]), // origins[i] is a fqdn, so it ends with a dot, hence %ssigned.
 				fp_prob:     0.001,
-				chunkSize:   uint64(14 * 8 * 255),
+				chunkSize:   uint64(24 * 1200),
 			}
 		}
 
