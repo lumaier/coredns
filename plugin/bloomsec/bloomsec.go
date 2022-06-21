@@ -45,7 +45,7 @@ func bloomTXT(apexname string, chunk *bfChunk, ttl uint32, chunkSize uint64) (*d
 }
 
 // Given a slice of bits it returns a slice of strings encoding the slice of bits. The last two strings contain the length of the
-// Bloom filter (m) and the number of indices used (k)
+// Bloom filter (m) and the number of indices used (k). n_strings is without the last two strings for m and k.
 func bitsToStrings(b *[]bool, n_strings int, m, k uint64) *[]string {
 	strings := make([]string, n_strings+2)
 	for i := 0; i < n_strings; i++ {
