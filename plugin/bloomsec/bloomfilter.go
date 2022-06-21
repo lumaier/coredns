@@ -157,7 +157,7 @@ func (bf *bloomfilter) falsePositiveRate(n uint64) float64 {
 	return float64(fp) / float64(nr_tests)
 }
 
-// Divides the Bloomfilter into equally sized chunks (of length chunkSize) and returns them.
+// Divides the Bloomfilter into equally sized chunks (of length bf.chunkSize) and returns them.
 // The global index corresponds to the position in the global Bloom filter (indexed 0, 1, 2, etc...)
 func (bf *bloomfilter) chunking() (*[]bfChunk, error) {
 	n_chunks := bf.m / bf.chunkSize
