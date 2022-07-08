@@ -110,7 +110,16 @@ func (bf *bloomfilter) print() {
 	fmt.Printf("Bloomfilter capacity: %d (bits needed to index: %d)\n", bf.m, int(math.Ceil(math.Log2(float64(bf.m)))))
 	fmt.Printf("number of invocations of SHA512: %d\n", bf.l)
 	fmt.Printf("Bloomfilter false positiverate: %f\n", bf.fprate)
-	fmt.Printf("Bloomfilter occupancy: %f\n\n", bf.occupancy())
+	fmt.Printf("Bloomfilter occupancy: %f\n\n", bf.Occupancy())
+}
+
+func (bf *bloomfilter) Info() string {
+	result := fmt.Sprintf("\nNumber of insertable items: %d\n", bf.n)
+	result += fmt.Sprintf("Bloomfilter capacity: %d (bits needed to index: %d)\n", bf.m, int(math.Ceil(math.Log2(float64(bf.m)))))
+	result += fmt.Sprintf("number of invocations of SHA512: %d\n", bf.l)
+	result += fmt.Sprintf("Bloomfilter false positiverate: %f\n", bf.fprate)
+	result += fmt.Sprintf("Bloomfilter occupancy: %f\n\n", bf.Occupancy())
+	return result
 }
 
 func (bf *bloomfilter) PrintWhole() string {
@@ -125,7 +134,7 @@ func (bf *bloomfilter) PrintWhole() string {
 	return result + "]\n\n"
 }
 
-func (bf *bloomfilter) occupancy() float64 {
+func (bf *bloomfilter) Occupancy() float64 {
 	n := uint64(0)
 	for _, b := range bf.bitArray {
 		if b {

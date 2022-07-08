@@ -23,7 +23,7 @@ type bloomfilter struct {
 	nr_bytes_per_index uint64 // number of bytes of SHA512 output used to create index
 }
 
-func newBloomfilter(m uint64, k uint64) *bloomfilter {
+func newBloomfilter(m, k uint64) *bloomfilter {
 	bf := bloomfilter{}
 	bf.m = m
 	bf.k = k
@@ -121,4 +121,21 @@ func (bf *bloomfilter) PrintWhole() string {
 		}
 	}
 	return result + "]\n\n"
+}
+
+func (bf *bloomfilter) Info() string {
+	result := fmt.Sprintf("Bloomfilter capacity: %d (bits needed to index: %d)\n", bf.m, int(math.Ceil(math.Log2(float64(bf.m)))))
+	result += fmt.Sprintf("number of invocations of SHA512: %d\n", bf.l)
+	result += fmt.Sprintf("Bloomfilter occupancy: %f\n\n", bf.Occupancy())
+	return result
+}
+
+func (bf *bloomfilter) Occupancy() float64 {
+	n := uint64(0)
+	for _, b := range bf.bitArray {
+		if b {
+			n++
+		}
+	}
+	return float64(n) / float64(bf.m)
 }
