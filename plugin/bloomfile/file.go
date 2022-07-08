@@ -209,6 +209,8 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 		}
 	}
 
+	log.Infof("The bloomfilter is: \n%s", z.bf.PrintWhole())
+
 	return z, nil
 }
 

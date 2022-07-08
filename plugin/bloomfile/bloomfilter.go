@@ -110,3 +110,15 @@ func bytesToBits(bytes *[]byte) *[]bool {
 	}
 	return &bits
 }
+
+func (bf *bloomfilter) PrintWhole() string {
+	result := "\n["
+	for _, x := range bf.bitArray {
+		if x {
+			result = result + "1 "
+		} else {
+			result = result + "0 "
+		}
+	}
+	return result + "]\n\n"
+}

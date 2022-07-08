@@ -113,16 +113,16 @@ func (bf *bloomfilter) print() {
 	fmt.Printf("Bloomfilter occupancy: %f\n\n", bf.occupancy())
 }
 
-func (bf *bloomfilter) printWhole() {
-	fmt.Print("\n[")
+func (bf *bloomfilter) PrintWhole() string {
+	result := "\n["
 	for _, x := range bf.bitArray {
 		if x {
-			fmt.Print("1 ")
+			result = result + "1 "
 		} else {
-			fmt.Print("0 ")
+			result = result + "0 "
 		}
 	}
-	fmt.Print("]\n\n")
+	return result + "]\n\n"
 }
 
 func (bf *bloomfilter) occupancy() float64 {

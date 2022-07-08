@@ -191,6 +191,7 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 		if len(rrs) == 0 {
 			ret := ap.soa(do)
 			if do {
+				// TODO: create NODATA response?
 				nsec := typeFromElem(elem, dns.TypeNSEC, do)
 				ret = append(ret, nsec...)
 			}
@@ -228,6 +229,7 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 		if len(rrs) == 0 {
 			ret := ap.soa(do)
 			if do {
+				// TODO: create NODATA response using bloom filter?
 				nsec := typeFromElem(wildElem, dns.TypeNSEC, do)
 				ret = append(ret, nsec...)
 			}
