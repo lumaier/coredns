@@ -84,11 +84,12 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 			return nil
 		}
 
+		// TODO: also but NS and SOA in BF?
 		types := e.Types()
 		if e.Name() == s.origin {
-			types = append(types, dns.TypeNS, dns.TypeSOA, dns.TypeRRSIG)
+			types = append(types, dns.TypeNS, dns.TypeSOA)
 		} else {
-			types = append(types, dns.TypeRRSIG)
+			types = append(types)
 		}
 
 		n += len(types)
@@ -104,12 +105,13 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 		}
 
 		types := e.Types()
+
 		if e.Name() == s.origin {
-			types = append(types, dns.TypeNS, dns.TypeSOA, dns.TypeRRSIG)
+			types = append(types, dns.TypeNS, dns.TypeSOA)
 			nsec := NSEC(e.Name(), names[(ln+i)%ln], mttl, append(e.Types(), dns.TypeNS, dns.TypeSOA, dns.TypeRRSIG, dns.TypeNSEC))
 			z.Insert(nsec)
 		} else {
-			types = append(types, dns.TypeRRSIG)
+			types = append(types)
 			nsec := NSEC(e.Name(), names[(ln+i)%ln], mttl, append(e.Types(), dns.TypeRRSIG, dns.TypeNSEC))
 			z.Insert(nsec)
 		}
@@ -120,6 +122,8 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 		i++
 		return nil
 	})
+
+	log.Infof("\n%s\n", bf.Info())
 
 	// create and insert the TXT records representing the Bloom filter
 	chunks, err := bf.chunking()
