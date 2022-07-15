@@ -1,4 +1,4 @@
-package bloomfile
+package bloomfile_nsec5
 
 import (
 	"crypto/sha512"
@@ -8,7 +8,7 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/coredns/coredns/plugin/bloomfile/rrutil"
+	"github.com/coredns/coredns/plugin/bloomfile_nsec5/rrutil"
 )
 
 type bfChunk struct {

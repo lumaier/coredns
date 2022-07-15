@@ -1,4 +1,4 @@
-package bloomsec
+package bloomsec_nsec5
 
 import (
 	"crypto/sha512"

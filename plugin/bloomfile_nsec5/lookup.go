@@ -1,12 +1,12 @@
-package bloomfile
+package bloomfile_nsec5
 
 import (
 	"context"
 	"fmt"
 
 	"github.com/coredns/coredns/core/dnsserver"
-	"github.com/coredns/coredns/plugin/bloomfile/rrutil"
-	"github.com/coredns/coredns/plugin/bloomfile/tree"
+	"github.com/coredns/coredns/plugin/bloomfile_nsec5/rrutil"
+	"github.com/coredns/coredns/plugin/bloomfile_nsec5/tree"
 	"github.com/coredns/coredns/request"
 
 	"github.com/miekg/dns"

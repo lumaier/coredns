@@ -1,5 +1,5 @@
 // Package file implements a file backend.
-package bloomfile
+package bloomfile_nsec5
 
 import (
 	"context"
@@ -14,10 +14,10 @@ import (
 
 	"github.com/miekg/dns"
 
-	"github.com/coredns/coredns/plugin/bloomfile/rrutil"
+	"github.com/coredns/coredns/plugin/bloomfile_nsec5/rrutil"
 )
 
-var log = clog.NewWithPlugin("bloomfile")
+var log = clog.NewWithPlugin("bloomfile_nsec5")
 
 type (
 	// File is the plugin that reads zone data from disk.
