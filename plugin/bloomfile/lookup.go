@@ -263,7 +263,7 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 
 	ret := ap.soa(do)
 	if do {
-		// Proof of existence of closest encloser always done using a NSEC record
+		// Proof of non-existence of the queried name done using a NSEC record
 		deny, found := tr.Prev(qname)
 		if !found {
 			goto Out
@@ -276,7 +276,6 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 		}
 
 		ce, found := z.ClosestEncloser(qname)
-		log.Infof("the closest encloser is %s", ce.Name())
 
 		// wildcard denial only for NXDOMAIN
 		if found {
