@@ -163,11 +163,16 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 			return nil, err
 		}
 
-		// check whether it is a bloomfilter chunk
+		// check whether it is a bloomfilter chunk, an nsec5 or nsec5proof
 		if s, ok := rr.(*dns.TXT); ok && isBfTxtChunk(origin, rr.Header().Name) {
 			chunks = append(chunks, s)
+		} else if ok && (*s).Txt[0] == "nsec5" {
+			z.nsec5s.Insert(s)
+		} else if ok && (*s).Txt[0] == "nsec5proof" {
+			z.nsec5proofs.Insert(s)
 		}
 	}
+
 	if !seenSOA {
 		return nil, fmt.Errorf("file %q has no SOA record for origin %s", fileName, origin)
 	}
