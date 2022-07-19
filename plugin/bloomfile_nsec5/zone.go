@@ -1,8 +1,10 @@
 package bloomfile_nsec5
 
 import (
+	"bufio"
 	"crypto/ed25519"
 	"fmt"
+	"os"
 	"path/filepath"
 	"strings"
 	"sync"
@@ -37,6 +39,8 @@ type Zone struct {
 
 	vrf_pubkey  ed25519.PublicKey  // public key for NSEC5 crypto
 	vrf_privkey ed25519.PrivateKey // private key for NSEC5 crypto
+	nsec5s      *tree.Tree
+	nsec5proofs *tree.Tree
 }
 
 // Apex contains the apex records of a zone: SOA, NS and their potential signatures.
@@ -55,6 +59,8 @@ func NewZone(name, file string) *Zone {
 		file:           filepath.Clean(file),
 		Tree:           &tree.Tree{},
 		reloadShutdown: make(chan bool),
+		nsec5s:         &tree.Tree{},
+		nsec5proofs:    &tree.Tree{},
 	}
 }
 
@@ -181,4 +187,30 @@ func (z *Zone) nameFromRight(qname string, i int) (string, bool) {
 		}
 	}
 	return qname[k:], false
+}
+
+func (z *Zone) ReadKeys(path string) error {
+	// FIXME: read VRF keys
+	f, err := os.Open(path)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	fileScanner := bufio.NewScanner(f)
+	fileScanner.Split(bufio.ScanLines)
+	var fileLines []string
+	for fileScanner.Scan() {
+		fileLines = append(fileLines, fileScanner.Text())
+	}
+
+	z.vrf_pubkey, err = fromBase64(fileLines[0])
+	if err != nil {
+		return err
+	}
+	z.vrf_privkey, err = fromBase64(fileLines[1])
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
