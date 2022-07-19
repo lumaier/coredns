@@ -116,11 +116,11 @@ func (bf *bloomfilter) print() {
 }
 
 func (bf *bloomfilter) Info() string {
-	result := fmt.Sprintf("\nNumber of insertable items: %d\n", bf.n)
+	result := fmt.Sprintf("Number of insertable items: %d\n", bf.n)
 	result += fmt.Sprintf("Bloomfilter capacity: %d (bits needed to index: %d)\n", bf.m, int(math.Ceil(math.Log2(float64(bf.m)))))
 	result += fmt.Sprintf("number of invocations of SHA512: %d\n", bf.l)
 	result += fmt.Sprintf("Bloomfilter false positiverate: %f\n", bf.fprate)
-	result += fmt.Sprintf("Bloomfilter occupancy: %f\n\n", bf.Occupancy())
+	result += fmt.Sprintf("Bloomfilter occupancy: %f\n", bf.Occupancy())
 	return result
 }
 

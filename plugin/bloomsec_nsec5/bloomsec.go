@@ -14,6 +14,17 @@ const (
 	bitsEncoded = 24 // results in 4 chars
 )
 
+type VRF_output struct {
+	hash   string
+	proof  string
+	domain string
+}
+
+type NSEC5RR struct {
+	nsec5      *dns.TXT
+	nsec5proof *dns.TXT
+}
+
 // names returns the elements of the zone in nsec order.
 func names(z *bloomfile_nsec5.Zone) []string {
 	// There will also be apex records other than NS and SOA (who are kept separate), as we
@@ -103,18 +114,17 @@ func NSEC(name, next string, ttl uint32, bitmap []uint16) *dns.NSEC {
 
 // Returns a TXT record containing an NSEC5 record and a TXT record containing the NSEC5PROOF
 // wildcard bit is not implemented
-// func NSEC5(name, proof, next []byte, n, ttl uint32, bitmap []uint16) (*dns.NSEC3, *dns.TXT) {
-// 	sort.Slice(bitmap, func(i, j int) bool { return bitmap[i] < bitmap[j] })
+func NSEC5(domain, name, proof, next string, ttl uint32) (*dns.TXT, *dns.TXT) {
 
-// 	r1 := &dns.TXT{
-// 		Hdr: dns.RR_Header{Name: "nsec5_" + string(n), Ttl: ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET},
-// 		// TODO: put it into record
-// 	}
+	r1 := &dns.TXT{
+		Hdr: dns.RR_Header{Name: name, Ttl: ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET},
+		Txt: append([]string{}, next),
+	}
 
-// 	r1 := &dns.TXT{
-// 		Hdr: dns.RR_Header{Name:  + string(n), Ttl: ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET},
-// 		// TODO: put it into record
-// 	}
+	r2 := &dns.TXT{
+		Hdr: dns.RR_Header{Name: domain, Ttl: ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET},
+		Txt: append([]string{}, proof),
+	}
 
-// 	dns.NSEC3
-// }
+	return r1, r2
+}

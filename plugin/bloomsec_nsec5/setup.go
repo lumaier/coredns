@@ -57,7 +57,7 @@ func parse(c *caddy.Controller) (*Sign, error) {
 		signers := make([]*Signer, len(origins))
 		for i := range origins {
 			// FIXME: path is hardcoded
-			// FIXME: create and insert VRF key in key file and zone
+			// create and insert VRF key in key file and zone
 			f, err := os.Create("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
 			if err != nil {
 				return nil, err
@@ -67,15 +67,11 @@ func parse(c *caddy.Controller) (*Sign, error) {
 			if err != nil {
 				return nil, err
 			}
-			_, err = f.Write(pubKey)
+			_, err = f.WriteString(toBase64(pubKey) + "\n")
 			if err != nil {
 				return nil, err
 			}
-			_, err = f.WriteString("\n")
-			if err != nil {
-				return nil, err
-			}
-			_, err = f.Write(privKey)
+			_, err = f.WriteString(toBase64(privKey))
 			if err != nil {
 				return nil, err
 			}

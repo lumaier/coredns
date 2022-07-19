@@ -6,11 +6,13 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"sort"
 	"time"
 
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5"
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5/tree"
 	clog "github.com/coredns/coredns/plugin/pkg/log"
+	"github.com/yoseplee/vrf"
 
 	"github.com/miekg/dns"
 )
@@ -62,8 +64,9 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		z.Insert(pair.Public.ToCDNSKEY())
 	}
 
-	names := names(z)
-	ln := len(names)
+	// names := names(z)
+	// ln := len(names)
+	nsec5_names := []string{}
 
 	for _, pair := range s.keys {
 		rrsig, err := pair.signRRs([]dns.RR{z.Apex.SOA}, s.origin, ttl, inception, expiration)
@@ -112,13 +115,10 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 
 		if e.Name() == s.origin {
 			types = append(types, dns.TypeNS, dns.TypeSOA)
-			nsec := NSEC(e.Name(), names[(ln+i)%ln], mttl, append(e.Types(), dns.TypeNS, dns.TypeSOA, dns.TypeRRSIG, dns.TypeNSEC))
-			z.Insert(nsec)
 		} else {
 			types = append(types)
-			nsec := NSEC(e.Name(), names[(ln+i)%ln], mttl, append(e.Types(), dns.TypeRRSIG, dns.TypeNSEC))
-			z.Insert(nsec)
 		}
+		nsec5_names = append(nsec5_names, e.Name())
 
 		for _, t := range types {
 			bf.insert([]byte(e.Name() + fmt.Sprint(t)))
@@ -126,6 +126,40 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		i++
 		return nil
 	})
+
+	//////////////////////////// NSEC5 ///////////////////////////////////////////////////
+
+	// create NSEC5 and NSEC5PROOF
+	nsec5_values := []VRF_output{} // holds: vrf hash, vrf proof, domain name
+
+	for _, x := range nsec5_names {
+		pi, hash, err := vrf.Prove(s.vrf_pubkey, s.vrf_privkey, []byte(x))
+		if err != nil {
+			return nil, err
+		}
+		nsec5_values = append(nsec5_values, VRF_output{
+			hash:   toBase64(hash),
+			proof:  toBase64(pi),
+			domain: x,
+		})
+	}
+
+	// sort the vrf hash outputs
+	sort.Slice(nsec5_values, func(i, j int) bool {
+		return nsec5_values[i].hash < nsec5_values[j].hash
+	})
+
+	length_nsec5 := len(nsec5_values)
+	proofs := []*dns.TXT{}
+
+	// for every two consecutive domain names insert an NSEC5 and NSEC5PROOF
+	for i, x := range nsec5_values {
+		r1, r2 := NSEC5(x.domain, x.hash, x.proof, nsec5_values[(i+1)%length_nsec5].hash, ttl)
+		z.Insert(r1)
+		proofs = append(proofs, r2) // FIXME: the proofs are inserted later as they do not have to be signed?
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////
 
 	log.Infof("\n%s\n", bf.Info())
 
@@ -165,6 +199,11 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		}
 		return nil
 	})
+
+	for _, x := range proofs {
+		z.Insert(x)
+	}
+
 	return z, err
 }
 
