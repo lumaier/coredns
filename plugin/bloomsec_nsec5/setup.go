@@ -1,8 +1,10 @@
 package bloomsec_nsec5
 
 import (
+	"crypto/ed25519"
 	"fmt"
 	"math/rand"
+	"os"
 	"path/filepath"
 	"strconv"
 	"time"
@@ -54,6 +56,31 @@ func parse(c *caddy.Controller) (*Sign, error) {
 		origins := plugin.OriginsFromArgsOrServerBlock(c.RemainingArgs(), c.ServerBlockKeys)
 		signers := make([]*Signer, len(origins))
 		for i := range origins {
+			// FIXME: path is hardcoded
+			// FIXME: create and insert VRF key in key file and zone
+			f, err := os.Create("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
+			if err != nil {
+				return nil, err
+			}
+			defer f.Close()
+			pubKey, privKey, err := ed25519.GenerateKey(nil)
+			if err != nil {
+				return nil, err
+			}
+			_, err = f.Write(pubKey)
+			if err != nil {
+				return nil, err
+			}
+			_, err = f.WriteString("\n")
+			if err != nil {
+				return nil, err
+			}
+			_, err = f.Write(privKey)
+			if err != nil {
+				return nil, err
+			}
+			f.Sync()
+
 			signers[i] = &Signer{
 				dbfile:      dbfile,
 				origin:      origins[i],
@@ -64,6 +91,8 @@ func parse(c *caddy.Controller) (*Sign, error) {
 				signedfile:  fmt.Sprintf("db.%ssigned", origins[i]), // origins[i] is a fqdn, so it ends with a dot, hence %ssigned.
 				fp_prob:     0.001,
 				chunkSize:   uint64(24 * 1200),
+				vrf_pubkey:  pubKey,
+				vrf_privkey: privKey,
 			}
 		}
 

@@ -100,3 +100,21 @@ func NSEC(name, next string, ttl uint32, bitmap []uint16) *dns.NSEC {
 		TypeBitMap: bitmap,
 	}
 }
+
+// Returns a TXT record containing an NSEC5 record and a TXT record containing the NSEC5PROOF
+// wildcard bit is not implemented
+// func NSEC5(name, proof, next []byte, n, ttl uint32, bitmap []uint16) (*dns.NSEC3, *dns.TXT) {
+// 	sort.Slice(bitmap, func(i, j int) bool { return bitmap[i] < bitmap[j] })
+
+// 	r1 := &dns.TXT{
+// 		Hdr: dns.RR_Header{Name: "nsec5_" + string(n), Ttl: ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET},
+// 		// TODO: put it into record
+// 	}
+
+// 	r1 := &dns.TXT{
+// 		Hdr: dns.RR_Header{Name:  + string(n), Ttl: ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET},
+// 		// TODO: put it into record
+// 	}
+
+// 	dns.NSEC3
+// }

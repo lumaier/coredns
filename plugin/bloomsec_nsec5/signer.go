@@ -31,6 +31,9 @@ type Signer struct {
 
 	signedfile string
 	stop       chan struct{}
+
+	vrf_pubkey  ed25519.PublicKey
+	vrf_privkey ed25519.PrivateKey
 }
 
 // Sign signs a zone file according to the parameters in s.
@@ -58,30 +61,6 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		z.Insert(pair.Public.ToDS(dns.SHA256).ToCDS())
 		z.Insert(pair.Public.ToCDNSKEY())
 	}
-
-	// FIXME: create and insert VRF key in key file
-	f, err := os.Create("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + s.origin)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-	pubKey, privKey, err := ed25519.GenerateKey(nil)
-	if err != nil {
-		return nil, err
-	}
-	_, err = f.Write(pubKey)
-	if err != nil {
-		return nil, err
-	}
-	_, err = f.WriteString("\n")
-	if err != nil {
-		return nil, err
-	}
-	_, err = f.Write(privKey)
-	if err != nil {
-		return nil, err
-	}
-	f.Sync()
 
 	names := names(z)
 	ln := len(names)
