@@ -95,6 +95,7 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 
 		for i := range origins {
 			z[origins[i]] = NewZone(origins[i], fileName)
+			z[origins[i]].ReadKeys("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
 			if openErr == nil {
 				reader.Seek(0, 0)
 				zone, err := Parse(reader, origins[i], fileName, 0)
