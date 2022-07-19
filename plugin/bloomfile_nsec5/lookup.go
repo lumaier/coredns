@@ -8,6 +8,7 @@ import (
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5/rrutil"
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5/tree"
 	"github.com/coredns/coredns/request"
+	"github.com/yoseplee/vrf"
 
 	"github.com/miekg/dns"
 )
@@ -263,42 +264,72 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 
 	ret := ap.soa(do)
 	if do {
-		// Proof of existence of closest encloser always done using a NSEC record
-		deny, found := tr.Prev(qname)
+		// Proof of existence of closest encloser always done using a NSEC5 and NSEC5PROOF record
+		ce, found := z.ClosestEncloser(qname)
 		if !found {
 			goto Out
 		}
-		nsec := typeFromElem(deny, dns.TypeNSEC, do)
-		ret = append(ret, nsec...)
+
+		// find corresponding NSEC5
+		pi, hash, err := vrf.Prove(z.vrf_pubkey, z.vrf_privkey, []byte(ce.Name()))
+		if err != nil {
+			return nil, nil, nil, ServerFailure
+		}
+		log.Infof("the closest encloser is %s and has hash %s", ce.Name(), toBase64(hash))
+		deny, found := z.nsec5s.Search(toBase64(hash))
+		if !found {
+			goto Out
+		}
+
+		nsec5_ce := typeFromElem(deny, dns.TypeTXT, do)
+		ret = append(ret, nsec5_ce...)
+
+		// find corresponding NSEC5PROOF
+		deny, found = z.nsec5proofs.Prev(toBase64(pi))
+		if !found {
+			goto Out
+		}
+		nsec5proof_ce := typeFromElem(deny, dns.TypeTXT, do)
+		ret = append(ret, nsec5proof_ce...)
 
 		if rcode != NameError {
 			goto Out
 		}
 
-		ce, found := z.ClosestEncloser(qname)
-		log.Infof("the closest encloser is %s", ce.Name())
-
-		// wildcard denial only for NXDOMAIN
 		if found {
-			// wildcard denial
-			wildcard := "*." + ce.Name()
-			if ss, found := tr.Prev(wildcard); found {
-				// Only add this nsec or txt if it is different than the one already added
-				if ss.Name() != deny.Name() {
-					// first look whether we got a false positive
-					if i, b := z.bf.lookup([]byte(wildcard)); !b {
-						globalIndex := i / z.chunkSize
-						chunk, found_chunk := tr.Search("_bf" + fmt.Sprint(globalIndex) + "." + z.origin)
-						if !found_chunk {
-							return nil, nil, nil, ServerFailure
-						}
-						txt := typeFromElem(chunk, dns.TypeTXT, do)
-						ret = append(ret, txt...)
-					} else {
-						// use NSEC as backup
-						nsec := typeFromElem(ss, dns.TypeNSEC, do)
-						ret = append(ret, nsec...)
-					}
+			// next-closest encloser denial of existence
+			nce := z.NextClosestEncloser(qname)
+
+			// first look whether we got a false positive
+			if i, b := z.bf.lookup([]byte(nce)); !b {
+				globalIndex := i / z.chunkSize
+				chunk, found_chunk := tr.Search("_bf" + fmt.Sprint(globalIndex) + "." + z.origin)
+				if !found_chunk {
+					return nil, nil, nil, ServerFailure
+				}
+				txt := typeFromElem(chunk, dns.TypeTXT, do)
+				ret = append(ret, txt...)
+			} else {
+				// find corresponding NSEC5
+				pi, hash, err := vrf.Prove(z.vrf_pubkey, z.vrf_privkey, []byte(nce))
+				if err != nil {
+					return nil, nil, nil, ServerFailure
+				}
+
+				deny, found := z.nsec5s.Prev(toBase64(hash))
+				if !found {
+					goto Out
+				}
+				// Only add this nsec5 if it is different than the one already added
+				if nsec5_ce[0].Header().Name != deny.Name() {
+					nsec5_nce := typeFromElem(deny, dns.TypeTXT, do)
+					ret = append(ret, nsec5_nce...)
+
+					// ONLINE CRYPTO: generate NSEC5PROOF
+					ret = append(ret, &dns.TXT{
+						Hdr: dns.RR_Header{Name: nce, Ttl: state.Req.Ns[0].Header().Ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET}, // same ttl as in dnssec plugin (black lies)
+						Txt: append([]string{"nsec5proof"}, toBase64(pi)),
+					})
 				}
 			}
 		} else {
