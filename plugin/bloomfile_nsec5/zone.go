@@ -1,6 +1,7 @@
 package bloomfile_nsec5
 
 import (
+	"crypto/ed25519"
 	"fmt"
 	"path/filepath"
 	"strings"
@@ -33,6 +34,9 @@ type Zone struct {
 	Upstream  *upstream.Upstream // Upstream for looking up external names during the resolution process.
 	bf        bloomfilter
 	chunkSize uint64
+
+	vrf_pubkey  ed25519.PublicKey  // public key for NSEC5 crypto
+	vrf_privkey ed25519.PrivateKey // private key for NSEC5 crypto
 }
 
 // Apex contains the apex records of a zone: SOA, NS and their potential signatures.
