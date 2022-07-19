@@ -3,8 +3,6 @@ package bloomfile_nsec5
 import (
 	"strings"
 	"testing"
-
-	"github.com/miekg/dns"
 )
 
 func TestClosestEncloser(t *testing.T) {
@@ -35,7 +33,6 @@ func TestClosestEncloser(t *testing.T) {
 			continue
 		}
 		if ce.Name() != tc.out {
-			t.Errorf("indices %d %d %d", dns.Split(tc.in)[0], dns.Split(tc.in)[1], dns.Split(tc.in)[2])
 			t.Errorf("Expected ce to be %s for %s, got %s", tc.out, tc.in, ce.Name())
 		}
 	}
