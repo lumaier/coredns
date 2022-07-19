@@ -1,6 +1,7 @@
 package bloomsec_nsec5
 
 import (
+	"crypto/ed25519"
 	"fmt"
 	"io"
 	"os"
@@ -58,6 +59,30 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		z.Insert(pair.Public.ToCDNSKEY())
 	}
 
+	// FIXME: create and insert VRF key in key file
+	f, err := os.Create("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + s.origin)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	pubKey, privKey, err := ed25519.GenerateKey(nil)
+	if err != nil {
+		return nil, err
+	}
+	_, err = f.Write(pubKey)
+	if err != nil {
+		return nil, err
+	}
+	_, err = f.WriteString("\n")
+	if err != nil {
+		return nil, err
+	}
+	_, err = f.Write(privKey)
+	if err != nil {
+		return nil, err
+	}
+	f.Sync()
+
 	names := names(z)
 	ln := len(names)
 
@@ -84,7 +109,7 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 			return nil
 		}
 
-		// TODO: also but NS and SOA in BF?
+		// FIXME: also put NS and SOA in BF?
 		types := e.Types()
 		if e.Name() == s.origin {
 			types = append(types, dns.TypeNS, dns.TypeSOA)
