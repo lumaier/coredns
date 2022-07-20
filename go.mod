@@ -6,6 +6,7 @@ require (
 	github.com/Azure/azure-sdk-for-go v65.0.0+incompatible
 	github.com/Azure/go-autorest/autorest v0.11.27
 	github.com/Azure/go-autorest/autorest/azure/auth v0.5.11
+	github.com/ProtonMail/go-ecvrf v0.0.1
 	github.com/apparentlymart/go-cidr v1.1.0
 	github.com/aws/aws-sdk-go v1.44.24
 	github.com/coredns/caddy v1.1.1
@@ -22,6 +23,7 @@ require (
 	github.com/prometheus/client_golang v1.12.2
 	github.com/prometheus/client_model v0.2.0
 	github.com/prometheus/common v0.34.0
+	github.com/yoseplee/vrf v0.0.0-20210814110709-d1caf509310b
 	go.etcd.io/etcd/api/v3 v3.5.4
 	go.etcd.io/etcd/client/v3 v3.5.4
 	golang.org/x/crypto v0.0.0-20220525230936-793ad666bf5e
@@ -38,6 +40,7 @@ require (
 
 require (
 	cloud.google.com/go/compute v1.6.1 // indirect
+	filippo.io/edwards25519 v1.0.0-rc.1 // indirect
 	github.com/Azure/go-autorest v14.2.0+incompatible // indirect
 	github.com/Azure/go-autorest/autorest/adal v0.9.18 // indirect
 	github.com/Azure/go-autorest/autorest/azure/cli v0.4.5 // indirect
@@ -93,7 +96,6 @@ require (
 	github.com/prometheus/procfs v0.7.3 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tinylib/msgp v1.1.2 // indirect
-	github.com/yoseplee/vrf v0.0.0-20210814110709-d1caf509310b // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.4 // indirect
 	go.opencensus.io v0.23.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
