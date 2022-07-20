@@ -3,6 +3,7 @@ package bloomfile_nsec5
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"github.com/coredns/coredns/core/dnsserver"
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5/rrutil"
@@ -265,18 +266,18 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 	ret := ap.soa(do)
 	if do {
 		// Proof of existence of closest encloser always done using a NSEC5 and NSEC5PROOF record
+		// we omit the wildcard bit handling as this implementation is only for evaluation purposes anyways
 		ce, found := z.ClosestEncloser(qname)
 		if !found {
 			goto Out
 		}
 
 		// find corresponding NSEC5
-		pi, hash, err := vrf.Prove(z.vrf_pubkey, z.vrf_privkey, []byte(ce.Name()))
+		_, hash, err := vrf.Prove(z.vrf_pubkey, z.vrf_privkey, []byte(ce.Name()))
 		if err != nil {
 			return nil, nil, nil, ServerFailure
 		}
-		log.Infof("the closest encloser is %s and has hash %s", ce.Name(), toBase64(hash))
-		deny, found := z.nsec5s.Search(toBase64(hash))
+		deny, found := z.nsec5s.Search(strings.ToLower(toBase64(hash)) + "." + z.origin)
 		if !found {
 			goto Out
 		}
@@ -285,7 +286,7 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 		ret = append(ret, nsec5_ce...)
 
 		// find corresponding NSEC5PROOF
-		deny, found = z.nsec5proofs.Prev(toBase64(pi))
+		deny, found = z.nsec5proofs.Prev(ce.Name())
 		if !found {
 			goto Out
 		}
@@ -299,7 +300,7 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 		if found {
 			// next-closest encloser denial of existence
 			nce := z.NextClosestEncloser(qname)
-
+			log.Infof("%s", nce)
 			// first look whether we got a false positive
 			if i, b := z.bf.lookup([]byte(nce)); !b {
 				globalIndex := i / z.chunkSize
@@ -315,8 +316,7 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 				if err != nil {
 					return nil, nil, nil, ServerFailure
 				}
-
-				deny, found := z.nsec5s.Prev(toBase64(hash))
+				deny, found := z.nsec5s.Prev(toBase64(hash) + "." + z.origin)
 				if !found {
 					goto Out
 				}
@@ -324,13 +324,12 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 				if nsec5_ce[0].Header().Name != deny.Name() {
 					nsec5_nce := typeFromElem(deny, dns.TypeTXT, do)
 					ret = append(ret, nsec5_nce...)
-
-					// ONLINE CRYPTO: generate NSEC5PROOF
-					ret = append(ret, &dns.TXT{
-						Hdr: dns.RR_Header{Name: nce, Ttl: state.Req.Ns[0].Header().Ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET}, // same ttl as in dnssec plugin (black lies)
-						Txt: append([]string{"nsec5proof"}, toBase64(pi)),
-					})
 				}
+				// ONLINE CRYPTO: generate NSEC5PROOF
+				ret = append(ret, &dns.TXT{
+					Hdr: dns.RR_Header{Name: nce, Ttl: nsec5_ce[0].Header().Ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET}, // same ttl as in dnssec plugin (black lies)
+					Txt: append([]string{"nsec5proof"}, toBase64(pi)),
+				})
 			}
 		} else {
 			log.Infof("not found")
