@@ -48,10 +48,8 @@ func newBloomfilter(m, k uint64) *bloomfilter {
 // returns 0 as index if all bits were 1
 func (bf *bloomfilter) lookup(element []byte) (uint64, bool) {
 	indices := bf.calculateIndices(element)
-	log.Infof("indices of \"%s\" are: %s", string(element), printIndices(indices))
 	for _, index := range indices {
 		if !bf.bitArray[index] {
-			log.Infof("bit at %d is set to 0", index)
 			return index, false
 		}
 	}
@@ -130,7 +128,7 @@ func (bf *bloomfilter) PrintWhole() string {
 func (bf *bloomfilter) Info() string {
 	result := fmt.Sprintf("Bloomfilter capacity: %d (bits needed to index: %d)\n", bf.m, int(math.Ceil(math.Log2(float64(bf.m)))))
 	result += fmt.Sprintf("number of invocations of SHA512: %d\n", bf.l)
-	result += fmt.Sprintf("Bloomfilter occupancy: %f\n\n", bf.Occupancy())
+	result += fmt.Sprintf("Bloomfilter occupancy: %f\n", bf.Occupancy())
 	return result
 }
 
