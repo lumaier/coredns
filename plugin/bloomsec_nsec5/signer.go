@@ -1,7 +1,6 @@
 package bloomsec_nsec5
 
 import (
-	"crypto/ed25519"
 	"fmt"
 	"io"
 	"os"
@@ -9,10 +8,10 @@ import (
 	"sort"
 	"time"
 
+	"github.com/ProtonMail/go-ecvrf/ecvrf"
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5"
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5/tree"
 	clog "github.com/coredns/coredns/plugin/pkg/log"
-	"github.com/yoseplee/vrf"
 
 	"github.com/miekg/dns"
 )
@@ -34,8 +33,8 @@ type Signer struct {
 	signedfile string
 	stop       chan struct{}
 
-	vrf_pubkey  ed25519.PublicKey
-	vrf_privkey ed25519.PrivateKey
+	vrf_privkey *ecvrf.PrivateKey
+	vrf_pubkey  *ecvrf.PublicKey
 }
 
 // Sign signs a zone file according to the parameters in s.
@@ -133,7 +132,7 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 	nsec5_values := []VRF_output{} // holds: vrf hash, vrf proof, domain name
 
 	for _, x := range nsec5_names {
-		pi, hash, err := vrf.Prove(s.vrf_pubkey, s.vrf_privkey, []byte(x))
+		pi, hash, err := s.vrf_privkey.Prove([]byte(x))
 		if err != nil {
 			return nil, err
 		}
