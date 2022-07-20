@@ -1,26 +1,26 @@
-# bloomsec
+# bloomsec_nsec5
 
 ## Name
 
-*bloomsec* - adds DNSSEC records and Bloom filter TXT records to zone files.
+*bloomsec_nsec5* - adds DNSSEC NSEC5 records and Bloom filter TXT records to zone files.
 
 ## Description
 
-The *bloomsec* plugin is used to add a Bloom filter encoding the zone's data and to sign (see RFC 6781) zones. In this process TXT resource records containing chunks of the Bloom filter and DNSSEC resource records are
+The *bloomsec_nsec5* plugin is used to add a Bloom filter encoding the zone's data and to sign (see RFC 6781) zones. In this process TXT resource records containing chunks of the Bloom filter and DNSSEC resource records are
 added. The signatures that sign the resource records sets have an expiration date, this means the
 signing process must be repeated before this expiration data is reached. Otherwise the zone's data
 will go BAD (RFC 4035, Section 5.5). The *sign* plugin takes care of this.
 
-Only NSEC is supported, *bloomsec* does *not* support NSEC3.
+Only NSEC5 is supported, *bloomsec_nsec5* does support any other mechanism.
 
-*bloomsec* works in conjunction with the *bloomfile* plugins; this plugin **creates** the Bloom filter and **signs** the zones
-files, and *bloomfile* **serve** the zones *data*.
+*bloomsec_nsec5* works in conjunction with the *bloomfile_nsec5* plugins; this plugin **creates** the Bloom filter and **signs** the zones
+files, and *bloomfile_nsec5* **serve** the zones *data*.
 
 For this plugin to work at least one Common Signing Key, (see coredns-keygen(1)) is needed. This key
 (or keys) will be used to sign the entire zone. *bloomsec* does *not* support the ZSK/KSK split, nor will
-it do key or algorithm rollovers - it just signs.
+it do key or algorithm rollovers - it just signs. Additionally a VRF public key pair is hardcoded into a file which is used by the zone authority **and** the name server.
 
-*bloomsec* will:
+*bloomsec_nsec5* will:
  * Create a Bloom filter encoding all the domain names for which the zone is authoritative. Furthermore, it chunks it into equally sized chunks and puts the into TXT resource records.
 
  *  (Re)-sign the zone with the CSK(s) when:
@@ -35,7 +35,7 @@ it do key or algorithm rollovers - it just signs.
  *  Create RRSIGs that have an inception of -3 hours (minus a jitter between 0 and 18 hours)
     and a expiration of +32 (plus a jitter between 0 and 5 days) days for every given DNSKEY.
 
- *  Add NSEC records for all names in the zone. The TTL for these is the negative cache TTL from the
+ *  Add NSEC5 and NSEC5PROOF records for all names in the zone. The TTL for these is the negative cache TTL from the
     SOA record.
 
  *  Add or replace *all* apex CDS/CDNSKEY records with the ones derived from the given keys. For
@@ -59,7 +59,7 @@ A generated zone is written out in a file named `db.<name>.signed` in the direct
 ## Syntax
 
 ~~~
-bloomsec DBFILE [ZONES...] {
+bloomsec_nsec5 DBFILE [ZONES...] {
     key file|directory KEY...|DIR...
     directory DIR
     fp_rate FPRATE
@@ -90,14 +90,14 @@ Keys can be generated with `coredns-keygen`, to create one for use in the *sign*
 ## Examples
 
 Create the Bloom filter and sign the `example.org` zone contained in the file `db.example.org` and write the result to
-`./db.example.org.signed` to let the *bloomfile* plugin pick it up and serve it. The keys used
+`./db.example.org.signed` to let the *bloomsec_nsec5* plugin pick it up and serve it. The keys used
 are read from `/etc/coredns/keys/Kexample.org.key` and `/etc/coredns/keys/Kexample.org.private`. The chunk size and the false positive rate use their default values.
 
 ~~~ txt
 example.org {
-    bloomfile db.example.org.signed
+    bloomfile_nsec5 db.example.org.signed
 
-    bloomsec db.example.org {
+    bloomsec_nsec5 db.example.org {
         key file /etc/coredns/keys/Kexample.org
         directory .
     }
@@ -108,10 +108,10 @@ Running this leads to the following log output (note the timers in this example 
 shorter intervals).
 
 ~~~ txt
-[WARNING] plugin/bloomfile: Failed to open "open /tmp/db.example.org.signed: no such file or directory": trying again in 1m0s
-[INFO] plugin/bloomsec: Signing "example.org." because open /tmp/db.example.org.signed: no such file or directory
-[INFO] plugin/bloomsec: Successfully signed zone "example.org." in "/tmp/db.example.org.signed" with key tags "59725" and 1564766865 SOA serial, elapsed 9.357933ms, next: 2019-08-02T22:27:45.270Z
-[INFO] plugin/bloomfile: Successfully reloaded zone "example.org." in "/tmp/db.example.org.signed" with serial 1564766865
+[WARNING] plugin/bloomfile_nsec5: Failed to open "open /tmp/db.example.org.signed: no such file or directory": trying again in 1m0s
+[INFO] plugin/bloomsec_nsec5: Signing "example.org." because open /tmp/db.example.org.signed: no such file or directory
+[INFO] plugin/bloomsec_nsec5: Successfully signed zone "example.org." in "/tmp/db.example.org.signed" with key tags "59725" and 1564766865 SOA serial, elapsed 9.357933ms, next: 2019-08-02T22:27:45.270Z
+[INFO] plugin/bloomfile_nsec5: Successfully reloaded zone "example.org." in "/tmp/db.example.org.signed" with serial 1564766865
 ~~~
 
 Or use a single zone file for *multiple* zones, note that the **ZONES** are repeated for both plugins.
@@ -120,9 +120,9 @@ Also note this outputs *multiple* signed output files. Here we use the default o
 
 ~~~ txt
 . {
-    bloomfile /var/lib/coredns/db.example.org.signed example.org
-    bloomfile /var/lib/coredns/db.example.net.signed example.net
-    bloomsec db.example.org example.org example.net {
+    bloomfile_nsec5 /var/lib/coredns/db.example.org.signed example.org
+    bloomfile_nsec5 /var/lib/coredns/db.example.net.signed example.net
+    bloomsec_nsec5 db.example.org example.org example.net {
         key directory /etc/coredns/keys
     }
 }
@@ -133,9 +133,9 @@ need to specify what file is served for what zone in the *file* plugin:
 
 ~~~ txt
 example.org example.net {
-    bloomfile var/lib/coredns/db.example.org.signed example.org
-    bloomfile var/lib/coredns/db.example.net.signed example.net
-    bloomsec db.example.org {
+    bloomfile_nsec5 var/lib/coredns/db.example.org.signed example.org
+    bloomfile_nsec5 var/lib/coredns/db.example.net.signed example.net
+    bloomsec_nsec5 db.example.org {
         key directory /etc/coredns/keys
     }
 }
@@ -145,7 +145,7 @@ Be careful to fully list the origins you want to sign, if you don't:
 
 ~~~ txt
 example.org example.net {
-    bloomsec plugin/sign/testdata/db.example.org miek.org {
+    bloomsec_nsec5 plugin/sign/testdata/db.example.org miek.org {
         key file /etc/coredns/keys/Kexample.org
     }
 }
@@ -161,7 +161,7 @@ file.
 ## See Also
 
 The DNSSEC RFCs: RFC 4033, RFC 4034 and RFC 4035. And the BCP on DNSSEC, RFC 6781. Further more the
-manual pages coredns-keygen(1) and dnssec-keygen(8). And the *file* plugin's documentation.
+manual pages coredns-keygen(1) and dnssec-keygen(8). And the *bloomfile_nsec5* plugin's documentation.
 
 Coredns-keygen can be found at
 [https://github.com/coredns/coredns-utils](https://github.com/coredns/coredns-utils) in the
@@ -172,4 +172,10 @@ Other useful DNSSEC tools can be found in [ldns](https://nlnetlabs.nl/projects/l
 
 ## Bugs
 
-`keys directory` is not implemented.
+- `keys directory` is not implemented.
+- The VRF public key pair is hard coded into a text file and must be used by the name server.
+- Only zones with one kind of record are supported.
+- NODATA responses are not implemented using NSEC5.
+- NSEC5 and NSEC5PROOF RR are encoded in TXT records.
+- The mechanism is implemented as if the proof of existence for the closest encloser has a wildcard bit set. This is not yet implemented. We obmit the DoE for the wildcard record for comparable evaluation.
+
