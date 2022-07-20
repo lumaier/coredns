@@ -214,7 +214,7 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 		}
 	}
 
-	log.Infof("\n%s\n", z.bf.Info())
+	log.Infof("\n%s", z.bf.Info())
 
 	return z, nil
 }
