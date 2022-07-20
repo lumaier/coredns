@@ -95,7 +95,6 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 
 		for i := range origins {
 			z[origins[i]] = NewZone(origins[i], fileName)
-			z[origins[i]].ReadKeys("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
 			if openErr == nil {
 				reader.Seek(0, 0)
 				zone, err := Parse(reader, origins[i], fileName, 0)
@@ -142,5 +141,13 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 		log.Warningf("Failed to open %q: trying again in %s", openErr, reload)
 
 	}
+
+	for i := range z {
+		err_read := z[i].ReadKeys("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + i)
+		if err_read != nil {
+			return Zones{}, err_read
+		}
+	}
+
 	return Zones{Z: z, Names: names}, nil
 }
