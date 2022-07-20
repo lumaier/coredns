@@ -1,7 +1,7 @@
 package bloomsec_nsec5
 
 import (
-	"crypto/ed25519"
+	"bufio"
 	"fmt"
 	"math/rand"
 	"os"
@@ -58,24 +58,45 @@ func parse(c *caddy.Controller) (*Sign, error) {
 		for i := range origins {
 			// FIXME: path is hardcoded
 			// create and insert VRF key in key file and zone
-			f, err := os.Create("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
+			// f, err := os.Create("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
+			// if err != nil {
+			// 	return nil, err
+			// }
+			// defer f.Close()
+			// pubKey, privKey, err := ed25519.GenerateKey(nil)
+			// if err != nil {
+			// 	return nil, err
+			// }
+			// _, err = f.WriteString(toBase64(pubKey) + "\n")
+			// if err != nil {
+			// 	return nil, err
+			// }
+			// _, err = f.WriteString(toBase64(privKey))
+			// if err != nil {
+			// 	return nil, err
+			// }
+			// f.Sync()
+
+			// read vrf keys
+			f, err := os.Open("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
 			if err != nil {
 				return nil, err
 			}
 			defer f.Close()
-			pubKey, privKey, err := ed25519.GenerateKey(nil)
+			fileScanner := bufio.NewScanner(f)
+			fileScanner.Split(bufio.ScanLines)
+			var fileLines []string
+			for fileScanner.Scan() {
+				fileLines = append(fileLines, fileScanner.Text())
+			}
+			pubKey, err := fromBase64(fileLines[0])
 			if err != nil {
 				return nil, err
 			}
-			_, err = f.WriteString(toBase64(pubKey) + "\n")
+			privKey, err := fromBase64(fileLines[1])
 			if err != nil {
 				return nil, err
 			}
-			_, err = f.WriteString(toBase64(privKey))
-			if err != nil {
-				return nil, err
-			}
-			f.Sync()
 
 			signers[i] = &Signer{
 				dbfile:      dbfile,
