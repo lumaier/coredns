@@ -59,31 +59,31 @@ func parse(c *caddy.Controller) (*Sign, error) {
 		for i := range origins {
 			// FIXME: path is hardcoded
 			// create and insert VRF key in key file and zone
-			f, err := os.Create("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
-			if err != nil {
-				return nil, err
-			}
-			defer f.Close()
-			privKey, err := ecvrf.GenerateKey(nil)
-			if err != nil {
-				return nil, err
-			}
-			pubKey, err := privKey.Public()
-			if err != nil {
-				return nil, err
-			}
-			_, err = f.WriteString(toBase64(pubKey.Bytes()) + "\n")
-			if err != nil {
-				return nil, err
-			}
-			_, err = f.WriteString(toBase64(privKey.Bytes()))
-			if err != nil {
-				return nil, err
-			}
-			f.Sync()
+			// f, err := os.Create("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
+			// if err != nil {
+			// 	return nil, err
+			// }
+			// defer f.Close()
+			// privKey, err := ecvrf.GenerateKey(nil)
+			// if err != nil {
+			// 	return nil, err
+			// }
+			// pubKey, err := privKey.Public()
+			// if err != nil {
+			// 	return nil, err
+			// }
+			// _, err = f.WriteString(toBase64(pubKey.Bytes()) + "\n")
+			// if err != nil {
+			// 	return nil, err
+			// }
+			// _, err = f.WriteString(toBase64(privKey.Bytes()))
+			// if err != nil {
+			// 	return nil, err
+			// }
+			// f.Sync()
 
 			// read vrf keys
-			f, err = os.Open("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
+			f, err := os.Open("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
 			if err != nil {
 				return nil, err
 			}
@@ -98,7 +98,7 @@ func parse(c *caddy.Controller) (*Sign, error) {
 			if err != nil {
 				return nil, err
 			}
-			pubKey, err = ecvrf.NewPublicKey(t)
+			pubKey, err := ecvrf.NewPublicKey(t)
 			if err != nil {
 				return nil, err
 			}
@@ -106,7 +106,7 @@ func parse(c *caddy.Controller) (*Sign, error) {
 			if err != nil {
 				return nil, err
 			}
-			privKey, err = ecvrf.NewPrivateKey(t)
+			privKey, err := ecvrf.NewPrivateKey(t)
 			if err != nil {
 				return nil, err
 			}

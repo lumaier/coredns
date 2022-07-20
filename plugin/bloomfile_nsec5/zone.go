@@ -2,7 +2,6 @@ package bloomfile_nsec5
 
 import (
 	"bufio"
-	"crypto/ed25519"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -10,6 +9,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/ProtonMail/go-ecvrf/ecvrf"
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5/tree"
 	"github.com/coredns/coredns/plugin/pkg/upstream"
 
@@ -37,8 +37,8 @@ type Zone struct {
 	bf        bloomfilter
 	chunkSize uint64
 
-	vrf_pubkey  ed25519.PublicKey  // public key for NSEC5 crypto
-	vrf_privkey ed25519.PrivateKey // private key for NSEC5 crypto
+	vrf_pubkey  *ecvrf.PublicKey  // public key for NSEC5 crypto
+	vrf_privkey *ecvrf.PrivateKey // private key for NSEC5 crypto
 	nsec5s      *tree.Tree
 	nsec5proofs *tree.Tree
 }
@@ -202,11 +202,19 @@ func (z *Zone) ReadKeys(path string) error {
 	for fileScanner.Scan() {
 		fileLines = append(fileLines, fileScanner.Text())
 	}
-	z.vrf_pubkey, err = fromBase64(fileLines[0])
+	t, err := fromBase64(fileLines[0])
 	if err != nil {
 		return err
 	}
-	z.vrf_privkey, err = fromBase64(fileLines[1])
+	z.vrf_pubkey, err = ecvrf.NewPublicKey(t)
+	if err != nil {
+		return err
+	}
+	t, err = fromBase64(fileLines[1])
+	if err != nil {
+		return err
+	}
+	z.vrf_privkey, err = ecvrf.NewPrivateKey(t)
 	if err != nil {
 		return err
 	}

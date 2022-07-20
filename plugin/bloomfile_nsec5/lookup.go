@@ -9,7 +9,6 @@ import (
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5/rrutil"
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5/tree"
 	"github.com/coredns/coredns/request"
-	"github.com/yoseplee/vrf"
 
 	"github.com/miekg/dns"
 )
@@ -273,7 +272,7 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 		}
 
 		// find corresponding NSEC5
-		_, hash, err := vrf.Prove(z.vrf_pubkey, z.vrf_privkey, []byte(ce.Name()))
+		_, hash, err := z.vrf_privkey.Prove([]byte(ce.Name()))
 		if err != nil {
 			return nil, nil, nil, ServerFailure
 		}
@@ -312,7 +311,7 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 				ret = append(ret, txt...)
 			} else {
 				// find corresponding NSEC5
-				pi, hash, err := vrf.Prove(z.vrf_pubkey, z.vrf_privkey, []byte(nce))
+				pi, hash, err := z.vrf_privkey.Prove([]byte(nce))
 				if err != nil {
 					return nil, nil, nil, ServerFailure
 				}

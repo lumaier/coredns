@@ -136,7 +136,6 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		if err != nil {
 			return nil, err
 		}
-		log.Infof("%s has %s", x, toBase64(hash))
 		nsec5_values = append(nsec5_values, VRF_output{
 			hash:   toBase64(hash),
 			proof:  toBase64(pi),
