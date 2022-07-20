@@ -202,7 +202,6 @@ func (z *Zone) ReadKeys(path string) error {
 	for fileScanner.Scan() {
 		fileLines = append(fileLines, fileScanner.Text())
 	}
-
 	z.vrf_pubkey, err = fromBase64(fileLines[0])
 	if err != nil {
 		return err
@@ -211,6 +210,5 @@ func (z *Zone) ReadKeys(path string) error {
 	if err != nil {
 		return err
 	}
-
 	return nil
 }
