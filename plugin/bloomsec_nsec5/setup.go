@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/ProtonMail/go-ecvrf/ecvrf"
 	"github.com/coredns/caddy"
 	"github.com/coredns/coredns/core/dnsserver"
 	"github.com/coredns/coredns/plugin"
@@ -58,27 +59,31 @@ func parse(c *caddy.Controller) (*Sign, error) {
 		for i := range origins {
 			// FIXME: path is hardcoded
 			// create and insert VRF key in key file and zone
-			// f, err := os.Create("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
-			// if err != nil {
-			// 	return nil, err
-			// }
-			// defer f.Close()
-			// pubKey, privKey, err := ed25519.GenerateKey(nil)
-			// if err != nil {
-			// 	return nil, err
-			// }
-			// _, err = f.WriteString(toBase64(pubKey) + "\n")
-			// if err != nil {
-			// 	return nil, err
-			// }
-			// _, err = f.WriteString(toBase64(privKey))
-			// if err != nil {
-			// 	return nil, err
-			// }
-			// f.Sync()
+			f, err := os.Create("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
+			if err != nil {
+				return nil, err
+			}
+			defer f.Close()
+			privKey, err := ecvrf.GenerateKey(nil)
+			if err != nil {
+				return nil, err
+			}
+			pubKey, err := privKey.Public()
+			if err != nil {
+				return nil, err
+			}
+			_, err = f.WriteString(toBase64(pubKey.Bytes()) + "\n")
+			if err != nil {
+				return nil, err
+			}
+			_, err = f.WriteString(toBase64(privKey.Bytes()))
+			if err != nil {
+				return nil, err
+			}
+			f.Sync()
 
 			// read vrf keys
-			f, err := os.Open("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
+			f, err = os.Open("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
 			if err != nil {
 				return nil, err
 			}
@@ -89,11 +94,19 @@ func parse(c *caddy.Controller) (*Sign, error) {
 			for fileScanner.Scan() {
 				fileLines = append(fileLines, fileScanner.Text())
 			}
-			pubKey, err := fromBase64(fileLines[0])
+			t, err := fromBase64(fileLines[0])
 			if err != nil {
 				return nil, err
 			}
-			privKey, err := fromBase64(fileLines[1])
+			pubKey, err = ecvrf.NewPublicKey(t)
+			if err != nil {
+				return nil, err
+			}
+			t, err = fromBase64(fileLines[1])
+			if err != nil {
+				return nil, err
+			}
+			privKey, err = ecvrf.NewPrivateKey(t)
 			if err != nil {
 				return nil, err
 			}
