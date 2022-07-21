@@ -104,7 +104,6 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 
 	// create the Bloom filter and insert all elements
 	bf := newBloomfilter(uint64(n), s.fp_prob, s.chunkSize)
-	i := 1
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
 		if !auth {
 			return nil
@@ -122,7 +121,6 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		for _, t := range types {
 			bf.insert([]byte(e.Name() + fmt.Sprint(t)))
 		}
-		i++
 		return nil
 	})
 
