@@ -61,8 +61,10 @@ func (bf *bloomfilter) calculateIndices(data []byte) []uint64 {
 	digest := []byte{}
 	for i := uint64(1); i <= bf.l; i++ {
 		x := append(data, byte(i))
-		bf.sha512hasher.Write(x)
-		digest = bf.sha512hasher.Sum(digest)
+		//bf.sha512hasher.Write(x)
+		//digest = bf.sha512hasher.Sum(digest)
+		var temp = sha512.Sum512(x)
+		digest = append(digest, temp[:]...)
 	}
 
 	indices := make([]uint64, bf.k)
