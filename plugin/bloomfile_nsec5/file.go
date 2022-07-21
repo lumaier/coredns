@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"sort"
 	"strconv"
 
 	"github.com/coredns/coredns/plugin"
@@ -167,11 +168,15 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 		if s, ok := rr.(*dns.TXT); ok && isBfTxtChunk(origin, rr.Header().Name) {
 			chunks = append(chunks, s)
 		} else if ok && (*s).Txt[0] == "nsec5" {
-			z.nsec5s.Insert(s)
-		} else if ok && (*s).Txt[0] == "nsec5proof" {
-			z.nsec5proofs.Insert(s)
+			z.nsec5s = append(z.nsec5s, s)
 		}
 	}
+
+	sort.Slice(z.nsec5s, func(i, j int) bool {
+		return z.nsec5s[i].Txt[1] < z.nsec5s[j].Txt[1]
+	})
+
+	z.N_nsec5s = len(z.nsec5s)
 
 	if !seenSOA {
 		return nil, fmt.Errorf("file %q has no SOA record for origin %s", fileName, origin)
