@@ -117,8 +117,8 @@ func NSEC(name, next string, ttl uint32, bitmap []uint16) *dns.NSEC {
 func NSEC5(domain, name, proof, next string, ttl uint32) (*dns.TXT, *dns.TXT) {
 
 	r1 := &dns.TXT{
-		Hdr: dns.RR_Header{Name: name, Ttl: ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET},
-		Txt: append([]string{"nsec5"}, next),
+		Hdr: dns.RR_Header{Name: domain, Ttl: ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET},
+		Txt: append([]string{"nsec5"}, name, next),
 	}
 
 	r2 := &dns.TXT{
