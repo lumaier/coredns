@@ -1,9 +1,9 @@
 miek.nl {
-    bloomfile_nsec5 ./plugin/bloomfile_nsec5/testdata/db.miek.nl.signed miek.nl
-    bloomsec_nsec5 ./plugin/bloomsec_nsec5/testdata/db.miek.nl {
-        key file ./plugin/bloomsec_nsec5/testdata/Kmiek.nl.+013+59725
-        directory ./plugin/bloomsec_nsec5/testdata
+    bloomfile_nsec5 ./plugin/bloomsec_nsec5/testdata4/db.miek.nl.signed miek.nl
+    bloomsec_nsec5 ./plugin/bloomsec_nsec5/testdata4/db.miek.nl {
+        key file ./plugin/bloomsec_nsec5/testdata4/Kmiek.nl.+013+59725
+        directory ./plugin/bloomsec_nsec5/testdata4
         fp_rate 0.01
-		chunksize 24
+		chunksize 2400
     }
 }

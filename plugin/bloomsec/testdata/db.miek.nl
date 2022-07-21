@@ -4,7 +4,6 @@ $ORIGIN miek.nl.
                 IN      NS      ns1
                 IN      MX      1  aspmx.l.google.com.
 		IN 	AAAA    2a01:7e00::f03c:91ff:fe79:234c
-		IN	DNSKEY  257 3 13 sfzRg5nDVxbeUc51su4MzjgwpOpUwnuu81SlRHqJuXe3SOYOeypR69tZ52XLmE56TAmPHsiB8Rgk+NTpf0o1Cw==
 
 a		IN 	A       1.0.0.2
 www     	IN 	CNAME 	a
