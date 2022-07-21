@@ -3,7 +3,7 @@ package bloomfile_nsec5
 import (
 	"context"
 	"fmt"
-	"strings"
+	"sort"
 
 	"github.com/coredns/coredns/core/dnsserver"
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5/rrutil"
@@ -271,37 +271,17 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 			goto Out
 		}
 
-		// find corresponding NSEC5
-		_, hash, err := z.vrf_privkey.Prove([]byte(ce.Name()))
-		if err != nil {
-			return nil, nil, nil, ServerFailure
-		}
-		deny, found := z.nsec5s.Search(strings.ToLower(toBase64(hash)) + "." + z.origin)
-		if !found {
-			goto Out
-		}
-
-		nsec5_ce := typeFromElem(deny, dns.TypeTXT, do)
+		// find corresponding NSEC5 and NSEC5PROOF
+		// there are only TXT records for NSEC5 and NSEC5PROOFS
+		nsec5_ce := typeFromElem(ce, dns.TypeTXT, do)
 		ret = append(ret, nsec5_ce...)
-
-		// find corresponding NSEC5PROOF
-		deny, found = z.nsec5proofs.Prev(ce.Name())
-		if !found {
-			goto Out
-		}
-		nsec5proof_ce := typeFromElem(deny, dns.TypeTXT, do)
-		ret = append(ret, nsec5proof_ce...)
-
-		if rcode != NameError {
-			goto Out
-		}
 
 		if found {
 			// next-closest encloser denial of existence
 			nce := z.NextClosestEncloser(qname)
-			log.Infof("%s", nce)
+
 			// first look whether we got a false positive
-			if i, b := z.bf.lookup([]byte(nce)); !b {
+			if i, b := z.bf.lookup([]byte(nce)); !b { //!b
 				globalIndex := i / z.chunkSize
 				chunk, found_chunk := tr.Search("_bf" + fmt.Sprint(globalIndex) + "." + z.origin)
 				if !found_chunk {
@@ -315,19 +295,33 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 				if err != nil {
 					return nil, nil, nil, ServerFailure
 				}
-				deny, found := z.nsec5s.Prev(toBase64(hash) + "." + z.origin)
+				i := sort.Search(z.N_nsec5s, func(i int) bool {
+					return toBase64(hash) < z.nsec5s[i].Txt[2]
+				})
+				nsec5_nce := z.nsec5s[i%z.N_nsec5s]
 				if !found {
 					goto Out
 				}
-				// Only add this nsec5 if it is different than the one already added
-				if nsec5_ce[0].Header().Name != deny.Name() {
-					nsec5_nce := typeFromElem(deny, dns.TypeTXT, do)
-					ret = append(ret, nsec5_nce...)
+				// Only add this nsec5 and rrsig if it is different than the one already added
+				if nsec5_ce[0].Header().Name != nsec5_nce.Header().Name {
+					deny, found := tr.Prev(nsec5_nce.Header().Name)
+					if !found {
+						goto Out
+					}
+					nsec5 := typeFromElem(deny, dns.TypeTXT, do)
+					for _, x := range nsec5 {
+						// only add nsec5 and rrsig --> nsec5proof computed on the fly
+						if x.Header().Rrtype == dns.TypeRRSIG {
+							ret = append(ret, x)
+						} else if s, ok := x.(*dns.TXT); ok && s.Txt[0] == "nsec5" {
+							ret = append(ret, x)
+						}
+					}
 				}
 				// ONLINE CRYPTO: generate NSEC5PROOF
 				ret = append(ret, &dns.TXT{
-					Hdr: dns.RR_Header{Name: nce, Ttl: nsec5_ce[0].Header().Ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET}, // same ttl as in dnssec plugin (black lies)
-					Txt: append([]string{"nsec5proof"}, toBase64(pi)),
+					Hdr: dns.RR_Header{Name: nce, Ttl: nsec5_nce.Header().Ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET}, // same ttl as in NSEC5 record
+					Txt: []string{"nsec5proof", toBase64(pi)},
 				})
 			}
 		} else {
