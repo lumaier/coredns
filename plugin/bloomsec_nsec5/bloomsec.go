@@ -118,12 +118,12 @@ func NSEC5(domain, name, proof, next string, ttl uint32) (*dns.TXT, *dns.TXT) {
 
 	r1 := &dns.TXT{
 		Hdr: dns.RR_Header{Name: domain, Ttl: ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET},
-		Txt: append([]string{"nsec5"}, name, next),
+		Txt: []string{"nsec5", name, next},
 	}
 
 	r2 := &dns.TXT{
 		Hdr: dns.RR_Header{Name: domain, Ttl: ttl, Rrtype: dns.TypeTXT, Class: dns.ClassINET},
-		Txt: append([]string{"nsec5proof"}, proof),
+		Txt: []string{"nsec5proof", proof},
 	}
 
 	return r1, r2
