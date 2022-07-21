@@ -39,8 +39,8 @@ type Zone struct {
 
 	vrf_pubkey  *ecvrf.PublicKey  // public key for NSEC5 crypto
 	vrf_privkey *ecvrf.PrivateKey // private key for NSEC5 crypto
-	nsec5s      *tree.Tree
-	nsec5proofs *tree.Tree
+	nsec5s      []*dns.TXT
+	N_nsec5s    int
 }
 
 // Apex contains the apex records of a zone: SOA, NS and their potential signatures.
@@ -59,8 +59,6 @@ func NewZone(name, file string) *Zone {
 		file:           filepath.Clean(file),
 		Tree:           &tree.Tree{},
 		reloadShutdown: make(chan bool),
-		nsec5s:         &tree.Tree{},
-		nsec5proofs:    &tree.Tree{},
 	}
 }
 
