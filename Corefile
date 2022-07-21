@@ -6,4 +6,7 @@ miek.nl {
         fp_rate 0.01
 		chunksize 2400
     }
+    errors {
+        stacktrace
+    }
 }
