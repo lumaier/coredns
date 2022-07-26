@@ -168,6 +168,10 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 		return z.nsec5s[i].Txt[1] < z.nsec5s[j].Txt[1]
 	})
 
+	for _, x := range z.nsec5s {
+		log.Infof("%s", x.Txt[1])
+	}
+
 	z.N_nsec5s = len(z.nsec5s)
 
 	return z, nil

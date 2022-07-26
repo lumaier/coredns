@@ -1,0 +1,10 @@
+miek.nl {
+    file_nsec5 ./plugin/sign_nsec5/testdata/db.miek.nl.signed miek.nl
+    sign_nsec5 ./plugin/sign_nsec5/testdata/db.miek.nl {
+        key file ./plugin/sign_nsec5/testdata/Kmiek.nl.+013+59725
+        directory ./plugin/sign_nsec5/testdata
+    }
+    errors {
+        stacktrace
+    }
+}
