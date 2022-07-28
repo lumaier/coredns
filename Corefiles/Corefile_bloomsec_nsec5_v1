@@ -1,0 +1,12 @@
+miek.nl {
+    bloomfile_nsec5 ./plugin/bloomsec_nsec5/testdata/db.miek.nl.signed miek.nl
+    bloomsec_nsec5 ./plugin/bloomsec_nsec5/testdata/db.miek.nl {
+        key file ./plugin/bloomsec_nsec5/testdata/Kmiek.nl.+013+59725
+        directory ./plugin/bloomsec_nsec5/testdata
+        fp_rate 0.00001
+		chunksize 2400
+    }
+    errors {
+        stacktrace
+    }
+}
