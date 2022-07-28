@@ -201,9 +201,6 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		z.Insert(x)
 	}
 
-	fmt.Println("Memory usage after signing the zone:")
-	PrintMemUsage()
-
 	return z, err
 }
 
