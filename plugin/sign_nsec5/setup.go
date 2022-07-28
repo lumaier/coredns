@@ -35,7 +35,7 @@ func setup(c *caddy.Controller) error {
 		}
 		return nil
 	})
-
+	PrintMemUsage()
 	// Don't call AddPlugin, *bloomsec* is not a plugin.
 	return nil
 }

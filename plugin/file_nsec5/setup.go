@@ -9,6 +9,7 @@ import (
 	"github.com/coredns/caddy"
 	"github.com/coredns/coredns/core/dnsserver"
 	"github.com/coredns/coredns/plugin"
+	"github.com/coredns/coredns/plugin/file_nsec5/rrutil"
 	"github.com/coredns/coredns/plugin/pkg/upstream"
 	"github.com/coredns/coredns/plugin/transfer"
 )
@@ -63,6 +64,8 @@ func setup(c *caddy.Controller) error {
 		f.Next = next
 		return f
 	})
+
+	rrutil.PrintMemUsage()
 
 	return nil
 }

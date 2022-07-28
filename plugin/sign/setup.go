@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"path/filepath"
+	"runtime"
 	"time"
 
 	"github.com/coredns/caddy"
@@ -32,6 +33,8 @@ func setup(c *caddy.Controller) error {
 		}
 		return nil
 	})
+
+	PrintMemUsage()
 
 	// Don't call AddPlugin, *sign* is not a plugin.
 	return nil
@@ -97,4 +100,18 @@ func parse(c *caddy.Controller) (*Sign, error) {
 	}
 
 	return sign, nil
+}
+
+func PrintMemUsage() {
+	var m runtime.MemStats
+	runtime.ReadMemStats(&m)
+	// For info on each, see: https://golang.org/pkg/runtime/#MemStats
+	fmt.Printf("Alloc = %v MB", bToMb(m.Alloc))
+	fmt.Printf("\tTotalAlloc = %v MB", bToMb(m.TotalAlloc))
+	fmt.Printf("\tSys = %v MB", bToMb(m.Sys))
+	fmt.Printf("\tNumGC = %v\n", m.NumGC)
+}
+
+func bToMb(b uint64) uint64 {
+	return b / 1024 / 1024
 }
