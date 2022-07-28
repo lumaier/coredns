@@ -10,7 +10,7 @@ current_time=$(date "+%Y.%m.%d-%H.%M.%S")
 
 filename="memusage_log".$current_time".txt"
 touch $filename
-SLEEP=60
+SLEEP=1200
 
 cd $homedir
 
