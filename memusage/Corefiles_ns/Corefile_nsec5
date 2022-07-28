@@ -1,0 +1,5 @@
+miek.nl {
+    file_nsec5 ./memusage/testdata/db.miek.nl.signed miek.nl {
+        vrf_keys ./memusage/testdata/vrfkeys_miek.nl.
+    }
+}

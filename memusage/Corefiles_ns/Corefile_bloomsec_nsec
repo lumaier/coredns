@@ -1,5 +1,3 @@
 miek.nl {
-    bloomfile ./memusage/testdata/db.miek.nl.signed miek.nl {
-        vrf_keys ./memusage/testdata/vrfkeys_miek.nl.
-    }
+    bloomfile ./memusage/testdata/db.miek.nl.signed miek.nl 
 }

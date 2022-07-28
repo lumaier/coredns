@@ -4,6 +4,5 @@ miek.nl {
         directory ./memusage/testdata
         fp_rate 0.01
 		chunksize 2400
-        vrf_keys ./memusage/testdata/vrfkeys_miek.nl.
     }
 }

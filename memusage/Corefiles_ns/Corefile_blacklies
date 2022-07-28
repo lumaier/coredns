@@ -1,0 +1,5 @@
+miek.nl {
+    dnssec {
+        key file ./memusage/testdata/Kmiek.nl.+013+59725
+    }
+}

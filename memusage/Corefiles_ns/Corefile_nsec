@@ -1,0 +1,3 @@
+miek.nl {
+    file ./memusage/testdata/db.miek.nl.signed miek.nl
+}
