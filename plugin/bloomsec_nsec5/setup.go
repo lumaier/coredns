@@ -83,33 +83,6 @@ func parse(c *caddy.Controller) (*Sign, error) {
 			// f.Sync()
 
 			// read vrf keys
-			f, err := os.Open("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + origins[i])
-			if err != nil {
-				return nil, err
-			}
-			defer f.Close()
-			fileScanner := bufio.NewScanner(f)
-			fileScanner.Split(bufio.ScanLines)
-			var fileLines []string
-			for fileScanner.Scan() {
-				fileLines = append(fileLines, fileScanner.Text())
-			}
-			t, err := fromBase64(fileLines[0])
-			if err != nil {
-				return nil, err
-			}
-			pubKey, err := ecvrf.NewPublicKey(t)
-			if err != nil {
-				return nil, err
-			}
-			t, err = fromBase64(fileLines[1])
-			if err != nil {
-				return nil, err
-			}
-			privKey, err := ecvrf.NewPrivateKey(t)
-			if err != nil {
-				return nil, err
-			}
 
 			signers[i] = &Signer{
 				dbfile:      dbfile,
@@ -121,8 +94,6 @@ func parse(c *caddy.Controller) (*Sign, error) {
 				signedfile:  fmt.Sprintf("db.%ssigned", origins[i]), // origins[i] is a fqdn, so it ends with a dot, hence %ssigned.
 				fp_prob:     0.001,
 				chunkSize:   uint64(24 * 1200),
-				vrf_pubkey:  pubKey,
-				vrf_privkey: privKey,
 			}
 		}
 
@@ -177,6 +148,42 @@ func parse(c *caddy.Controller) (*Sign, error) {
 				}
 				for i := range signers {
 					signers[i].chunkSize = c
+				}
+			case "vrf_keys":
+				filepath := c.RemainingArgs()
+				if len(filepath) != 1 {
+					return sign, fmt.Errorf("can only be one argument after %q", "vrf_keys")
+				}
+				f, err := os.Open(filepath[0])
+				if err != nil {
+					return nil, err
+				}
+				defer f.Close()
+				fileScanner := bufio.NewScanner(f)
+				fileScanner.Split(bufio.ScanLines)
+				var fileLines []string
+				for fileScanner.Scan() {
+					fileLines = append(fileLines, fileScanner.Text())
+				}
+				t, err := fromBase64(fileLines[0])
+				if err != nil {
+					return nil, err
+				}
+				pubKey, err := ecvrf.NewPublicKey(t)
+				if err != nil {
+					return nil, err
+				}
+				t, err = fromBase64(fileLines[1])
+				if err != nil {
+					return nil, err
+				}
+				privKey, err := ecvrf.NewPrivateKey(t)
+				if err != nil {
+					return nil, err
+				}
+				for i := range signers {
+					signers[i].vrf_pubkey = pubKey
+					signers[i].vrf_privkey = privKey
 				}
 			default:
 				return nil, c.Errf("unknown property '%s'", c.Val())

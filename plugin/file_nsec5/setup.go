@@ -78,6 +78,7 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 
 	var openErr error
 	reload := 1 * time.Minute
+	var filepath_vrfkeys string
 
 	for c.Next() {
 		// file db.file [zones...]
@@ -124,6 +125,12 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 			case "upstream":
 				// remove soon
 				c.RemainingArgs()
+			case "vrf_keys":
+				filepath := c.RemainingArgs()
+				if len(filepath) != 1 {
+					return Zones{}, c.Errf("can only be one argument after %q", "vrf_keys")
+				}
+				filepath_vrfkeys = filepath[0]
 
 			default:
 				return Zones{}, c.Errf("unknown property '%s'", c.Val())
@@ -146,7 +153,7 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 	}
 
 	for i := range z {
-		err_read := z[i].ReadKeys("./plugin/bloomsec_nsec5/testdata/vrfkeys_" + i)
+		err_read := z[i].ReadKeys(filepath_vrfkeys)
 		if err_read != nil {
 			return Zones{}, err_read
 		}
