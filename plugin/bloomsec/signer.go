@@ -161,6 +161,9 @@ func (s *Signer) Sign(now time.Time) (*bloomfile.Zone, error) {
 		}
 		return nil
 	})
+
+	PrintMemUsage()
+
 	return z, err
 }
 

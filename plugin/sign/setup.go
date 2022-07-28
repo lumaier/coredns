@@ -33,9 +33,6 @@ func setup(c *caddy.Controller) error {
 		}
 		return nil
 	})
-
-	PrintMemUsage()
-
 	// Don't call AddPlugin, *sign* is not a plugin.
 	return nil
 }

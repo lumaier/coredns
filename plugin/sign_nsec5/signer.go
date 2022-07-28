@@ -149,6 +149,8 @@ func (s *Signer) Sign(now time.Time) (*file_nsec5.Zone, error) {
 		z.Insert(x)
 	}
 
+	PrintMemUsage()
+
 	return z, err
 }
 

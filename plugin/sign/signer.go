@@ -105,6 +105,7 @@ func (s *Signer) Sign(now time.Time) (*file.Zone, error) {
 		i++
 		return nil
 	})
+	PrintMemUsage()
 	return z, err
 }
 

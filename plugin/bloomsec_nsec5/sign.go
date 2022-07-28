@@ -21,7 +21,6 @@ func (s *Sign) OnStartup() error {
 		}
 		go signAndLog(signer, why)
 	}
-	PrintMemUsage()
 	return nil
 }
 
