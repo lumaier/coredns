@@ -1,0 +1,9 @@
+miek.nl {
+    bloomsec ./memusage/testdata/db.miek.nl {
+        key file ./memusage/testdata/Kmiek.nl.+013+59725
+        directory ./memusage/testdata
+        fp_rate 0.0001
+		chunksize 2400
+        vrf_keys ./memusage/testdata/vrfkeys_miek.nl.
+    }
+}

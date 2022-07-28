@@ -50,3 +50,8 @@ signed:
 	rm -f ./plugin/sign_nsec5/testdata3/db.miek.nl.signed
 	rm -f ./plugin/sign_nsec5/testdata4/db.miek.nl.signed
 	rm -f ./plugin/sign/testdata/db.miek.nl.signed
+
+.PHONY: testdata
+testdata:
+	rm -f ./memusage/testdata/db.miek.nl.signed
+	./coredns -conf  memusage/Corefiles_za/Corefile_bloomsec_nsec5_v1 -dns.port 1054
