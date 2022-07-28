@@ -40,6 +40,8 @@ type Signer struct {
 // Sign signs a zone file according to the parameters in s.
 // Additionally it creates the Bloomfilter and the corresponding TXT records.
 func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
+	fmt.Println("Memory usage at the start of signing the zone:")
+	PrintMemUsage()
 	rd, err := os.Open(s.dbfile)
 	if err != nil {
 		return nil, err
@@ -63,6 +65,9 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		z.Insert(pair.Public.ToCDNSKEY())
 	}
 
+	fmt.Println("Memory usage after loading the keys:")
+	PrintMemUsage()
+
 	// names := names(z)
 	// ln := len(names)
 	nsec5_names := []string{}
@@ -83,6 +88,9 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		}
 	}
 
+	fmt.Println("Memory usage after signing the apex")
+	PrintMemUsage()
+
 	// find out how many elements are gonna be inserted into the Bloom filter
 	n := 0
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
@@ -101,6 +109,9 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		n += len(types)
 		return nil
 	})
+
+	fmt.Println("Memory usage after finding out how many elements are in the zone")
+	PrintMemUsage()
 
 	// create the Bloom filter and insert all elements
 	bf := newBloomfilter(uint64(n), s.fp_prob, s.chunkSize)
@@ -123,6 +134,9 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		}
 		return nil
 	})
+
+	fmt.Println("Memory usage after creating the Bloom filter:")
+	PrintMemUsage()
 
 	//////////////////////////// NSEC5 ///////////////////////////////////////////////////
 
@@ -158,7 +172,7 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 
 	//////////////////////////////////////////////////////////////////////////////////////
 
-	log.Infof("\n%s\n", bf.Info())
+	log.Infof("\n%s", bf.Info())
 
 	// create and insert the TXT records representing the Bloom filter
 	chunks, err := bf.chunking()
@@ -173,6 +187,9 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		}
 		z.Insert(txt_record)
 	}
+
+	fmt.Println("Memory usage after inserting the Bloom filter chunks:")
+	PrintMemUsage()
 
 	// sign the records we are authoritative for
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
@@ -200,6 +217,9 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 	for _, x := range proofs {
 		z.Insert(x)
 	}
+
+	fmt.Println("Memory usage after signing the zone:")
+	PrintMemUsage()
 
 	return z, err
 }

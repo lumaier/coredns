@@ -276,6 +276,9 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 		nsec5_ce := typeFromElem(ce, dns.TypeTXT, do)
 		ret = append(ret, nsec5_ce...)
 
+		log.Infof("real len: %d", len(z.nsec5s))
+		log.Infof("z.N_nsec5s: %d", z.N_nsec5s)
+
 		if found {
 			// next-closest encloser denial of existence
 			nce := z.NextClosestEncloser(qname)
@@ -295,10 +298,11 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 				if err != nil {
 					return nil, nil, nil, ServerFailure
 				}
-				i := sort.Search(z.N_nsec5s, func(i int) bool {
+				nsec5_index := sort.Search(z.N_nsec5s, func(i int) bool {
 					return toBase64(hash) < z.nsec5s[i].Txt[2]
 				})
-				nsec5_nce := z.nsec5s[i%z.N_nsec5s]
+				log.Infof("i: %d, len: %d, real len: %d", nsec5_index, z.N_nsec5s, len(z.nsec5s))
+				nsec5_nce := z.nsec5s[nsec5_index%z.N_nsec5s]
 				if !found {
 					goto Out
 				}
