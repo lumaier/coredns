@@ -10,7 +10,6 @@ current_time=$(date "+%Y.%m.%d-%H.%M.%S")
 
 filename="memusage_log".$current_time".txt"
 touch $filename
-SLEEP=1200
 
 cd $homedir
 
@@ -21,7 +20,7 @@ function conduct() {
     echo "====================== Processing $2 =================================" | tee -a $filename
     echo "" | tee -a $filename
     echo "" | tee -a $filename
-    ./coredns -conf ./memusage/$1/$2 -dns.port 1054 | tee -a $filename & sleep $SLEEP ; kill $!
+    ./coredns -conf ./memusage/$1/$2 -dns.port 1054 | tee -a $filename
     echo ""
 }
 
