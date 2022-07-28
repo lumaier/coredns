@@ -1,6 +1,3 @@
-# need to specify
-homedir="/home/luca/Documents/bth/coredns"
-
 FILES="Corefile_bloomsec_nsec
 Corefile_bloomsec_nsec5
 Corefile_nsec
@@ -11,7 +8,7 @@ current_time=$(date "+%Y.%m.%d-%H.%M.%S")
 filename="memusage_log".$current_time".txt"
 touch $filename
 
-cd $homedir
+cd ..
 
 filename="./memusage/"$filename
 
