@@ -155,5 +155,7 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 		}
 	}
 
+	plugin.PrintMemUsage()
+
 	return Zones{Z: z, Names: names}, nil
 }

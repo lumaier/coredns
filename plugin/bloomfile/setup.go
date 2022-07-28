@@ -140,5 +140,8 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 		log.Warningf("Failed to open %q: trying again in %s", openErr, reload)
 
 	}
+
+	plugin.PrintMemUsage()
+
 	return Zones{Z: z, Names: names}, nil
 }
