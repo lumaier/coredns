@@ -35,3 +35,18 @@ pb:
 clean:
 	go clean
 	rm -f coredns
+
+.PHONY: signed
+signed:
+	rm -f ./plugin/bloomsec_nsec5/testdata/db.miek.nl.signed
+	rm -f ./plugin/bloomsec_nsec5/testdata2/db.miek.nl.signed
+	rm -f ./plugin/bloomsec_nsec5/testdata3/db.miek.nl.signed
+	rm -f ./plugin/bloomsec_nsec5/testdata4/db.miek.nl.signed
+	rm -f ./plugin/bloomsec/testdata/db.miek.nl.signed
+	rm -f ./plugin/bloomsec/testdata2/db.miek.nl.signed
+	rm -f ./plugin/bloomsec/testdata3/db.miek.nl.signed
+	rm -f ./plugin/sign_nsec5/testdata/db.miek.nl.signed
+	rm -f ./plugin/sign_nsec5/testdata2/db.miek.nl.signed
+	rm -f ./plugin/sign_nsec5/testdata3/db.miek.nl.signed
+	rm -f ./plugin/sign_nsec5/testdata4/db.miek.nl.signed
+	rm -f ./plugin/sign/testdata/db.miek.nl.signed
