@@ -37,6 +37,7 @@ type Zone struct {
 	bf        bloomfilter
 	chunkSize uint64
 
+	vrf_keyfile string
 	vrf_pubkey  *ecvrf.PublicKey  // public key for NSEC5 crypto
 	vrf_privkey *ecvrf.PrivateKey // private key for NSEC5 crypto
 	nsec5s      []*dns.TXT

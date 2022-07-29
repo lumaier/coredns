@@ -98,7 +98,7 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 			z[origins[i]] = NewZone(origins[i], fileName)
 			if openErr == nil {
 				reader.Seek(0, 0)
-				zone, err := Parse(reader, origins[i], fileName, 0)
+				zone, err := Parse(reader, origins[i], fileName, "nil", 0)
 				if err != nil {
 					return Zones{}, err
 				}
@@ -136,6 +136,11 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 		for i := range origins {
 			z[origins[i]].ReloadInterval = reload
 			z[origins[i]].Upstream = upstream.New()
+			z[origins[i]].vrf_keyfile = filepath_vrfkeys
+			err_read := z[origins[i]].ReadKeys(filepath_vrfkeys)
+			if err_read != nil {
+				return Zones{}, err_read
+			}
 		}
 	}
 
@@ -148,14 +153,7 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 
 	}
 
-	for i := range z {
-		err_read := z[i].ReadKeys(filepath_vrfkeys)
-		if err_read != nil {
-			return Zones{}, err_read
-		}
-	}
-
-	plugin.PrintMemUsage()
+	// plugin.PrintMemUsage()
 
 	return Zones{Z: z, Names: names}, nil
 }

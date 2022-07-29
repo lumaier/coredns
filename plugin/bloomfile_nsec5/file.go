@@ -134,10 +134,15 @@ func (s *serialErr) Error() string {
 // Parse parses the zone in filename and returns a new Zone or an error.
 // If serial >= 0 it will reload the zone, if the SOA hasn't changed
 // it returns an error indicating nothing was read.
-func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
+func Parse(f io.Reader, origin, fileName, vrfFileName string, serial int64) (*Zone, error) {
 	zp := dns.NewZoneParser(f, dns.Fqdn(origin), fileName)
 	zp.SetIncludeAllowed(true)
 	z := NewZone(origin, fileName)
+
+	if vrfFileName != "nil" {
+		z.ReadKeys(vrfFileName)
+	}
+
 	seenSOA := false
 
 	// this list holds all chunks that correspond to bloom filter chunks in TXT records including its global index

@@ -27,7 +27,7 @@ func (z *Zone) Reload(t *transfer.Transfer) error {
 				}
 
 				serial := z.SOASerialIfDefined()
-				zone, err := Parse(reader, z.origin, zFile, serial)
+				zone, err := Parse(reader, z.origin, zFile, z.vrf_keyfile, serial)
 				reader.Close()
 				if err != nil {
 					if _, ok := err.(*serialErr); !ok {
