@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/ProtonMail/go-ecvrf/ecvrf"
-	"github.com/coredns/coredns/plugin"
 	"github.com/coredns/coredns/plugin/file_nsec5"
 	"github.com/coredns/coredns/plugin/file_nsec5/tree"
 	clog "github.com/coredns/coredns/plugin/pkg/log"
@@ -227,8 +226,8 @@ func signAndLog(s *Signer, why error) {
 		log.Warningf("Error signing %q: failed to move zone file into place: %s", s.origin, err)
 		return
 	}
-	log.Infof("Successfully signed zone %q in %q with key tags %q and %d SOA serial, elapsed %f, next: %s", s.origin, filepath.Join(s.directory, s.signedfile), keyTag(s.keys), z.Apex.SOA.Serial, time.Since(now).Seconds(), now.Add(durationRefreshHours).Format(timeFmt))
-	plugin.PrintMemUsage()
+	// log.Infof("Successfully signed zone %q in %q with key tags %q and %d SOA serial, elapsed %f, next: %s", s.origin, filepath.Join(s.directory, s.signedfile), keyTag(s.keys), z.Apex.SOA.Serial, time.Since(now).Seconds(), now.Add(durationRefreshHours).Format(timeFmt))
+	// plugin.PrintMemUsage()
 }
 
 // refresh checks every val if some zones need to be resigned.
