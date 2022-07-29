@@ -7,6 +7,9 @@ import (
 )
 
 func PrintMemUsage() {
+	// Force GC to clear up, should see a memory drop
+	runtime.GC()
+
 	var m runtime.MemStats
 	runtime.ReadMemStats(&m)
 	// For info on each, see: https://golang.org/pkg/runtime/#MemStats
