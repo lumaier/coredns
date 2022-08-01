@@ -1,0 +1,1 @@
+./coredns -conf ./evaluation/Corefiles/Corefile_bloomsec_nsec5 -dns.port 1054
