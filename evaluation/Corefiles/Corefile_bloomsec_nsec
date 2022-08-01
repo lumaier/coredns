@@ -1,0 +1,12 @@
+miek.nl {
+    bloomfile ./evaluation/testdata/zonedata/db.miek.nl.signed miek.nl 
+    bloomsec ./evaluation/testdata/zonedata/db.miek.nl {
+        key file ./evaluation/testdata/zonedata/Kmiek.nl.+013+59725
+        directory ./evaluation/testdata/zonedata
+        fp_rate 0.01
+		chunksize 2400
+    }
+    errors {
+        stacktrace
+    }
+}
