@@ -35,6 +35,7 @@ type Zone struct {
 
 	Upstream *upstream.Upstream // Upstream for looking up external names during the resolution process.
 
+	vrf_keyfile string
 	vrf_pubkey  *ecvrf.PublicKey  // public key for NSEC5 crypto
 	vrf_privkey *ecvrf.PrivateKey // private key for NSEC5 crypto
 	nsec5s      []*dns.TXT
