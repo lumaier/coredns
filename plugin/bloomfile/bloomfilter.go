@@ -48,10 +48,8 @@ func newBloomfilter(m, k uint64) *bloomfilter {
 // returns 0 as index if all bits were 1
 func (bf *bloomfilter) lookup(element []byte) (uint64, bool) {
 	indices := bf.calculateIndices(element)
-	log.Infof("indices of \"%s\" are: %s", string(element), printIndices(indices))
 	for _, index := range indices {
 		if !bf.bitArray[index] {
-			log.Infof("bit at %d is set to 0", index)
 			return index, false
 		}
 	}
