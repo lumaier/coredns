@@ -1,0 +1,8 @@
+miek.nl {
+    dnssec {
+		key file ./evaluation/testdata/zonedata/Kmiek.nl.+013+59725
+	}
+	errors {
+        stacktrace
+    }
+}
