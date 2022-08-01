@@ -1,0 +1,591 @@
+======================= nsec ===========================
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 129.132.85.126 -c 24 -Q 1000 -l 10 -S 1
+[Status] Sending queries (to 129.132.85.126:1054)
+[Status] Started at: Mon Aug  1 20:59:27 2022
+[Status] Stopping after 10.000000 seconds
+1659380368.048636: 0.000000
+1659380369.048806: 0.000000
+1659380370.050018: 0.000000
+1659380371.051339: 0.000000
+1659380372.052665: 0.000000
+[Timeout] Query timed out: msg id 0
+[Timeout] Query timed out: msg id 1
+[Timeout] Query timed out: msg id 2
+[Timeout] Query timed out: msg id 3
+[Timeout] Query timed out: msg id 4
+[Timeout] Query timed out: msg id 5
+[Timeout] Query timed out: msg id 6
+[Timeout] Query timed out: msg id 7
+[Timeout] Query timed out: msg id 8
+[Timeout] Query timed out: msg id 9
+[Timeout] Query timed out: msg id 10
+[Timeout] Query timed out: msg id 11
+[Timeout] Query timed out: msg id 12
+[Timeout] Query timed out: msg id 13
+[Timeout] Query timed out: msg id 14
+[Timeout] Query timed out: msg id 15
+[Timeout] Query timed out: msg id 16
+[Timeout] Query timed out: msg id 17
+[Timeout] Query timed out: msg id 18
+[Timeout] Query timed out: msg id 19
+[Timeout] Query timed out: msg id 20
+[Timeout] Query timed out: msg id 21
+[Timeout] Query timed out: msg id 22
+[Timeout] Query timed out: msg id 23
+[Timeout] Query timed out: msg id 24
+[Timeout] Query timed out: msg id 25
+[Timeout] Query timed out: msg id 26
+[Timeout] Query timed out: msg id 27
+[Timeout] Query timed out: msg id 28
+[Timeout] Query timed out: msg id 29
+[Timeout] Query timed out: msg id 30
+[Timeout] Query timed out: msg id 31
+[Timeout] Query timed out: msg id 32
+[Timeout] Query timed out: msg id 33
+[Timeout] Query timed out: msg id 34
+[Timeout] Query timed out: msg id 35
+[Timeout] Query timed out: msg id 36
+[Timeout] Query timed out: msg id 37
+[Timeout] Query timed out: msg id 38
+[Timeout] Query timed out: msg id 39
+[Timeout] Query timed out: msg id 40
+[Timeout] Query timed out: msg id 41
+[Timeout] Query timed out: msg id 42
+[Timeout] Query timed out: msg id 43
+[Timeout] Query timed out: msg id 44
+[Timeout] Query timed out: msg id 45
+[Timeout] Query timed out: msg id 46
+[Timeout] Query timed out: msg id 47
+[Timeout] Query timed out: msg id 48
+[Timeout] Query timed out: msg id 49
+[Timeout] Query timed out: msg id 50
+[Timeout] Query timed out: msg id 51
+[Timeout] Query timed out: msg id 52
+[Timeout] Query timed out: msg id 53
+[Timeout] Query timed out: msg id 54
+[Timeout] Query timed out: msg id 55
+[Timeout] Query timed out: msg id 56
+[Timeout] Query timed out: msg id 57
+[Timeout] Query timed out: msg id 58
+[Timeout] Query timed out: msg id 59
+[Timeout] Query timed out: msg id 60
+[Timeout] Query timed out: msg id 61
+[Timeout] Query timed out: msg id 62
+[Timeout] Query timed out: msg id 63
+[Timeout] Query timed out: msg id 64
+[Timeout] Query timed out: msg id 65
+[Timeout] Query timed out: msg id 66
+[Timeout] Query timed out: msg id 67
+[Timeout] Query timed out: msg id 68
+[Timeout] Query timed out: msg id 69
+[Timeout] Query timed out: msg id 70
+[Timeout] Query timed out: msg id 71
+[Timeout] Query timed out: msg id 72
+[Timeout] Query timed out: msg id 73
+[Timeout] Query timed out: msg id 74
+[Timeout] Query timed out: msg id 75
+[Timeout] Query timed out: msg id 76
+[Timeout] Query timed out: msg id 77
+[Timeout] Query timed out: msg id 78
+[Timeout] Query timed out: msg id 79
+[Timeout] Query timed out: msg id 80
+[Timeout] Query timed out: msg id 81
+[Timeout] Query timed out: msg id 82
+[Timeout] Query timed out: msg id 83
+[Timeout] Query timed out: msg id 84
+[Timeout] Query timed out: msg id 85
+[Timeout] Query timed out: msg id 86
+[Timeout] Query timed out: msg id 87
+[Timeout] Query timed out: msg id 88
+[Timeout] Query timed out: msg id 89
+[Timeout] Query timed out: msg id 90
+[Timeout] Query timed out: msg id 91
+[Timeout] Query timed out: msg id 92
+[Timeout] Query timed out: msg id 93
+[Timeout] Query timed out: msg id 94
+[Timeout] Query timed out: msg id 95
+[Timeout] Query timed out: msg id 96
+[Timeout] Query timed out: msg id 97
+[Timeout] Query timed out: msg id 98
+[Timeout] Query timed out: msg id 99
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 129.132.85.126 -c 24 -Q 2000 -l 10 -S 1
+[Status] Sending queries (to 129.132.85.126:1054)
+[Status] Started at: Mon Aug  1 20:59:33 2022
+[Status] Stopping after 10.000000 seconds
+1659380374.746630: 0.000000
+1659380375.747855: 0.000000
+1659380376.749068: 0.000000
+1659380377.750275: 0.000000
+1659380378.751588: 0.000000
+[Timeout] Query timed out: msg id 0
+[Timeout] Query timed out: msg id 1
+[Timeout] Query timed out: msg id 2
+[Timeout] Query timed out: msg id 3
+[Timeout] Query timed out: msg id 4
+[Timeout] Query timed out: msg id 5
+[Timeout] Query timed out: msg id 6
+[Timeout] Query timed out: msg id 7
+[Timeout] Query timed out: msg id 8
+[Timeout] Query timed out: msg id 9
+[Timeout] Query timed out: msg id 10
+[Timeout] Query timed out: msg id 11
+[Timeout] Query timed out: msg id 12
+[Timeout] Query timed out: msg id 13
+[Timeout] Query timed out: msg id 14
+[Timeout] Query timed out: msg id 15
+[Timeout] Query timed out: msg id 16
+[Timeout] Query timed out: msg id 17
+[Timeout] Query timed out: msg id 18
+[Timeout] Query timed out: msg id 19
+[Timeout] Query timed out: msg id 20
+[Timeout] Query timed out: msg id 21
+[Timeout] Query timed out: msg id 22
+[Timeout] Query timed out: msg id 23
+[Timeout] Query timed out: msg id 24
+[Timeout] Query timed out: msg id 25
+[Timeout] Query timed out: msg id 26
+[Timeout] Query timed out: msg id 27
+[Timeout] Query timed out: msg id 28
+[Timeout] Query timed out: msg id 29
+[Timeout] Query timed out: msg id 30
+[Timeout] Query timed out: msg id 31
+[Timeout] Query timed out: msg id 32
+[Timeout] Query timed out: msg id 33
+[Timeout] Query timed out: msg id 34
+[Timeout] Query timed out: msg id 35
+[Timeout] Query timed out: msg id 36
+[Timeout] Query timed out: msg id 37
+[Timeout] Query timed out: msg id 38
+[Timeout] Query timed out: msg id 39
+[Timeout] Query timed out: msg id 40
+[Timeout] Query timed out: msg id 41
+[Timeout] Query timed out: msg id 42
+[Timeout] Query timed out: msg id 43
+[Timeout] Query timed out: msg id 44
+[Timeout] Query timed out: msg id 45
+[Timeout] Query timed out: msg id 46
+[Timeout] Query timed out: msg id 47
+[Timeout] Query timed out: msg id 48
+[Timeout] Query timed out: msg id 49
+[Timeout] Query timed out: msg id 50
+[Timeout] Query timed out: msg id 51
+[Timeout] Query timed out: msg id 52
+[Timeout] Query timed out: msg id 53
+[Timeout] Query timed out: msg id 54
+[Timeout] Query timed out: msg id 55
+[Timeout] Query timed out: msg id 56
+[Timeout] Query timed out: msg id 57
+[Timeout] Query timed out: msg id 58
+[Timeout] Query timed out: msg id 59
+[Timeout] Query timed out: msg id 60
+[Timeout] Query timed out: msg id 61
+[Timeout] Query timed out: msg id 62
+[Timeout] Query timed out: msg id 63
+[Timeout] Query timed out: msg id 64
+[Timeout] Query timed out: msg id 65
+[Timeout] Query timed out: msg id 66
+[Timeout] Query timed out: msg id 67
+[Timeout] Query timed out: msg id 68
+[Timeout] Query timed out: msg id 69
+[Timeout] Query timed out: msg id 70
+[Timeout] Query timed out: msg id 71
+[Timeout] Query timed out: msg id 72
+[Timeout] Query timed out: msg id 73
+[Timeout] Query timed out: msg id 74
+[Timeout] Query timed out: msg id 75
+[Timeout] Query timed out: msg id 76
+[Timeout] Query timed out: msg id 77
+[Timeout] Query timed out: msg id 78
+[Timeout] Query timed out: msg id 79
+[Timeout] Query timed out: msg id 80
+[Timeout] Query timed out: msg id 81
+[Timeout] Query timed out: msg id 82
+[Timeout] Query timed out: msg id 83
+[Timeout] Query timed out: msg id 84
+[Timeout] Query timed out: msg id 85
+[Timeout] Query timed out: msg id 86
+[Timeout] Query timed out: msg id 87
+[Timeout] Query timed out: msg id 88
+[Timeout] Query timed out: msg id 89
+[Timeout] Query timed out: msg id 90
+[Timeout] Query timed out: msg id 91
+[Timeout] Query timed out: msg id 92
+[Timeout] Query timed out: msg id 93
+[Timeout] Query timed out: msg id 94
+[Timeout] Query timed out: msg id 95
+[Timeout] Query timed out: msg id 96
+[Timeout] Query timed out: msg id 97
+[Timeout] Query timed out: msg id 98
+[Timeout] Query timed out: msg id 99
+1659380379.752799: 0.000000
+1659380380.753997: 0.000000
+1659380381.754685: 0.000000
+1659380382.755814: 0.000000
+[Timeout] Query timed out: msg id 100
+[Timeout] Query timed out: msg id 101
+[Timeout] Query timed out: msg id 102
+[Timeout] Query timed out: msg id 103
+[Timeout] Query timed out: msg id 104
+[Timeout] Query timed out: msg id 105
+[Timeout] Query timed out: msg id 106
+[Timeout] Query timed out: msg id 107
+[Timeout] Query timed out: msg id 108
+[Timeout] Query timed out: msg id 109
+[Timeout] Query timed out: msg id 110
+[Timeout] Query timed out: msg id 111
+[Timeout] Query timed out: msg id 112
+[Timeout] Query timed out: msg id 113
+[Timeout] Query timed out: msg id 114
+[Timeout] Query timed out: msg id 115
+[Timeout] Query timed out: msg id 116
+[Timeout] Query timed out: msg id 117
+[Timeout] Query timed out: msg id 118
+[Timeout] Query timed out: msg id 119
+[Timeout] Query timed out: msg id 120
+[Timeout] Query timed out: msg id 121
+[Timeout] Query timed out: msg id 122
+[Timeout] Query timed out: msg id 123
+[Timeout] Query timed out: msg id 124
+[Timeout] Query timed out: msg id 125
+[Timeout] Query timed out: msg id 126
+[Timeout] Query timed out: msg id 127
+[Timeout] Query timed out: msg id 128
+[Timeout] Query timed out: msg id 129
+[Timeout] Query timed out: msg id 130
+[Timeout] Query timed out: msg id 131
+[Timeout] Query timed out: msg id 132
+[Timeout] Query timed out: msg id 133
+[Timeout] Query timed out: msg id 134
+[Timeout] Query timed out: msg id 135
+[Timeout] Query timed out: msg id 136
+[Timeout] Query timed out: msg id 137
+[Timeout] Query timed out: msg id 138
+[Timeout] Query timed out: msg id 139
+[Timeout] Query timed out: msg id 140
+[Timeout] Query timed out: msg id 141
+[Timeout] Query timed out: msg id 142
+[Timeout] Query timed out: msg id 143
+[Timeout] Query timed out: msg id 144
+[Timeout] Query timed out: msg id 145
+[Timeout] Query timed out: msg id 146
+[Timeout] Query timed out: msg id 147
+[Timeout] Query timed out: msg id 148
+[Timeout] Query timed out: msg id 149
+[Timeout] Query timed out: msg id 150
+[Timeout] Query timed out: msg id 151
+[Timeout] Query timed out: msg id 152
+[Timeout] Query timed out: msg id 153
+[Timeout] Query timed out: msg id 154
+[Timeout] Query timed out: msg id 155
+[Timeout] Query timed out: msg id 156
+[Timeout] Query timed out: msg id 157
+[Timeout] Query timed out: msg id 158
+[Timeout] Query timed out: msg id 159
+[Timeout] Query timed out: msg id 160
+[Timeout] Query timed out: msg id 161
+[Timeout] Query timed out: msg id 162
+[Timeout] Query timed out: msg id 163
+[Timeout] Query timed out: msg id 164
+[Timeout] Query timed out: msg id 165
+[Timeout] Query timed out: msg id 166
+[Timeout] Query timed out: msg id 167
+[Timeout] Query timed out: msg id 168
+[Timeout] Query timed out: msg id 169
+[Timeout] Query timed out: msg id 170
+[Timeout] Query timed out: msg id 171
+[Timeout] Query timed out: msg id 172
+[Timeout] Query timed out: msg id 173
+[Timeout] Query timed out: msg id 174
+[Timeout] Query timed out: msg id 175
+[Timeout] Query timed out: msg id 176
+[Timeout] Query timed out: msg id 177
+[Timeout] Query timed out: msg id 178
+[Timeout] Query timed out: msg id 179
+[Timeout] Query timed out: msg id 180
+[Timeout] Query timed out: msg id 181
+[Timeout] Query timed out: msg id 182
+[Timeout] Query timed out: msg id 183
+[Timeout] Query timed out: msg id 184
+[Timeout] Query timed out: msg id 185
+[Timeout] Query timed out: msg id 186
+[Timeout] Query timed out: msg id 187
+[Timeout] Query timed out: msg id 188
+[Timeout] Query timed out: msg id 189
+[Timeout] Query timed out: msg id 190
+[Timeout] Query timed out: msg id 191
+[Timeout] Query timed out: msg id 192
+[Timeout] Query timed out: msg id 193
+[Timeout] Query timed out: msg id 194
+[Timeout] Query timed out: msg id 195
+[Timeout] Query timed out: msg id 196
+[Timeout] Query timed out: msg id 197
+[Timeout] Query timed out: msg id 198
+[Timeout] Query timed out: msg id 199
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         200
+  Queries completed:    0 (0.00%)
+  Queries lost:         200 (100.00%)
+
+  Response codes:       
+  Average packet size:  request 47, response 0
+  Run time (s):         10.000146
+  Queries per second:   0.000000
+
+  Average Latency (s):  0.000000 (min 0.000000, max 0.000000)
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 129.132.85.126 -c 24 -Q 4000 -l 10 -S 1
+[Status] Sending queries (to 129.132.85.126:1054)
+[Status] Started at: Mon Aug  1 20:59:43 2022
+[Status] Stopping after 10.000000 seconds
+1659380384.873875: 0.000000
+1659380385.874965: 0.000000
+1659380386.876056: 0.000000
+1659380387.876685: 0.000000
+1659380388.877784: 0.000000
+[Timeout] Query timed out: msg id 0
+[Timeout] Query timed out: msg id 1
+[Timeout] Query timed out: msg id 2
+[Timeout] Query timed out: msg id 3
+[Timeout] Query timed out: msg id 4
+[Timeout] Query timed out: msg id 5
+[Timeout] Query timed out: msg id 6
+[Timeout] Query timed out: msg id 7
+[Timeout] Query timed out: msg id 8
+[Timeout] Query timed out: msg id 9
+[Timeout] Query timed out: msg id 10
+[Timeout] Query timed out: msg id 11
+[Timeout] Query timed out: msg id 12
+[Timeout] Query timed out: msg id 13
+[Timeout] Query timed out: msg id 14
+[Timeout] Query timed out: msg id 15
+[Timeout] Query timed out: msg id 16
+[Timeout] Query timed out: msg id 17
+[Timeout] Query timed out: msg id 18
+[Timeout] Query timed out: msg id 19
+[Timeout] Query timed out: msg id 20
+[Timeout] Query timed out: msg id 21
+[Timeout] Query timed out: msg id 22
+[Timeout] Query timed out: msg id 23
+[Timeout] Query timed out: msg id 24
+[Timeout] Query timed out: msg id 25
+[Timeout] Query timed out: msg id 26
+[Timeout] Query timed out: msg id 27
+[Timeout] Query timed out: msg id 28
+[Timeout] Query timed out: msg id 29
+[Timeout] Query timed out: msg id 30
+[Timeout] Query timed out: msg id 31
+[Timeout] Query timed out: msg id 32
+[Timeout] Query timed out: msg id 33
+[Timeout] Query timed out: msg id 34
+[Timeout] Query timed out: msg id 35
+[Timeout] Query timed out: msg id 36
+[Timeout] Query timed out: msg id 37
+[Timeout] Query timed out: msg id 38
+[Timeout] Query timed out: msg id 39
+[Timeout] Query timed out: msg id 40
+[Timeout] Query timed out: msg id 41
+[Timeout] Query timed out: msg id 42
+[Timeout] Query timed out: msg id 43
+[Timeout] Query timed out: msg id 44
+[Timeout] Query timed out: msg id 45
+[Timeout] Query timed out: msg id 46
+[Timeout] Query timed out: msg id 47
+[Timeout] Query timed out: msg id 48
+[Timeout] Query timed out: msg id 49
+[Timeout] Query timed out: msg id 50
+[Timeout] Query timed out: msg id 51
+[Timeout] Query timed out: msg id 52
+[Timeout] Query timed out: msg id 53
+[Timeout] Query timed out: msg id 54
+[Timeout] Query timed out: msg id 55
+[Timeout] Query timed out: msg id 56
+[Timeout] Query timed out: msg id 57
+[Timeout] Query timed out: msg id 58
+[Timeout] Query timed out: msg id 59
+[Timeout] Query timed out: msg id 60
+[Timeout] Query timed out: msg id 61
+[Timeout] Query timed out: msg id 62
+[Timeout] Query timed out: msg id 63
+[Timeout] Query timed out: msg id 64
+[Timeout] Query timed out: msg id 65
+[Timeout] Query timed out: msg id 66
+[Timeout] Query timed out: msg id 67
+[Timeout] Query timed out: msg id 68
+[Timeout] Query timed out: msg id 69
+[Timeout] Query timed out: msg id 70
+[Timeout] Query timed out: msg id 71
+[Timeout] Query timed out: msg id 72
+[Timeout] Query timed out: msg id 73
+[Timeout] Query timed out: msg id 74
+[Timeout] Query timed out: msg id 75
+[Timeout] Query timed out: msg id 76
+[Timeout] Query timed out: msg id 77
+[Timeout] Query timed out: msg id 78
+[Timeout] Query timed out: msg id 79
+[Timeout] Query timed out: msg id 80
+[Timeout] Query timed out: msg id 81
+[Timeout] Query timed out: msg id 82
+[Timeout] Query timed out: msg id 83
+[Timeout] Query timed out: msg id 84
+[Timeout] Query timed out: msg id 85
+[Timeout] Query timed out: msg id 86
+[Timeout] Query timed out: msg id 87
+[Timeout] Query timed out: msg id 88
+[Timeout] Query timed out: msg id 89
+[Timeout] Query timed out: msg id 90
+[Timeout] Query timed out: msg id 91
+[Timeout] Query timed out: msg id 92
+[Timeout] Query timed out: msg id 93
+[Timeout] Query timed out: msg id 94
+[Timeout] Query timed out: msg id 95
+[Timeout] Query timed out: msg id 96
+[Timeout] Query timed out: msg id 97
+[Timeout] Query timed out: msg id 98
+[Timeout] Query timed out: msg id 99
+1659380389.878953: 0.000000
+1659380390.880074: 0.000000
+1659380391.881379: 0.000000
+1659380392.882511: 0.000000
+[Timeout] Query timed out: msg id 100
+[Timeout] Query timed out: msg id 101
+[Timeout] Query timed out: msg id 102
+[Timeout] Query timed out: msg id 103
+[Timeout] Query timed out: msg id 104
+[Timeout] Query timed out: msg id 105
+[Timeout] Query timed out: msg id 106
+[Timeout] Query timed out: msg id 107
+[Timeout] Query timed out: msg id 108
+[Timeout] Query timed out: msg id 109
+[Timeout] Query timed out: msg id 110
+[Timeout] Query timed out: msg id 111
+[Timeout] Query timed out: msg id 112
+[Timeout] Query timed out: msg id 113
+[Timeout] Query timed out: msg id 114
+[Timeout] Query timed out: msg id 115
+[Timeout] Query timed out: msg id 116
+[Timeout] Query timed out: msg id 117
+[Timeout] Query timed out: msg id 118
+[Timeout] Query timed out: msg id 119
+[Timeout] Query timed out: msg id 120
+[Timeout] Query timed out: msg id 121
+[Timeout] Query timed out: msg id 122
+[Timeout] Query timed out: msg id 123
+[Timeout] Query timed out: msg id 124
+[Timeout] Query timed out: msg id 125
+[Timeout] Query timed out: msg id 126
+[Timeout] Query timed out: msg id 127
+[Timeout] Query timed out: msg id 128
+[Timeout] Query timed out: msg id 129
+[Timeout] Query timed out: msg id 130
+[Timeout] Query timed out: msg id 131
+[Timeout] Query timed out: msg id 132
+[Timeout] Query timed out: msg id 133
+[Timeout] Query timed out: msg id 134
+[Timeout] Query timed out: msg id 135
+[Timeout] Query timed out: msg id 136
+[Timeout] Query timed out: msg id 137
+[Timeout] Query timed out: msg id 138
+[Timeout] Query timed out: msg id 139
+[Timeout] Query timed out: msg id 140
+[Timeout] Query timed out: msg id 141
+[Timeout] Query timed out: msg id 142
+[Timeout] Query timed out: msg id 143
+[Timeout] Query timed out: msg id 144
+[Timeout] Query timed out: msg id 145
+[Timeout] Query timed out: msg id 146
+[Timeout] Query timed out: msg id 147
+[Timeout] Query timed out: msg id 148
+[Timeout] Query timed out: msg id 149
+[Timeout] Query timed out: msg id 150
+[Timeout] Query timed out: msg id 151
+[Timeout] Query timed out: msg id 152
+[Timeout] Query timed out: msg id 153
+[Timeout] Query timed out: msg id 154
+[Timeout] Query timed out: msg id 155
+[Timeout] Query timed out: msg id 156
+[Timeout] Query timed out: msg id 157
+[Timeout] Query timed out: msg id 158
+[Timeout] Query timed out: msg id 159
+[Timeout] Query timed out: msg id 160
+[Timeout] Query timed out: msg id 161
+[Timeout] Query timed out: msg id 162
+[Timeout] Query timed out: msg id 163
+[Timeout] Query timed out: msg id 164
+[Timeout] Query timed out: msg id 165
+[Timeout] Query timed out: msg id 166
+[Timeout] Query timed out: msg id 167
+[Timeout] Query timed out: msg id 168
+[Timeout] Query timed out: msg id 169
+[Timeout] Query timed out: msg id 170
+[Timeout] Query timed out: msg id 171
+[Timeout] Query timed out: msg id 172
+[Timeout] Query timed out: msg id 173
+[Timeout] Query timed out: msg id 174
+[Timeout] Query timed out: msg id 175
+[Timeout] Query timed out: msg id 176
+[Timeout] Query timed out: msg id 177
+[Timeout] Query timed out: msg id 178
+[Timeout] Query timed out: msg id 179
+[Timeout] Query timed out: msg id 180
+[Timeout] Query timed out: msg id 181
+[Timeout] Query timed out: msg id 182
+[Timeout] Query timed out: msg id 183
+[Timeout] Query timed out: msg id 184
+[Timeout] Query timed out: msg id 185
+[Timeout] Query timed out: msg id 186
+[Timeout] Query timed out: msg id 187
+[Timeout] Query timed out: msg id 188
+[Timeout] Query timed out: msg id 189
+[Timeout] Query timed out: msg id 190
+[Timeout] Query timed out: msg id 191
+[Timeout] Query timed out: msg id 192
+[Timeout] Query timed out: msg id 193
+[Timeout] Query timed out: msg id 194
+[Timeout] Query timed out: msg id 195
+[Timeout] Query timed out: msg id 196
+[Timeout] Query timed out: msg id 197
+[Timeout] Query timed out: msg id 198
+[Timeout] Query timed out: msg id 199
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         200
+  Queries completed:    0 (0.00%)
+  Queries lost:         200 (100.00%)
+
+  Response codes:       
+  Average packet size:  request 47, response 0
+  Run time (s):         10.000192
+  Queries per second:   0.000000
+
+  Average Latency (s):  0.000000 (min 0.000000, max 0.000000)
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 129.132.85.126 -c 24 -Q 8000 -l 10 -S 1
+[Status] Sending queries (to 129.132.85.126:1054)
+[Status] Started at: Mon Aug  1 20:59:53 2022
+[Status] Stopping after 10.000000 seconds
+1659380394.995097: 0.000000
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 129.132.85.126 -c 24 -Q 128000 -l 10 -S 1
+[Status] Sending queries (to 129.132.85.126:1054)
+[Status] Started at: Mon Aug  1 20:59:56 2022
+[Status] Stopping after 10.000000 seconds
+1659380397.989363: 0.000000
