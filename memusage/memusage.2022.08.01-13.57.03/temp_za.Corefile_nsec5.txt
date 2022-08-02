@@ -1,0 +1,9 @@
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 6a45f9d3-dirty
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 6a45f9d3-dirty
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 6a45f9d3-dirty

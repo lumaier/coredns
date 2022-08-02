@@ -1,0 +1,15 @@
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 6a45f9d3-dirty
+[INFO] plugin/sign_nsec5: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+Alloc = 4 MB	TotalAlloc = 28 MB	StackSys = 0 MB	Sys = 23 MB	NumGC = 8
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 6a45f9d3-dirty
+[INFO] plugin/sign_nsec5: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+Alloc = 4 MB	TotalAlloc = 28 MB	StackSys = 0 MB	Sys = 23 MB	NumGC = 8
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 6a45f9d3-dirty
+[INFO] plugin/sign_nsec5: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+Alloc = 4 MB	TotalAlloc = 28 MB	StackSys = 0 MB	Sys = 23 MB	NumGC = 8

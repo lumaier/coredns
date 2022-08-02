@@ -1,0 +1,8 @@
+================== Processing ZA Corefile_nsec5 =================
+Alloc = 4 MB	TotalAlloc = 28 MB	StackSys = 0 MB	Sys = 23 MB	NumGC = 8
+Alloc = 4 MB	TotalAlloc = 28 MB	StackSys = 0 MB	Sys = 23 MB	NumGC = 8
+Alloc = 4 MB	TotalAlloc = 28 MB	StackSys = 0 MB	Sys = 23 MB	NumGC = 8
+================== Processing NS Corefile_nsec5 =================
+Alloc = 5 MB	TotalAlloc = 9 MB	StackSys = 0 MB	Sys = 19 MB	NumGC = 4
+Alloc = 5 MB	TotalAlloc = 9 MB	StackSys = 0 MB	Sys = 19 MB	NumGC = 4
+Alloc = 5 MB	TotalAlloc = 9 MB	StackSys = 0 MB	Sys = 19 MB	NumGC = 4

@@ -1,0 +1,3 @@
+Alloc = 5 MB	TotalAlloc = 9 MB	StackSys = 0 MB	Sys = 19 MB	NumGC = 4
+Alloc = 5 MB	TotalAlloc = 9 MB	StackSys = 0 MB	Sys = 19 MB	NumGC = 4
+Alloc = 5 MB	TotalAlloc = 9 MB	StackSys = 0 MB	Sys = 19 MB	NumGC = 4

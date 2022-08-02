@@ -1,0 +1,3 @@
+Alloc = 267 MB	TotalAlloc = 480 MB	StackSys = 0 MB	Sys = 367 MB	NumGC = 13
+Alloc = 267 MB	TotalAlloc = 480 MB	StackSys = 0 MB	Sys = 367 MB	NumGC = 13
+Alloc = 267 MB	TotalAlloc = 480 MB	StackSys = 0 MB	Sys = 359 MB	NumGC = 13

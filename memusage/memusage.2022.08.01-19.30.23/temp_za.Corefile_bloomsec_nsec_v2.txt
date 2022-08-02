@@ -1,0 +1,36 @@
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/bloomsec: 
+
+Number of insertable items: 2500005
+Bloomfilter capacity: 47925600 (bits needed to index: 26)
+number of invocations of SHA512: 1
+Bloomfilter false positiverate: 0.000101
+Bloomfilter occupancy: 0.518233
+
+
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/bloomsec: 
+
+Number of insertable items: 2500005
+Bloomfilter capacity: 47925600 (bits needed to index: 26)
+number of invocations of SHA512: 1
+Bloomfilter false positiverate: 0.000101
+Bloomfilter occupancy: 0.518233
+
+
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/bloomsec: 
+
+Number of insertable items: 2500005
+Bloomfilter capacity: 47925600 (bits needed to index: 26)
+number of invocations of SHA512: 1
+Bloomfilter false positiverate: 0.000101
+Bloomfilter occupancy: 0.518233
+
+

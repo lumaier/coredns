@@ -1,0 +1,17 @@
+================== Processing ZA Corefile_bloomsec_nsec_v1 =================
+================== Processing NS Corefile_bloomsec_nsec_v1 =================
+================== Processing ZA Corefile_bloomsec_nsec_v2 =================
+================== Processing NS Corefile_bloomsec_nsec_v2 =================
+================== Processing ZA Corefile_bloomsec_nsec_v3 =================
+================== Processing NS Corefile_bloomsec_nsec_v3 =================
+================== Processing ZA Corefile_bloomsec_nsec5_v1 =================
+================== Processing NS Corefile_bloomsec_nsec5_v1 =================
+================== Processing ZA Corefile_bloomsec_nsec5_v2 =================
+================== Processing NS Corefile_bloomsec_nsec5_v2 =================
+================== Processing ZA Corefile_bloomsec_nsec5_v3 =================
+================== Processing NS Corefile_bloomsec_nsec5_v3 =================
+================== Processing ZA Corefile_nsec =================
+================== Processing NS Corefile_nsec =================
+Alloc = 4 MB	TotalAlloc = 7 MB	StackSys = 0 MB	Sys = 15 MB	NumGC = 3
+Alloc = 4 MB	TotalAlloc = 7 MB	StackSys = 0 MB	Sys = 14 MB	NumGC = 3
+Alloc = 4 MB	TotalAlloc = 7 MB	StackSys = 0 MB	Sys = 15 MB	NumGC = 4

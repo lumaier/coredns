@@ -1,0 +1,66 @@
+This was conducted on a DNS zone with 250'000 domain names.
+
+================== Processing ZA Corefile_bloomsec_nsec_v1 =================
+Alloc = 4 MB	TotalAlloc = 4598 MB	StackSys = 0 MB	Sys = 583 MB	NumGC = 33
+Alloc = 4 MB	TotalAlloc = 4598 MB	StackSys = 0 MB	Sys = 544 MB	NumGC = 33
+Alloc = 4 MB	TotalAlloc = 4598 MB	StackSys = 0 MB	Sys = 548 MB	NumGC = 33
+================== Processing NS Corefile_bloomsec_nsec =================
+Alloc = 270 MB	TotalAlloc = 487 MB	StackSys = 0 MB	Sys = 387 MB	NumGC = 13
+Alloc = 270 MB	TotalAlloc = 487 MB	StackSys = 0 MB	Sys = 354 MB	NumGC = 13
+Alloc = 270 MB	TotalAlloc = 487 MB	StackSys = 0 MB	Sys = 375 MB	NumGC = 13
+================== Processing ZA Corefile_bloomsec_nsec_v2 =================
+Alloc = 4 MB	TotalAlloc = 4624 MB	StackSys = 0 MB	Sys = 571 MB	NumGC = 33
+Alloc = 4 MB	TotalAlloc = 4624 MB	StackSys = 0 MB	Sys = 575 MB	NumGC = 32
+Alloc = 4 MB	TotalAlloc = 4624 MB	StackSys = 0 MB	Sys = 571 MB	NumGC = 32
+================== Processing NS Corefile_bloomsec_nsec =================
+Alloc = 274 MB	TotalAlloc = 495 MB	StackSys = 0 MB	Sys = 379 MB	NumGC = 13
+Alloc = 274 MB	TotalAlloc = 495 MB	StackSys = 0 MB	Sys = 379 MB	NumGC = 13
+Alloc = 274 MB	TotalAlloc = 495 MB	StackSys = 0 MB	Sys = 379 MB	NumGC = 13
+================== Processing ZA Corefile_bloomsec_nsec_v3 =================
+Alloc = 4 MB	TotalAlloc = 4681 MB	StackSys = 0 MB	Sys = 588 MB	NumGC = 33
+Alloc = 4 MB	TotalAlloc = 4681 MB	StackSys = 0 MB	Sys = 563 MB	NumGC = 34
+Alloc = 4 MB	TotalAlloc = 4681 MB	StackSys = 0 MB	Sys = 571 MB	NumGC = 33
+================== Processing NS Corefile_bloomsec_nsec =================
+Alloc = 277 MB	TotalAlloc = 502 MB	StackSys = 0 MB	Sys = 383 MB	NumGC = 13
+Alloc = 277 MB	TotalAlloc = 502 MB	StackSys = 0 MB	Sys = 399 MB	NumGC = 14
+Alloc = 277 MB	TotalAlloc = 502 MB	StackSys = 0 MB	Sys = 371 MB	NumGC = 13
+================== Processing ZA Corefile_bloomsec_nsec5_v1 =================
+Alloc = 4 MB	TotalAlloc = 5290 MB	StackSys = 0 MB	Sys = 766 MB	NumGC = 29
+Alloc = 4 MB	TotalAlloc = 5290 MB	StackSys = 0 MB	Sys = 791 MB	NumGC = 30
+Alloc = 4 MB	TotalAlloc = 5290 MB	StackSys = 0 MB	Sys = 770 MB	NumGC = 30
+================== Processing NS Corefile_bloomsec_nsec5 =================
+Alloc = 391 MB	TotalAlloc = 652 MB	StackSys = 0 MB	Sys = 494 MB	NumGC = 13
+Alloc = 391 MB	TotalAlloc = 652 MB	StackSys = 0 MB	Sys = 494 MB	NumGC = 13
+Alloc = 391 MB	TotalAlloc = 652 MB	StackSys = 0 MB	Sys = 498 MB	NumGC = 13
+================== Processing ZA Corefile_bloomsec_nsec5_v2 =================
+Alloc = 4 MB	TotalAlloc = 5316 MB	StackSys = 0 MB	Sys = 779 MB	NumGC = 29
+Alloc = 4 MB	TotalAlloc = 5316 MB	StackSys = 0 MB	Sys = 747 MB	NumGC = 30
+Alloc = 4 MB	TotalAlloc = 5316 MB	StackSys = 0 MB	Sys = 770 MB	NumGC = 30
+================== Processing NS Corefile_bloomsec_nsec5 =================
+Alloc = 394 MB	TotalAlloc = 660 MB	StackSys = 0 MB	Sys = 502 MB	NumGC = 13
+Alloc = 394 MB	TotalAlloc = 660 MB	StackSys = 0 MB	Sys = 502 MB	NumGC = 13
+Alloc = 394 MB	TotalAlloc = 660 MB	StackSys = 0 MB	Sys = 527 MB	NumGC = 14
+================== Processing ZA Corefile_bloomsec_nsec5_v3 =================
+Alloc = 4 MB	TotalAlloc = 5373 MB	StackSys = 0 MB	Sys = 762 MB	NumGC = 31
+Alloc = 4 MB	TotalAlloc = 5373 MB	StackSys = 0 MB	Sys = 739 MB	NumGC = 32
+Alloc = 4 MB	TotalAlloc = 5373 MB	StackSys = 0 MB	Sys = 770 MB	NumGC = 30
+================== Processing NS Corefile_bloomsec_nsec5 =================
+Alloc = 397 MB	TotalAlloc = 667 MB	StackSys = 0 MB	Sys = 510 MB	NumGC = 13
+Alloc = 397 MB	TotalAlloc = 667 MB	StackSys = 0 MB	Sys = 522 MB	NumGC = 13
+Alloc = 397 MB	TotalAlloc = 667 MB	StackSys = 0 MB	Sys = 543 MB	NumGC = 14
+================== Processing ZA Corefile_nsec =================
+Alloc = 4 MB	TotalAlloc = 4547 MB	StackSys = 0 MB	Sys = 562 MB	NumGC = 34
+Alloc = 4 MB	TotalAlloc = 4547 MB	StackSys = 0 MB	Sys = 552 MB	NumGC = 34
+Alloc = 4 MB	TotalAlloc = 4547 MB	StackSys = 0 MB	Sys = 570 MB	NumGC = 35
+================== Processing NS Corefile_nsec =================
+Alloc = 267 MB	TotalAlloc = 480 MB	StackSys = 0 MB	Sys = 367 MB	NumGC = 13
+Alloc = 267 MB	TotalAlloc = 480 MB	StackSys = 0 MB	Sys = 367 MB	NumGC = 13
+Alloc = 267 MB	TotalAlloc = 480 MB	StackSys = 0 MB	Sys = 359 MB	NumGC = 13
+================== Processing ZA Corefile_nsec5 =================
+Alloc = 4 MB	TotalAlloc = 5238 MB	StackSys = 0 MB	Sys = 752 MB	NumGC = 29
+Alloc = 4 MB	TotalAlloc = 5238 MB	StackSys = 0 MB	Sys = 756 MB	NumGC = 30
+Alloc = 4 MB	TotalAlloc = 5238 MB	StackSys = 0 MB	Sys = 752 MB	NumGC = 29
+================== Processing NS Corefile_nsec5 =================
+Alloc = 387 MB	TotalAlloc = 644 MB	StackSys = 0 MB	Sys = 518 MB	NumGC = 13
+Alloc = 387 MB	TotalAlloc = 645 MB	StackSys = 0 MB	Sys = 518 MB	NumGC = 13
+Alloc = 387 MB	TotalAlloc = 645 MB	StackSys = 0 MB	Sys = 490 MB	NumGC = 13

@@ -1,0 +1,45 @@
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/bloomsec: 
+
+Number of insertable items: 250005
+Bloomfilter capacity: 7190400 (bits needed to index: 23)
+number of invocations of SHA512: 2
+Bloomfilter false positiverate: 0.000001
+Bloomfilter occupancy: 0.501052
+
+
+[INFO] plugin/bloomsec: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+[INFO] plugin/bloomsec: Successfully signed zone "miek.nl." in "memusage/testdata/db.miek.nl.signed" with key tags "59725" and 1659361095 SOA serial, elapsed 65.788880, next: 2022-08-01T18:38:15.956Z
+Alloc = 4 MB	TotalAlloc = 4681 MB	StackSys = 0 MB	Sys = 588 MB	NumGC = 33
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/bloomsec: 
+
+Number of insertable items: 250005
+Bloomfilter capacity: 7190400 (bits needed to index: 23)
+number of invocations of SHA512: 2
+Bloomfilter false positiverate: 0.000001
+Bloomfilter occupancy: 0.501052
+
+
+[INFO] plugin/bloomsec: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+[INFO] plugin/bloomsec: Successfully signed zone "miek.nl." in "memusage/testdata/db.miek.nl.signed" with key tags "59725" and 1659361174 SOA serial, elapsed 65.522226, next: 2022-08-01T18:39:34.268Z
+Alloc = 4 MB	TotalAlloc = 4681 MB	StackSys = 0 MB	Sys = 563 MB	NumGC = 34
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/bloomsec: 
+
+Number of insertable items: 250005
+Bloomfilter capacity: 7190400 (bits needed to index: 23)
+number of invocations of SHA512: 2
+Bloomfilter false positiverate: 0.000001
+Bloomfilter occupancy: 0.501134
+
+
+[INFO] plugin/bloomsec: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+[INFO] plugin/bloomsec: Successfully signed zone "miek.nl." in "memusage/testdata/db.miek.nl.signed" with key tags "59725" and 1659361253 SOA serial, elapsed 65.166513, next: 2022-08-01T18:40:53.173Z
+Alloc = 4 MB	TotalAlloc = 4681 MB	StackSys = 0 MB	Sys = 571 MB	NumGC = 33
