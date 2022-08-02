@@ -59,3 +59,8 @@ testdata_ns:
 testdata_za:
 	rm -f ./memusage/testdata/db.miek.nl.signed
 	./coredns -conf ./memusage/Corefiles_za/$(COREFILE) -dns.port 1054
+
+.PHONY: run_eval
+run_eval: 
+	rm -f ./evaluation/testdata/zonedata/db.miek.nl.signed
+	./coredns -conf ./evaluation/Corefiles/Corefile_$(version) -dns.port 1054
