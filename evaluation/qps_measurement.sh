@@ -1,7 +1,7 @@
-MAX_QPS=128000
+MAX_QPS=40000
 NR_CLIENTS=24
-# NS_IP=129.132.85.126
-NS_IP=127.0.0.1
+NS_IP=129.132.85.126
+# NS_IP=127.0.0.1
 PORT=1054
 TIME_RUN=10
 
@@ -13,7 +13,7 @@ temp=$evaldir"/log.txt"
 touch $temp
 
 echo "======================= $1 ===========================" | tee -a $temp
-for ((i=4000;i<=$MAX_QPS;i+=4000)); do
+for ((i=1000;i<=$MAX_QPS;i+=1000)); do
     dnsperf -d ./testdata/queries/queries_nex -D -p $PORT -s $NS_IP -c $NR_CLIENTS -Q $i -l $TIME_RUN -S 1 | tee -a $temp
 done
 
