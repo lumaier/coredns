@@ -8,7 +8,7 @@ for f in *; do
         file=data.txt
         rm $file
         touch $file
-        grep "Command\|Queries per second" log.txt |tee -a $file
+        grep "Command\|Queries per second" log.txt | tee -a $file
         cd ..
     fi
 done
