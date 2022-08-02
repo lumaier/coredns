@@ -1,0 +1,18 @@
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/sign: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+[INFO] plugin/sign: Successfully signed zone "miek.nl." in "memusage/testdata/db.miek.nl.signed" with key tags "59725" and 1659362823 SOA serial, elapsed 65.927967, next: 2022-08-01T19:07:03.986Z
+Alloc = 4 MB	TotalAlloc = 4547 MB	StackSys = 0 MB	Sys = 562 MB	NumGC = 34
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/sign: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+[INFO] plugin/sign: Successfully signed zone "miek.nl." in "memusage/testdata/db.miek.nl.signed" with key tags "59725" and 1659362903 SOA serial, elapsed 66.578671, next: 2022-08-01T19:08:23.223Z
+Alloc = 4 MB	TotalAlloc = 4547 MB	StackSys = 0 MB	Sys = 552 MB	NumGC = 34
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/sign: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+[INFO] plugin/sign: Successfully signed zone "miek.nl." in "memusage/testdata/db.miek.nl.signed" with key tags "59725" and 1659362983 SOA serial, elapsed 64.327449, next: 2022-08-01T19:09:43.140Z
+Alloc = 4 MB	TotalAlloc = 4547 MB	StackSys = 0 MB	Sys = 570 MB	NumGC = 35

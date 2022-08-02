@@ -1,0 +1,36 @@
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/bloomsec_nsec5: 
+Number of insertable items: 250005
+Bloomfilter capacity: 2397600 (bits needed to index: 22)
+number of invocations of SHA512: 1
+Bloomfilter false positiverate: 0.010014
+Bloomfilter occupancy: 0.517699
+[INFO] plugin/bloomsec_nsec5: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+[INFO] plugin/bloomsec_nsec5: Successfully signed zone "miek.nl." in "memusage/testdata/db.miek.nl.signed" with key tags "59725" and 1659361331 SOA serial, elapsed 147.752791, next: 2022-08-01T18:42:11.364Z
+Alloc = 4 MB	TotalAlloc = 5290 MB	StackSys = 0 MB	Sys = 766 MB	NumGC = 29
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/bloomsec_nsec5: 
+Number of insertable items: 250005
+Bloomfilter capacity: 2397600 (bits needed to index: 22)
+number of invocations of SHA512: 1
+Bloomfilter false positiverate: 0.010014
+Bloomfilter occupancy: 0.517699
+[INFO] plugin/bloomsec_nsec5: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+[INFO] plugin/bloomsec_nsec5: Successfully signed zone "miek.nl." in "memusage/testdata/db.miek.nl.signed" with key tags "59725" and 1659361497 SOA serial, elapsed 149.193776, next: 2022-08-01T18:44:57.885Z
+Alloc = 4 MB	TotalAlloc = 5290 MB	StackSys = 0 MB	Sys = 791 MB	NumGC = 30
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/bloomsec_nsec5: 
+Number of insertable items: 250005
+Bloomfilter capacity: 2397600 (bits needed to index: 22)
+number of invocations of SHA512: 1
+Bloomfilter false positiverate: 0.010014
+Bloomfilter occupancy: 0.517699
+[INFO] plugin/bloomsec_nsec5: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+[INFO] plugin/bloomsec_nsec5: Successfully signed zone "miek.nl." in "memusage/testdata/db.miek.nl.signed" with key tags "59725" and 1659361665 SOA serial, elapsed 147.368530, next: 2022-08-01T18:47:45.987Z
+Alloc = 4 MB	TotalAlloc = 5290 MB	StackSys = 0 MB	Sys = 770 MB	NumGC = 30

@@ -1,0 +1,2 @@
+[WARNING] plugin/file_nsec5: Failed to open "open memusage/testdata/db.miek.nl.signed: no such file or directory": trying again in 1m0s
+Alloc = 4 MB	TotalAlloc = 7 MB	StackSys = 0 MB	Sys = 15 MB	NumGC = 4

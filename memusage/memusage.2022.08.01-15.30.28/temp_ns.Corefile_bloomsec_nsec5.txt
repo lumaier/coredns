@@ -1,0 +1,45 @@
+[INFO] plugin/bloomfile_nsec5: 
+Bloomfilter capacity: 2397600 (bits needed to index: 22)
+number of invocations of SHA512: 1
+Bloomfilter occupancy: 0.517699
+Alloc = 391 MB	TotalAlloc = 652 MB	StackSys = 0 MB	Sys = 494 MB	NumGC = 13
+[INFO] plugin/bloomfile_nsec5: 
+Bloomfilter capacity: 2397600 (bits needed to index: 22)
+number of invocations of SHA512: 1
+Bloomfilter occupancy: 0.517699
+Alloc = 391 MB	TotalAlloc = 652 MB	StackSys = 0 MB	Sys = 494 MB	NumGC = 13
+[INFO] plugin/bloomfile_nsec5: 
+Bloomfilter capacity: 2397600 (bits needed to index: 22)
+number of invocations of SHA512: 1
+Bloomfilter occupancy: 0.517699
+Alloc = 391 MB	TotalAlloc = 652 MB	StackSys = 0 MB	Sys = 498 MB	NumGC = 13
+[INFO] plugin/bloomfile_nsec5: 
+Bloomfilter capacity: 4792800 (bits needed to index: 23)
+number of invocations of SHA512: 1
+Bloomfilter occupancy: 0.518233
+Alloc = 394 MB	TotalAlloc = 660 MB	StackSys = 0 MB	Sys = 502 MB	NumGC = 13
+[INFO] plugin/bloomfile_nsec5: 
+Bloomfilter capacity: 4792800 (bits needed to index: 23)
+number of invocations of SHA512: 1
+Bloomfilter occupancy: 0.518233
+Alloc = 394 MB	TotalAlloc = 660 MB	StackSys = 0 MB	Sys = 502 MB	NumGC = 13
+[INFO] plugin/bloomfile_nsec5: 
+Bloomfilter capacity: 4792800 (bits needed to index: 23)
+number of invocations of SHA512: 1
+Bloomfilter occupancy: 0.518233
+Alloc = 394 MB	TotalAlloc = 660 MB	StackSys = 0 MB	Sys = 527 MB	NumGC = 14
+[INFO] plugin/bloomfile_nsec5: 
+Bloomfilter capacity: 7190400 (bits needed to index: 23)
+number of invocations of SHA512: 2
+Bloomfilter occupancy: 0.501052
+Alloc = 397 MB	TotalAlloc = 667 MB	StackSys = 0 MB	Sys = 510 MB	NumGC = 13
+[INFO] plugin/bloomfile_nsec5: 
+Bloomfilter capacity: 7190400 (bits needed to index: 23)
+number of invocations of SHA512: 2
+Bloomfilter occupancy: 0.501052
+Alloc = 397 MB	TotalAlloc = 667 MB	StackSys = 0 MB	Sys = 522 MB	NumGC = 13
+[INFO] plugin/bloomfile_nsec5: 
+Bloomfilter capacity: 7190400 (bits needed to index: 23)
+number of invocations of SHA512: 2
+Bloomfilter occupancy: 0.501052
+Alloc = 397 MB	TotalAlloc = 667 MB	StackSys = 0 MB	Sys = 543 MB	NumGC = 14

@@ -1,0 +1,45 @@
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/bloomsec: 
+
+Number of insertable items: 250005
+Bloomfilter capacity: 2397600 (bits needed to index: 22)
+number of invocations of SHA512: 1
+Bloomfilter false positiverate: 0.010014
+Bloomfilter occupancy: 0.517699
+
+
+[INFO] plugin/bloomsec: Signing "miek.nl." because open memusage/testdata/db.miek.nl.signed: no such file or directory
+[INFO] plugin/bloomsec: Successfully signed zone "miek.nl." in "memusage/testdata/db.miek.nl.signed" with key tags "59725" and 1659360628 SOA serial, elapsed 64.896340, next: 2022-08-01T18:30:28.299Z
+Alloc = 4 MB	TotalAlloc = 4598 MB	StackSys = 0 MB	Sys = 583 MB	NumGC = 33
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/bloomsec: 
+
+Number of insertable items: 250005
+Bloomfilter capacity: 2397600 (bits needed to index: 22)
+number of invocations of SHA512: 1
+Bloomfilter false positiverate: 0.010014
+Bloomfilter occupancy: 0.517699
+
+
+[INFO] plugin/bloomsec: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+[INFO] plugin/bloomsec: Successfully signed zone "miek.nl." in "memusage/testdata/db.miek.nl.signed" with key tags "59725" and 1659360706 SOA serial, elapsed 63.776999, next: 2022-08-01T18:31:46.290Z
+Alloc = 4 MB	TotalAlloc = 4598 MB	StackSys = 0 MB	Sys = 544 MB	NumGC = 33
+miek.nl.:1054
+CoreDNS-1.9.3
+linux/amd64, go1.18.1, 90fc2c8c-dirty
+[INFO] plugin/bloomsec: 
+
+Number of insertable items: 250005
+Bloomfilter capacity: 2397600 (bits needed to index: 22)
+number of invocations of SHA512: 1
+Bloomfilter false positiverate: 0.010014
+Bloomfilter occupancy: 0.517699
+
+
+[INFO] plugin/bloomsec: Signing "miek.nl." because no SOA RRSIG found in first 100 records
+[INFO] plugin/bloomsec: Successfully signed zone "miek.nl." in "memusage/testdata/db.miek.nl.signed" with key tags "59725" and 1659360782 SOA serial, elapsed 64.670605, next: 2022-08-01T18:33:02.634Z
+Alloc = 4 MB	TotalAlloc = 4598 MB	StackSys = 0 MB	Sys = 548 MB	NumGC = 33
