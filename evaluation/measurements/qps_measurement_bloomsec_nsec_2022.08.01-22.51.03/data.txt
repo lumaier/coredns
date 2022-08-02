@@ -1,0 +1,64 @@
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 4000 -l 10 -S 1
+  Queries per second:   3999.944001
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 8000 -l 10 -S 1
+  Queries per second:   7999.946400
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 12000 -l 10 -S 1
+  Queries per second:   11999.841602
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 16000 -l 10 -S 1
+  Queries per second:   15999.859201
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 20000 -l 10 -S 1
+  Queries per second:   19999.806002
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 24000 -l 10 -S 1
+  Queries per second:   23999.736003
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 28000 -l 10 -S 1
+  Queries per second:   27999.566007
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 32000 -l 10 -S 1
+  Queries per second:   31999.388010
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 36000 -l 10 -S 1
+  Queries per second:   35999.355612
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 40000 -l 10 -S 1
+  Queries per second:   39999.172017
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 44000 -l 10 -S 1
+  Queries per second:   43998.946420
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 48000 -l 10 -S 1
+  Queries per second:   47998.110467
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 52000 -l 10 -S 1
+  Queries per second:   51996.209382
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 56000 -l 10 -S 1
+  Queries per second:   51685.563119
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 60000 -l 10 -S 1
+  Queries per second:   51786.984762
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 64000 -l 10 -S 1
+  Queries per second:   51729.833507
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 68000 -l 10 -S 1
+  Queries per second:   54586.813039
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 72000 -l 10 -S 1
+  Queries per second:   51811.186873
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 76000 -l 10 -S 1
+  Queries per second:   51120.058643
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 80000 -l 10 -S 1
+  Queries per second:   54565.645889
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 84000 -l 10 -S 1
+  Queries per second:   51773.009510
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 88000 -l 10 -S 1
+  Queries per second:   51897.907101
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 92000 -l 10 -S 1
+  Queries per second:   54863.472467
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 96000 -l 10 -S 1
+  Queries per second:   51182.124240
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 100000 -l 10 -S 1
+  Queries per second:   51779.842728
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 104000 -l 10 -S 1
+  Queries per second:   54544.901907
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 108000 -l 10 -S 1
+  Queries per second:   51858.938168
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 112000 -l 10 -S 1
+  Queries per second:   51938.531386
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 116000 -l 10 -S 1
+  Queries per second:   54616.972530
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 120000 -l 10 -S 1
+  Queries per second:   52005.583118
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 124000 -l 10 -S 1
+  Queries per second:   51185.445671
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 128000 -l 10 -S 1
+  Queries per second:   54720.199488
