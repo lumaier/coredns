@@ -1,16 +1,8 @@
-[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 1000 -l 10 -S 1
-  Queries per second:   999.979400
-[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 2000 -l 10 -S 1
-  Queries per second:   1999.972200
-[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 4000 -l 10 -S 1
-  Queries per second:   3999.936001
-[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 8000 -l 10 -S 1
-  Queries per second:   7999.914401
-[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 16000 -l 10 -S 1
-  Queries per second:   15999.835202
-[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 32000 -l 10 -S 1
-  Queries per second:   31999.548806
-[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 64000 -l 10 -S 1
-  Queries per second:   63988.531190
-[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 127.0.0.1 -c 24 -Q 128000 -l 10 -S 1
-  Queries per second:   61862.504688
+999.979400
+1999.972200
+3999.936001
+7999.914401
+15999.835202
+31999.548806
+63988.531190
+61862.504688
