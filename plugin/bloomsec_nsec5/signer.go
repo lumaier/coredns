@@ -5,7 +5,6 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"sort"
 	"sync"
 	"time"
 
@@ -14,6 +13,7 @@ import (
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5"
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5/tree"
 	clog "github.com/coredns/coredns/plugin/pkg/log"
+	"github.com/jfcg/sorty"
 
 	"github.com/miekg/dns"
 )
@@ -153,9 +153,22 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 	wg.Wait()
 
 	// sort the vrf hash outputs
-	sort.Slice(nsec5_values, func(i, j int) bool {
-		return nsec5_values[i].hash < nsec5_values[j].hash
-	})
+	// sort.Slice(nsec5_values, func(i, j int) bool {
+	// 	return nsec5_values[i].hash < nsec5_values[j].hash
+	// })
+
+	// parallel sort
+	lsw := func(i, k, r, s int) bool {
+		if nsec5_values[i].hash < nsec5_values[k].hash {
+			if r != s {
+				nsec5_values[r], nsec5_values[s] = nsec5_values[s], nsec5_values[r]
+			}
+			return true
+		}
+		return false
+	}
+
+	sorty.Sort(len(nsec5_values), lsw)
 
 	length_nsec5 := len(nsec5_values)
 	proofs := []*dns.TXT{}

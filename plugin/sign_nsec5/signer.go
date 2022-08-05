@@ -5,7 +5,6 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"sort"
 	"sync"
 	"time"
 
@@ -14,6 +13,8 @@ import (
 	"github.com/coredns/coredns/plugin/file_nsec5"
 	"github.com/coredns/coredns/plugin/file_nsec5/tree"
 	clog "github.com/coredns/coredns/plugin/pkg/log"
+
+	"github.com/jfcg/sorty"
 
 	"github.com/miekg/dns"
 )
@@ -48,6 +49,8 @@ func (s *Signer) Sign(now time.Time) (*file_nsec5.Zone, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	// log.Infof("elapsed %f for parsing", time.Since(now).Seconds())
 
 	// mttl := z.Apex.SOA.Minttl
 	ttl := z.Apex.SOA.Header().Ttl
@@ -94,7 +97,6 @@ func (s *Signer) Sign(now time.Time) (*file_nsec5.Zone, error) {
 	nsec5_values := make([]VRF_output, len(nsec5_names)) // holds: vrf hash, vrf proof, domain name
 
 	wg := sync.WaitGroup{}
-
 	wg.Add(len(nsec5_names))
 
 	for i, name := range nsec5_names {
@@ -115,18 +117,31 @@ func (s *Signer) Sign(now time.Time) (*file_nsec5.Zone, error) {
 	wg.Wait()
 
 	// sort the vrf hash outputs
-	sort.Slice(nsec5_values, func(i, j int) bool {
-		return nsec5_values[i].hash < nsec5_values[j].hash
-	})
+	// sort.Slice(nsec5_values, func(i, j int) bool {
+	// 	return nsec5_values[i].hash < nsec5_values[j].hash
+	// })
+
+	// parallel sort
+	lsw := func(i, k, r, s int) bool {
+		if nsec5_values[i].hash < nsec5_values[k].hash {
+			if r != s {
+				nsec5_values[r], nsec5_values[s] = nsec5_values[s], nsec5_values[r]
+			}
+			return true
+		}
+		return false
+	}
+
+	sorty.Sort(len(nsec5_values), lsw)
 
 	length_nsec5 := len(nsec5_values)
-	proofs := []*dns.TXT{}
+	proofs := make([]*dns.TXT, len(nsec5_values))
 
 	// for every two consecutive domain names insert an NSEC5 and NSEC5PROOF
 	for i, x := range nsec5_values {
 		r1, r2 := NSEC5(x.domain, x.hash, x.proof, nsec5_values[(i+1)%length_nsec5].hash, ttl)
 		z.Insert(r1)
-		proofs = append(proofs, r2) // FIXME: the proofs are inserted later as they do not have to be signed?
+		proofs[i] = r2 // FIXME: the proofs are inserted later as they do not have to be signed?
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
