@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"sync"
 	"time"
 
 	"github.com/ProtonMail/go-ecvrf/ecvrf"
@@ -128,19 +129,28 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 	//////////////////////////// NSEC5 ///////////////////////////////////////////////////
 
 	// create NSEC5 and NSEC5PROOF
-	nsec5_values := []VRF_output{} // holds: vrf hash, vrf proof, domain name
+	nsec5_values := make([]VRF_output, len(nsec5_names)) // holds: vrf hash, vrf proof, domain name
 
-	for _, x := range nsec5_names {
-		pi, hash, err := s.vrf_privkey.Prove([]byte(x))
-		if err != nil {
-			return nil, err
-		}
-		nsec5_values = append(nsec5_values, VRF_output{
-			hash:   toBase64(hash),
-			proof:  toBase64(pi),
-			domain: x,
-		})
+	wg := sync.WaitGroup{}
+
+	wg.Add(len(nsec5_names))
+
+	for i, name := range nsec5_names {
+		go func(i int, x string) {
+			defer wg.Done()
+			pi, hash, _ := s.vrf_privkey.Prove([]byte(x))
+			if err != nil {
+				panic(err)
+			}
+			nsec5_values[i] = VRF_output{
+				hash:   toBase64(hash),
+				proof:  toBase64(pi),
+				domain: x,
+			}
+		}(i, name)
 	}
+
+	wg.Wait()
 
 	// sort the vrf hash outputs
 	sort.Slice(nsec5_values, func(i, j int) bool {
