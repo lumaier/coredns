@@ -2,7 +2,6 @@ package bloomsec_nsec5
 
 import (
 	"fmt"
-	"sort"
 
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5"
 	"github.com/coredns/coredns/plugin/bloomfile_nsec5/tree"
@@ -99,17 +98,6 @@ func bytesToBits(bytes *[]byte) *[]bool {
 		}
 	}
 	return &bits
-}
-
-// Returns an NSEC record according to name, next, ttl and bitmap. Note that the bitmap is sorted before use.
-func NSEC(name, next string, ttl uint32, bitmap []uint16) *dns.NSEC {
-	sort.Slice(bitmap, func(i, j int) bool { return bitmap[i] < bitmap[j] })
-
-	return &dns.NSEC{
-		Hdr:        dns.RR_Header{Name: name, Ttl: ttl, Rrtype: dns.TypeNSEC, Class: dns.ClassINET},
-		NextDomain: next,
-		TypeBitMap: bitmap,
-	}
 }
 
 // Returns a TXT record containing an NSEC5 record and a TXT record containing the NSEC5PROOF
