@@ -5,6 +5,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"runtime"
 	"sync"
 	"time"
 
@@ -132,6 +133,7 @@ func (s *Signer) Sign(now time.Time) (*file_nsec5.Zone, error) {
 		return false
 	}
 
+	sorty.Mxg = uint32(runtime.NumCPU())
 	sorty.Sort(len(nsec5_values), lsw)
 
 	length_nsec5 := len(nsec5_values)
@@ -147,6 +149,30 @@ func (s *Signer) Sign(now time.Time) (*file_nsec5.Zone, error) {
 	//////////////////////////////////////////////////////////////////////////////////////
 
 	// sign the records we are authoritative for
+	// err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
+	// 	if !auth {
+	// 		return nil
+	// 	}
+
+	// 	for t, rrs := range zrrs {
+	// 		// RRSIGs are not signed and NS records are not signed because we are never authoritative for them.
+	// 		// The zone's apex nameservers records are not kept in this tree and are signed separately.
+	// 		if t == dns.TypeRRSIG || t == dns.TypeNS {
+	// 			continue
+	// 		}
+	// 		for _, pair := range s.keys {
+	// 			rrsig, err := pair.signRRs(rrs, s.origin, rrs[0].Header().Ttl, inception, expiration)
+	// 			if err != nil {
+	// 				return err
+	// 			}
+	// 			e.Insert(rrsig)
+	// 		}
+	// 	}
+	// 	return nil
+	// })
+
+	to_be_signed := [](*[]dns.RR){}
+
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
 		if !auth {
 			return nil
@@ -158,16 +184,34 @@ func (s *Signer) Sign(now time.Time) (*file_nsec5.Zone, error) {
 			if t == dns.TypeRRSIG || t == dns.TypeNS {
 				continue
 			}
-			for _, pair := range s.keys {
-				rrsig, err := pair.signRRs(rrs, s.origin, rrs[0].Header().Ttl, inception, expiration)
-				if err != nil {
-					return err
-				}
-				e.Insert(rrsig)
-			}
+			to_be_signed = append(to_be_signed, &rrs)
 		}
 		return nil
 	})
+
+	wg = sync.WaitGroup{}
+	wg.Add(len(to_be_signed))
+	len_keys := len(s.keys)
+	signatures := make([]*dns.RRSIG, len(to_be_signed)*len_keys)
+
+	for i, x := range to_be_signed {
+		go func(i int, rrs *[]dns.RR) {
+			defer wg.Done()
+			for j, pair := range s.keys {
+				rrsig, err := pair.signRRs(*rrs, s.origin, (*rrs)[0].Header().Ttl, inception, expiration)
+				if err != nil {
+					panic(err)
+				}
+				signatures[i*len_keys+j] = rrsig
+			}
+		}(i, x)
+	}
+
+	wg.Wait()
+
+	for _, x := range signatures {
+		z.Insert(x)
+	}
 
 	for _, x := range proofs {
 		z.Insert(x)
