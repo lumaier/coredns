@@ -283,7 +283,7 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 			if err != nil {
 				return nil, nil, nil, ServerFailure
 			}
-			// 3 7 9
+
 			i := sort.Search(z.N_nsec5s, func(i int) bool {
 				return toBase64(hash) < z.nsec5s[i].Txt[1]
 			})
