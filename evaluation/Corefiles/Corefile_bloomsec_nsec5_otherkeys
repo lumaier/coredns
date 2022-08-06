@@ -1,0 +1,15 @@
+miek.nl {
+    bloomfile_nsec5 ./evaluation/testdata/zonedata/db.miek.nl.signed miek.nl {
+        vrf_keys ./evaluation/testdata/zonedata/vrfkeys_miek.nl.
+    }
+    bloomsec_nsec5 ./evaluation/testdata/zonedata/db.miek.nl {
+        key file ./evaluation/testdata/zonedata/Kmiek.nl.+008+00805
+        directory ./evaluation/testdata/zonedata
+        fp_rate 0.5
+		chunksize 2400
+        vrf_keys ./evaluation/testdata/zonedata/vrfkeys_miek.nl.
+    }
+    errors {
+        stacktrace
+    }
+}
