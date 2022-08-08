@@ -93,15 +93,7 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 			return nil
 		}
 
-		// FIXME: also put NS and SOA in BF?
-		types := e.Types()
-		if e.Name() == s.origin {
-			types = append(types, dns.TypeNS, dns.TypeSOA)
-		} else {
-			types = append(types)
-		}
-
-		n += len(types)
+		n += 1
 		return nil
 	})
 
@@ -111,19 +103,9 @@ func (s *Signer) Sign(now time.Time) (*bloomfile_nsec5.Zone, error) {
 		if !auth {
 			return nil
 		}
-
-		types := e.Types()
-
-		if e.Name() == s.origin {
-			types = append(types, dns.TypeNS, dns.TypeSOA)
-		} else {
-			types = append(types)
-		}
 		nsec5_names = append(nsec5_names, e.Name())
 
-		for _, t := range types {
-			bf.insert([]byte(e.Name() + fmt.Sprint(t)))
-		}
+		bf.insert([]byte(e.Name()))
 		return nil
 	})
 
