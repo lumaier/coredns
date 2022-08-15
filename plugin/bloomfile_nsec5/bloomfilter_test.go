@@ -37,3 +37,17 @@ func TestExtractGlobalIndex(t *testing.T) {
 		t.Errorf("should have been false")
 	}
 }
+
+func TestBytesToBits(t *testing.T) {
+	a := []byte{1, 5}
+	b := []bool{false, false, false, false, false, false, false, true,
+		false, false, false, false, false, true, false, true}
+
+	c := bytesToBits(&a)
+	for i, x := range *c {
+		if x != b[i] {
+			t.Errorf("should be true")
+		}
+	}
+
+}
