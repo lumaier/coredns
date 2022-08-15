@@ -13,12 +13,12 @@ import (
 	"github.com/coredns/coredns/plugin/transfer"
 )
 
-func init() { plugin.Register("file", setup) }
+func init() { plugin.Register("file_nsec3", setup) }
 
 func setup(c *caddy.Controller) error {
 	zones, err := fileParse(c)
 	if err != nil {
-		return plugin.Error("file", err)
+		return plugin.Error("file_nsec3", err)
 	}
 
 	f := File{Zones: zones}
@@ -115,7 +115,7 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 				}
 				d, err := time.ParseDuration(t[0])
 				if err != nil {
-					return Zones{}, plugin.Error("file", err)
+					return Zones{}, plugin.Error("file_nsec3", err)
 				}
 				reload = d
 			case "upstream":
@@ -136,7 +136,7 @@ func fileParse(c *caddy.Controller) (Zones, error) {
 	if openErr != nil {
 		if reload == 0 {
 			// reload hasn't been set make this a fatal error
-			return Zones{}, plugin.Error("file", openErr)
+			return Zones{}, plugin.Error("file_nsec3", openErr)
 		}
 		log.Warningf("Failed to open %q: trying again in %s", openErr, reload)
 

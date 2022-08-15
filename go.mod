@@ -14,6 +14,7 @@ require (
 	github.com/farsightsec/golang-framestream v0.3.0
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645
 	github.com/infobloxopen/go-trees v0.0.0-20200715205103-96a057b8dfb9
+	github.com/jfcg/sorty v1.2.0
 	github.com/matttproud/golang_protobuf_extensions v1.0.1
 	github.com/miekg/dns v1.1.49
 	github.com/opentracing/opentracing-go v1.2.0
@@ -82,7 +83,6 @@ require (
 	github.com/googleapis/gax-go/v2 v2.4.0 // indirect
 	github.com/imdario/mergo v0.3.12 // indirect
 	github.com/jfcg/sixb v1.3.5 // indirect
-	github.com/jfcg/sorty v1.2.0 // indirect
 	github.com/jfcg/sorty/v2 v2.0.8 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect

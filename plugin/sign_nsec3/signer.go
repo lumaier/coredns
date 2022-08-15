@@ -1,21 +1,25 @@
 package sign_nsec3
 
 import (
+	"crypto/sha1"
 	"fmt"
 	"io"
 	"os"
 	"path/filepath"
+	"runtime"
+	"sync"
 	"time"
 
 	"github.com/coredns/coredns/plugin"
 	"github.com/coredns/coredns/plugin/file_nsec3"
 	"github.com/coredns/coredns/plugin/file_nsec3/tree"
 	clog "github.com/coredns/coredns/plugin/pkg/log"
+	"github.com/jfcg/sorty"
 
 	"github.com/miekg/dns"
 )
 
-var log = clog.NewWithPlugin("sign")
+var log = clog.NewWithPlugin("sign_nsec3")
 
 // Signer holds the data needed to sign a zone file.
 type Signer struct {
@@ -28,6 +32,11 @@ type Signer struct {
 
 	signedfile string
 	stop       chan struct{}
+}
+
+type SHA_output struct {
+	domain string
+	hash   string
 }
 
 // Sign signs a zone file according to the parameters in s.
@@ -55,8 +64,7 @@ func (s *Signer) Sign(now time.Time) (*file_nsec3.Zone, error) {
 		z.Insert(pair.Public.ToCDNSKEY())
 	}
 
-	names := names(s.origin, z)
-	ln := len(names)
+	nsec3_names := []string{}
 
 	for _, pair := range s.keys {
 		rrsig, err := pair.signRRs([]dns.RR{z.Apex.SOA}, s.origin, ttl, inception, expiration)
@@ -74,19 +82,65 @@ func (s *Signer) Sign(now time.Time) (*file_nsec3.Zone, error) {
 		}
 	}
 
-	// We are walking the tree in the same direction, so names[] can be used here to indicated the next element.
-	i := 1
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
 		if !auth {
 			return nil
 		}
+		nsec3_names = append(nsec3_names, e.Name())
+		return nil
+	})
 
-		if e.Name() == s.origin {
-			nsec := NSEC(e.Name(), names[(ln+i)%ln], mttl, append(e.Types(), dns.TypeNS, dns.TypeSOA, dns.TypeRRSIG, dns.TypeNSEC))
-			z.Insert(nsec)
-		} else {
-			nsec := NSEC(e.Name(), names[(ln+i)%ln], mttl, append(e.Types(), dns.TypeRRSIG, dns.TypeNSEC))
-			z.Insert(nsec)
+	log.Infof("nr of nsec3 %d", len(nsec3_names))
+
+	//////////////////////////// NSEC5 ///////////////////////////////////////////////////
+
+	// create NSEC5 and NSEC5PROOF
+	nsec3_values := make([]SHA_output, len(nsec3_names)) // holds: vrf hash, vrf proof, domain name
+
+	wg := sync.WaitGroup{}
+	wg.Add(len(nsec3_names))
+
+	for i, name := range nsec3_names {
+		go func(i int, x string) {
+			defer wg.Done()
+			temp := sha1.Sum([]byte(x))
+			nsec3_values[i] = SHA_output{
+				hash:   toBase64(temp[:]),
+				domain: x,
+			}
+		}(i, name)
+	}
+
+	wg.Wait()
+
+	// parallel sort
+	lsw := func(i, k, r, s int) bool {
+		if nsec3_values[i].hash < nsec3_values[k].hash {
+			if r != s {
+				nsec3_values[r], nsec3_values[s] = nsec3_values[s], nsec3_values[r]
+			}
+			return true
+		}
+		return false
+	}
+
+	sorty.Mxg = uint32(runtime.NumCPU())
+	sorty.Sort(len(nsec3_values), lsw)
+
+	length_nsec3 := len(nsec3_values)
+
+	k := 0
+	for i, x := range nsec3_values {
+		r := NSEC3(x.domain, x.hash, nsec3_values[(i+1)%length_nsec3].hash, mttl)
+		z.Insert(r)
+		k++
+	}
+
+	log.Infof("nr of nsec3 inserted %d", k)
+
+	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
+		if !auth {
+			return nil
 		}
 
 		for t, rrs := range zrrs {
@@ -103,7 +157,6 @@ func (s *Signer) Sign(now time.Time) (*file_nsec3.Zone, error) {
 				e.Insert(rrsig)
 			}
 		}
-		i++
 		return nil
 	})
 	return z, err

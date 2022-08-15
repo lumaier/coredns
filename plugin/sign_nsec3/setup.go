@@ -11,12 +11,12 @@ import (
 	"github.com/coredns/coredns/plugin"
 )
 
-func init() { plugin.Register("sign", setup) }
+func init() { plugin.Register("sign_nsec3", setup) }
 
 func setup(c *caddy.Controller) error {
 	sign, err := parse(c)
 	if err != nil {
-		return plugin.Error("sign", err)
+		return plugin.Error("sign_nsec3", err)
 	}
 
 	c.OnStartup(sign.OnStartup)
