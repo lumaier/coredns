@@ -40,6 +40,8 @@ func (z *Zone) Reload(t *transfer.Transfer) error {
 				z.Lock()
 				z.Apex = zone.Apex
 				z.Tree = zone.Tree
+				z.nsec3s = zone.nsec3s
+				z.N_nsec3s = zone.N_nsec3s
 				z.Unlock()
 
 				log.Infof("Successfully reloaded zone %q in %q with %d SOA serial", z.origin, zFile, z.Apex.SOA.Serial)

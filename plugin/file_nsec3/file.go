@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"sort"
 
 	"github.com/coredns/coredns/plugin"
 	clog "github.com/coredns/coredns/plugin/pkg/log"
@@ -14,7 +15,7 @@ import (
 	"github.com/miekg/dns"
 )
 
-var log = clog.NewWithPlugin("file")
+var log = clog.NewWithPlugin("file_nsec3")
 
 type (
 	// File is the plugin that reads zone data from disk.
@@ -155,10 +156,21 @@ func Parse(f io.Reader, origin, fileName string, serial int64) (*Zone, error) {
 		if err := z.Insert(rr); err != nil {
 			return nil, err
 		}
+
+		// check whether it is a bloomfilter chunk, an nsec3
+		if s, ok := rr.(*dns.TXT); ok && (*s).Txt[0] == "nsec3" {
+			z.nsec3s = append(z.nsec3s, s)
+		}
 	}
 	if !seenSOA {
 		return nil, fmt.Errorf("file %q has no SOA record for origin %s", fileName, origin)
 	}
+
+	sort.Slice(z.nsec3s, func(i, j int) bool {
+		return z.nsec3s[i].Txt[1] < z.nsec3s[j].Txt[1]
+	})
+
+	z.N_nsec3s = len(z.nsec3s)
 
 	return z, nil
 }

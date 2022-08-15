@@ -1,7 +1,8 @@
 miek.nl {
-    sign_nsec3 ./plugin/sign_nsec3/testdata3/db.miek.nl {
-        key file ./plugin/sign_nsec3/testdata3/Kmiek.nl.+013+59725
-        directory ./plugin/sign_nsec3/testdata3
+    file_nsec3 ./evaluation/testdata/zonedata/db.miek.nl.signed miek.nl 
+    sign_nsec3 ./evaluation/testdata/zonedata/db.miek.nl {
+        key file ./evaluation/testdata/zonedata/Kmiek.nl.+013+59725
+        directory ./evaluation/testdata/zonedata
     }
     errors {
         stacktrace

@@ -279,13 +279,13 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 			// next-closest encloser denial of existence
 			nce := z.NextClosestEncloser(qname)
 			// find corresponding NSEC5
-			pi, hash, err := z.vrf_privkey.Prove([]byte(nce))
+			pi, temp, err := z.vrf_privkey.Prove([]byte(nce))
 			if err != nil {
 				return nil, nil, nil, ServerFailure
 			}
-
+			hash := toBase64(temp)
 			i := sort.Search(z.N_nsec5s, func(i int) bool {
-				return toBase64(hash) < z.nsec5s[i].Txt[1]
+				return hash < z.nsec5s[i].Txt[1]
 			})
 
 			if i == 0 {

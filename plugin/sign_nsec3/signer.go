@@ -90,8 +90,6 @@ func (s *Signer) Sign(now time.Time) (*file_nsec3.Zone, error) {
 		return nil
 	})
 
-	log.Infof("nr of nsec3 %d", len(nsec3_names))
-
 	//////////////////////////// NSEC5 ///////////////////////////////////////////////////
 
 	// create NSEC5 and NSEC5PROOF
@@ -135,8 +133,6 @@ func (s *Signer) Sign(now time.Time) (*file_nsec3.Zone, error) {
 		z.Insert(r)
 		k++
 	}
-
-	log.Infof("nr of nsec3 inserted %d", k)
 
 	err = z.AuthWalk(func(e *tree.Elem, zrrs map[uint16][]dns.RR, auth bool) error {
 		if !auth {

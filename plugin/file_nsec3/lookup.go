@@ -2,6 +2,8 @@ package file_nsec3
 
 import (
 	"context"
+	"crypto/sha1"
+	"sort"
 
 	"github.com/coredns/coredns/core/dnsserver"
 	"github.com/coredns/coredns/plugin/file_nsec3/rrutil"
@@ -260,32 +262,54 @@ func (z *Zone) Lookup(ctx context.Context, state request.Request, qname string) 
 
 	ret := ap.soa(do)
 	if do {
-		deny, found := tr.Prev(qname)
+		// Proof of existence of closest encloser always done using a NSEC3 record
+		// we omit the wildcard bit handling as this implementation is only for evaluation purposes anyways
+		ce, found := z.ClosestEncloser(qname)
 		if !found {
 			goto Out
 		}
-		nsec := typeFromElem(deny, dns.TypeNSEC, do)
-		ret = append(ret, nsec...)
 
-		if rcode != NameError {
-			goto Out
-		}
+		// there are only TXT records for NSEC3
+		nsec3_ce := typeFromElem(ce, dns.TypeTXT, do)
+		ret = append(ret, nsec3_ce...)
 
-		ce, found := z.ClosestEncloser(qname)
-
-		// wildcard denial only for NXDOMAIN
 		if found {
-			// wildcard denial
-			wildcard := "*." + ce.Name()
-			if ss, found := tr.Prev(wildcard); found {
-				// Only add this nsec if it is different than the one already added
-				if ss.Name() != deny.Name() {
-					nsec := typeFromElem(ss, dns.TypeNSEC, do)
-					ret = append(ret, nsec...)
+			// next-closest encloser denial of existence
+			nce := z.NextClosestEncloser(qname)
+			temp := sha1.Sum([]byte(nce))
+			hash := toBase64(temp[:])
+
+			i := sort.Search(z.N_nsec3s, func(i int) bool {
+				return hash < z.nsec3s[i].Txt[1]
+			})
+
+			if i == 0 {
+				i = z.N_nsec3s - 1
+			} else {
+				i = i - 1
+			}
+			nsec3_nce := z.nsec3s[i%z.N_nsec3s]
+			if !found {
+				goto Out
+			}
+			// Only add this nsec3 and rrsig if it is different than the one already added
+			if nsec3_ce[0].Header().Name != nsec3_nce.Header().Name {
+				deny, found := tr.Prev(nsec3_nce.Header().Name)
+				if !found {
+					goto Out
+				}
+				nsec3 := typeFromElem(deny, dns.TypeTXT, do)
+				for _, x := range nsec3 {
+					if x.Header().Rrtype == dns.TypeRRSIG {
+						ret = append(ret, x)
+					} else if s, ok := x.(*dns.TXT); ok && s.Txt[0] == "nsec3" {
+						ret = append(ret, x)
+					}
 				}
 			}
+		} else {
+			log.Infof("not found")
 		}
-
 	}
 Out:
 	return nil, ret, nil, rcode

@@ -24,6 +24,9 @@ type Zone struct {
 
 	sync.RWMutex
 
+	nsec3s   []*dns.TXT
+	N_nsec3s int
+
 	StartupOnce  sync.Once
 	TransferFrom []string
 
