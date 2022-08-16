@@ -4,7 +4,4 @@ miek.nl {
         key file ./evaluation/testdata/zonedata/Kmiek.nl.+013+59725
         directory ./evaluation/testdata/zonedata
     }
-    errors {
-        stacktrace
-    }
 }
