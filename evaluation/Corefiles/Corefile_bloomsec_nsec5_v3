@@ -5,8 +5,8 @@ miek.nl {
     bloomsec_nsec5 ./evaluation/testdata/zonedata/db.miek.nl {
         key file ./evaluation/testdata/zonedata/Kmiek.nl.+013+59725
         directory ./evaluation/testdata/zonedata
-        fp_rate 0.1
-		chunksize 2400
+        fp_rate 0.01
+		chunksize 3600
         vrf_keys ./evaluation/testdata/zonedata/vrfkeys_miek.nl.
     }
     errors {
