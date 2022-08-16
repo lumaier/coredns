@@ -1,0 +1,16 @@
+;; MSG SIZE  rcvd: 1250
+;; MSG SIZE  rcvd: 1194
+;; MSG SIZE  rcvd: 1248
+;; MSG SIZE  rcvd: 1194
+;; MSG SIZE  rcvd: 1250
+;; MSG SIZE  rcvd: 1194
+;; MSG SIZE  rcvd: 1194
+;; MSG SIZE  rcvd: 1248
+;; MSG SIZE  rcvd: 1194
+;; MSG SIZE  rcvd: 1250
+;; MSG SIZE  rcvd: 1250
+;; MSG SIZE  rcvd: 1194
+;; MSG SIZE  rcvd: 1194
+;; MSG SIZE  rcvd: 1194
+;; MSG SIZE  rcvd: 1250
+;; MSG SIZE  rcvd: 1250

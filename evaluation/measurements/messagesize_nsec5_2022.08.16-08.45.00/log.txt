@@ -1,0 +1,300 @@
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 a.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 49782
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 8, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 34226c65a3a776f2 (echoed)
+;; QUESTION SECTION:
+;a.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632192 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220920210123 20220815135249 59725 miek.nl. 04puOl2XJj5oN45Z3LKufhAopWkSXRpwbehgqgHOoxLzcBtVDft7sUUD SYGFfloMNNI4nCQ0Qj5UYv1LEtoLJg==
+miek.nl.		1800	IN	TXT	"nsec5" "AcIY52BpmxlnoOIxIgqq289Wmou/Pbne0llVE+WMif9leYZ3j5nRzFytdXsAEDJvp5YvqS5Uoy+/Mo6W0ZXzvXLLcFQ3OITbdo6nnb7O8wI=" "AcIbqpY57VtMA3X35OMTGwyMuqHbRkosan8y7B1dDc6X/VF/FP5lwQ63z/RrbQJwv+uRb1WP72+nw/d0a43y0ai5yYOWBrQk8hCMU5Zeqws="
+miek.nl.		1800	IN	TXT	"nsec5proof" "KMeq76fegawHta+/2XQ1Tn4d3SJzvJkrEy3x/uNItE+iFqUbRL4oTwIq7PKrS0tdnuwac+Ik3f9TyMCK83FCww=="
+miek.nl.		1800	IN	RRSIG	TXT 13 2 1800 20220920210123 20220815135249 59725 miek.nl. BH1AaGqLNHjG+Lj8THWN5+lhhc/GOzbQuoLJ8JRSxcHogxVRCw0UU1at iBgdmpKf9o7Iu3PXSwT4/7Jc/np7Ng==
+l6sovpjq5b.miek.nl.	1800	IN	TXT	"nsec5" "bqdl19CTDmIIjscZWfTqMOvfLKsEoyJTpOlRiE/m3Be6q+2LbVE3eDpQ8A9mYiJeJy8ZNeyRD/7aHQi150BwWESvVeJTGNya2l2m5T7b9QU=" "bqhJ8lw0s4plySE5wu1pNT03ehDhWc+eDKWiyL9RvtctAJiopOXlMZsvaLu7d3woVCFOscD4wdpKQDMnOwPBMXD3PcWrUSl4wsWzJWV+sgU="
+l6sovpjq5b.miek.nl.	1800	IN	RRSIG	TXT 13 3 1800 20220920210123 20220815135249 59725 miek.nl. eZUMjss0uIRLgRkjhtNODFmEg4YNnmH1vX1ut/kg+WeRAdV56qv6DTZ2 uT/gp2P3Qx2j1ZkC7u5R6boNGnmvBA==
+a.miek.nl.		1800	IN	TXT	"nsec5proof" "+8I43CTiHxI+lnjDscSNXcQueQrnFZ+P+ax+VRxne5UFfbzqFhgCL6fVYhsMve5I7Anh6ZKpKr+hFphZWs0FLA=="
+
+;; Query time: 4 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:45:00 CEST 2022
+;; MSG SIZE  rcvd: 1194
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 b.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 52280
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 8, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: e9babc571142463a (echoed)
+;; QUESTION SECTION:
+;b.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632192 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220920210123 20220815135249 59725 miek.nl. 04puOl2XJj5oN45Z3LKufhAopWkSXRpwbehgqgHOoxLzcBtVDft7sUUD SYGFfloMNNI4nCQ0Qj5UYv1LEtoLJg==
+miek.nl.		1800	IN	TXT	"nsec5" "AcIY52BpmxlnoOIxIgqq289Wmou/Pbne0llVE+WMif9leYZ3j5nRzFytdXsAEDJvp5YvqS5Uoy+/Mo6W0ZXzvXLLcFQ3OITbdo6nnb7O8wI=" "AcIbqpY57VtMA3X35OMTGwyMuqHbRkosan8y7B1dDc6X/VF/FP5lwQ63z/RrbQJwv+uRb1WP72+nw/d0a43y0ai5yYOWBrQk8hCMU5Zeqws="
+miek.nl.		1800	IN	TXT	"nsec5proof" "KMeq76fegawHta+/2XQ1Tn4d3SJzvJkrEy3x/uNItE+iFqUbRL4oTwIq7PKrS0tdnuwac+Ik3f9TyMCK83FCww=="
+miek.nl.		1800	IN	RRSIG	TXT 13 2 1800 20220920210123 20220815135249 59725 miek.nl. BH1AaGqLNHjG+Lj8THWN5+lhhc/GOzbQuoLJ8JRSxcHogxVRCw0UU1at iBgdmpKf9o7Iu3PXSwT4/7Jc/np7Ng==
+gxzmkz7jfu.miek.nl.	1800	IN	TXT	"nsec5" "z9x8qw3PrxcwzKVbTyzmqsOJTEgZGDG4PcmPa1Fn98i8+hf4BaB7lbLbSKYGc+UdmVtMG9RXpUpUl/C1XgSNvtr6d9wJ9iX2WgCZZ+/AAQo=" "zA5MpNIAmYXD9uDU3mcvy96bEk90iqRHPrM4ZGiScqUvibmRzGkLVscc/lWa/s6wmp/RsatCF3A0Goh/nsf0KeijmS8reQu0cxfS3QWHXAw="
+gxzmkz7jfu.miek.nl.	1800	IN	RRSIG	TXT 13 3 1800 20220920210123 20220815135249 59725 miek.nl. EAQASV0S2CW2MI1Ens6pqNW7XGO1QX3h8zd7racEGxNDEzOP1KpWat9Z wDoslDnma1onsVN8NTQg6aMfDrPNEg==
+b.miek.nl.		1800	IN	TXT	"nsec5proof" "/TgJTKlFPLz/mbLJwtixRRpoEdy65KQy78qVLQv6z9dNvZTH7IzP2IgSsDF5hLQUAyGeEVtFuKRePbTq/UOkJQ=="
+
+;; Query time: 4 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:45:00 CEST 2022
+;; MSG SIZE  rcvd: 1194
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 c.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 9172
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 8, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: e3ffe7d1ed7e6726 (echoed)
+;; QUESTION SECTION:
+;c.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632192 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220920210123 20220815135249 59725 miek.nl. 04puOl2XJj5oN45Z3LKufhAopWkSXRpwbehgqgHOoxLzcBtVDft7sUUD SYGFfloMNNI4nCQ0Qj5UYv1LEtoLJg==
+miek.nl.		1800	IN	TXT	"nsec5" "AcIY52BpmxlnoOIxIgqq289Wmou/Pbne0llVE+WMif9leYZ3j5nRzFytdXsAEDJvp5YvqS5Uoy+/Mo6W0ZXzvXLLcFQ3OITbdo6nnb7O8wI=" "AcIbqpY57VtMA3X35OMTGwyMuqHbRkosan8y7B1dDc6X/VF/FP5lwQ63z/RrbQJwv+uRb1WP72+nw/d0a43y0ai5yYOWBrQk8hCMU5Zeqws="
+miek.nl.		1800	IN	TXT	"nsec5proof" "KMeq76fegawHta+/2XQ1Tn4d3SJzvJkrEy3x/uNItE+iFqUbRL4oTwIq7PKrS0tdnuwac+Ik3f9TyMCK83FCww=="
+miek.nl.		1800	IN	RRSIG	TXT 13 2 1800 20220920210123 20220815135249 59725 miek.nl. BH1AaGqLNHjG+Lj8THWN5+lhhc/GOzbQuoLJ8JRSxcHogxVRCw0UU1at iBgdmpKf9o7Iu3PXSwT4/7Jc/np7Ng==
+52x0oifa2s.miek.nl.	1800	IN	TXT	"nsec5" "uGHgmAry9AeOziV9ir75CXMAkkR4ElZR9pTAOkGwNGC1XayW+Cv20VRSuvXJKVQg7iMaBy/d5C7NSD1vNY/04EstSyA3Ba+P92p5201amws=" "uGPCDHgVguBnx66HtcxzoMjWvMlRZVLHVQje4B4Z9bWUkOJqNv4NE47BATLYoyjhqazlA1ch3MFz2EGPZ3FjO5e2rQCDFTfUISFoRfFlIgE="
+52x0oifa2s.miek.nl.	1800	IN	RRSIG	TXT 13 3 1800 20220920210123 20220815135249 59725 miek.nl. /owwLM7EwTOIYYnc6K3vIw52zrGt+vCO7umP4tFZly+VO5G5k0veCJ4Y JOxbeCrHoBMgJpIhdPfkdx7m+FojDQ==
+c.miek.nl.		1800	IN	TXT	"nsec5proof" "vfwzEmMkc/Nszsy3I9Hb+PM4UxeAo4L0xfmPfisxfydVcdTx0oPVycxgcLHeCDyv4sZTlZ03IvAaxJZLyBeLlw=="
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:45:00 CEST 2022
+;; MSG SIZE  rcvd: 1194
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 d.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 57181
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 8, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 324baf26fce7f8c0 (echoed)
+;; QUESTION SECTION:
+;d.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632192 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220920210123 20220815135249 59725 miek.nl. 04puOl2XJj5oN45Z3LKufhAopWkSXRpwbehgqgHOoxLzcBtVDft7sUUD SYGFfloMNNI4nCQ0Qj5UYv1LEtoLJg==
+miek.nl.		1800	IN	TXT	"nsec5" "AcIY52BpmxlnoOIxIgqq289Wmou/Pbne0llVE+WMif9leYZ3j5nRzFytdXsAEDJvp5YvqS5Uoy+/Mo6W0ZXzvXLLcFQ3OITbdo6nnb7O8wI=" "AcIbqpY57VtMA3X35OMTGwyMuqHbRkosan8y7B1dDc6X/VF/FP5lwQ63z/RrbQJwv+uRb1WP72+nw/d0a43y0ai5yYOWBrQk8hCMU5Zeqws="
+miek.nl.		1800	IN	TXT	"nsec5proof" "KMeq76fegawHta+/2XQ1Tn4d3SJzvJkrEy3x/uNItE+iFqUbRL4oTwIq7PKrS0tdnuwac+Ik3f9TyMCK83FCww=="
+miek.nl.		1800	IN	RRSIG	TXT 13 2 1800 20220920210123 20220815135249 59725 miek.nl. BH1AaGqLNHjG+Lj8THWN5+lhhc/GOzbQuoLJ8JRSxcHogxVRCw0UU1at iBgdmpKf9o7Iu3PXSwT4/7Jc/np7Ng==
+ctgf7r3x74.miek.nl.	1800	IN	TXT	"nsec5" "N7gitLh35L0A5hvKzRf2ebiLZwqfAbVbstnOPwPq6i4XTAsr/MCZvTOG2bQTm0QykFLA/SFw1LaZa6Hw4c32cWpl/m0xKvZ9YjFTuDK90wc=" "N7joTOorqR+hrhxv2sDiE1yqIUS7jOXhW6nrMnfb4Feexcs2FsENOWIUPmRl1fmEt9DVSs3gHCGEhF8XkRboDmhMa6TepgME60qFconeDws="
+ctgf7r3x74.miek.nl.	1800	IN	RRSIG	TXT 13 3 1800 20220920210123 20220815135249 59725 miek.nl. s6YWIBN6C37V5fEPOylWPcV4sEoagK/32z9Zsb0PY7ajsmSv3X+MpwdY ERstW/13HJThOtUSvbX1FBej6cOfUA==
+d.miek.nl.		1800	IN	TXT	"nsec5proof" "ec6aguNBya3WDAjRlY+EIRoub5u6l7Wn4kWpLTAWQfJDpgc6s1CofCmES3cw+vdzhyG1q9Aas1/KFYBk1j3/5Q=="
+
+;; Query time: 4 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:45:00 CEST 2022
+;; MSG SIZE  rcvd: 1194
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 e.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 53230
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 8, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 040b1c492a80cf64 (echoed)
+;; QUESTION SECTION:
+;e.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632192 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220920210123 20220815135249 59725 miek.nl. 04puOl2XJj5oN45Z3LKufhAopWkSXRpwbehgqgHOoxLzcBtVDft7sUUD SYGFfloMNNI4nCQ0Qj5UYv1LEtoLJg==
+miek.nl.		1800	IN	TXT	"nsec5" "AcIY52BpmxlnoOIxIgqq289Wmou/Pbne0llVE+WMif9leYZ3j5nRzFytdXsAEDJvp5YvqS5Uoy+/Mo6W0ZXzvXLLcFQ3OITbdo6nnb7O8wI=" "AcIbqpY57VtMA3X35OMTGwyMuqHbRkosan8y7B1dDc6X/VF/FP5lwQ63z/RrbQJwv+uRb1WP72+nw/d0a43y0ai5yYOWBrQk8hCMU5Zeqws="
+miek.nl.		1800	IN	TXT	"nsec5proof" "KMeq76fegawHta+/2XQ1Tn4d3SJzvJkrEy3x/uNItE+iFqUbRL4oTwIq7PKrS0tdnuwac+Ik3f9TyMCK83FCww=="
+miek.nl.		1800	IN	RRSIG	TXT 13 2 1800 20220920210123 20220815135249 59725 miek.nl. BH1AaGqLNHjG+Lj8THWN5+lhhc/GOzbQuoLJ8JRSxcHogxVRCw0UU1at iBgdmpKf9o7Iu3PXSwT4/7Jc/np7Ng==
+00haksnrz1.miek.nl.	1800	IN	TXT	"nsec5" "ApU3NOWCF+Mn9zYpHdxhxBW4Gmmqoi2K2RxdORhGMhAkMwk4FDDBakpCugjn8mtTBZfHQ4FeQffosNwsVAzvqnezSRBslaE7gqL+UwIbwwc=" "ApV5Bo7H/bb2exC+c9rclvYlz+Z4IIcQxLw3EQN2R79pNLIgNV1vM615tdt4gfVihskbm5HUbsYuXya7CmOhcdkyvtIRqMGtej1Z5OoxAQE="
+00haksnrz1.miek.nl.	1800	IN	RRSIG	TXT 13 3 1800 20220920210123 20220815135249 59725 miek.nl. FiDh2CG6C/Gzm9X0v4a2KQnH+RPmewxRC0pBIvo7QZ36fKioGcEGoOvW likYNjZKdwgrFelFdoGayHlxfkZelQ==
+e.miek.nl.		1800	IN	TXT	"nsec5proof" "eAT27bh4xh2t+UyS0ffoncmlPUg1tjCGYwAADETRo0GXboL147kP66vKxbfidfIUqsepNNuW/3ep3GR/VKx+Ig=="
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:45:00 CEST 2022
+;; MSG SIZE  rcvd: 1194
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 f.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 55302
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 8, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 7dd45906e42370bd (echoed)
+;; QUESTION SECTION:
+;f.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632192 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220920210123 20220815135249 59725 miek.nl. 04puOl2XJj5oN45Z3LKufhAopWkSXRpwbehgqgHOoxLzcBtVDft7sUUD SYGFfloMNNI4nCQ0Qj5UYv1LEtoLJg==
+miek.nl.		1800	IN	TXT	"nsec5" "AcIY52BpmxlnoOIxIgqq289Wmou/Pbne0llVE+WMif9leYZ3j5nRzFytdXsAEDJvp5YvqS5Uoy+/Mo6W0ZXzvXLLcFQ3OITbdo6nnb7O8wI=" "AcIbqpY57VtMA3X35OMTGwyMuqHbRkosan8y7B1dDc6X/VF/FP5lwQ63z/RrbQJwv+uRb1WP72+nw/d0a43y0ai5yYOWBrQk8hCMU5Zeqws="
+miek.nl.		1800	IN	TXT	"nsec5proof" "KMeq76fegawHta+/2XQ1Tn4d3SJzvJkrEy3x/uNItE+iFqUbRL4oTwIq7PKrS0tdnuwac+Ik3f9TyMCK83FCww=="
+miek.nl.		1800	IN	RRSIG	TXT 13 2 1800 20220920210123 20220815135249 59725 miek.nl. BH1AaGqLNHjG+Lj8THWN5+lhhc/GOzbQuoLJ8JRSxcHogxVRCw0UU1at iBgdmpKf9o7Iu3PXSwT4/7Jc/np7Ng==
+upjrylowmp.miek.nl.	1800	IN	TXT	"nsec5" "zQmHHZNJ+74WjLCRT2YXOWuPnWr4MdJ9vQdeVA1oozjS3Dp/OctV8m+ihiX0r8EYQlfZe5vAzN26bJiUyqaQA5Nlot8VXC5q0tL/ZYAk1Qs=" "zQoQ3blUj35NgDjS17tLfoFmaSwAaGw7ZUkAeV8Ozc5j7XE1EidgGHp+Quk6AJz59WP7GmGO01A2U8JfERz7QKNTqLzheO/711dfIVj9HQo="
+upjrylowmp.miek.nl.	1800	IN	RRSIG	TXT 13 3 1800 20220920210123 20220815135249 59725 miek.nl. YuW8mnSHhcKF0FU1gpJdP9K3zQad0l4kwudA1X4L8f76h5G4l78lrpfg ezws+m3fu82+TfLJtck/DpFJTR4ZBQ==
+f.miek.nl.		1800	IN	TXT	"nsec5proof" "w+iMrk4VmDu80uQfUeLVnLRhmbk6RDop/uuS/Zoq+sanhlmUpKNJwdZEL+4Vdbrnmtl4+BLioalN8ephhAJkUg=="
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:45:00 CEST 2022
+;; MSG SIZE  rcvd: 1194
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 g.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 17997
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 8, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: f6a79de6e1beb1f8 (echoed)
+;; QUESTION SECTION:
+;g.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632192 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220920210123 20220815135249 59725 miek.nl. 04puOl2XJj5oN45Z3LKufhAopWkSXRpwbehgqgHOoxLzcBtVDft7sUUD SYGFfloMNNI4nCQ0Qj5UYv1LEtoLJg==
+miek.nl.		1800	IN	TXT	"nsec5" "AcIY52BpmxlnoOIxIgqq289Wmou/Pbne0llVE+WMif9leYZ3j5nRzFytdXsAEDJvp5YvqS5Uoy+/Mo6W0ZXzvXLLcFQ3OITbdo6nnb7O8wI=" "AcIbqpY57VtMA3X35OMTGwyMuqHbRkosan8y7B1dDc6X/VF/FP5lwQ63z/RrbQJwv+uRb1WP72+nw/d0a43y0ai5yYOWBrQk8hCMU5Zeqws="
+miek.nl.		1800	IN	TXT	"nsec5proof" "KMeq76fegawHta+/2XQ1Tn4d3SJzvJkrEy3x/uNItE+iFqUbRL4oTwIq7PKrS0tdnuwac+Ik3f9TyMCK83FCww=="
+miek.nl.		1800	IN	RRSIG	TXT 13 2 1800 20220920210123 20220815135249 59725 miek.nl. BH1AaGqLNHjG+Lj8THWN5+lhhc/GOzbQuoLJ8JRSxcHogxVRCw0UU1at iBgdmpKf9o7Iu3PXSwT4/7Jc/np7Ng==
+96pfun0a6v.miek.nl.	1800	IN	TXT	"nsec5" "/kYObbk4k1kFtFkE72LFcOjbMLxqptrzIVBwBu6eM9socKNCvsAdFuv8L3LIFt5BUy6RfJGAh8xHPlNSWcKmTpWE/ZXROMif1hGwT7tewws=" "/kZLQuwfMpWTAMgLczcdaMCWqPhRuBwxWePPsxf7czDbpyVUFnYBxHyiy8dFRnFLbypGl4yMGNj2MNefb7UDcbFSmsCsigWrFQXJfnvWJQ8="
+96pfun0a6v.miek.nl.	1800	IN	RRSIG	TXT 13 3 1800 20220920210123 20220815135249 59725 miek.nl. 5QB0cnGk29PCzPpf/bmZ3yqkUdwdhRjiBVrar15l5sxTfVjBv6yW7mmy VsMXJE6FLPSOfEHI9UAVyfSLKuQFFg==
+g.miek.nl.		1800	IN	TXT	"nsec5proof" "E4XSvm4T9gVet5W8D0mIufgzFtZyzn0QEqiLLWkiZ5fpX0dsicQqs9Yh5v5ctNqkEdZjx8nuJ0AbrFTGlb2mjw=="
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:45:00 CEST 2022
+;; MSG SIZE  rcvd: 1194
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 h.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 32593
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 8, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 1a74ae7668358034 (echoed)
+;; QUESTION SECTION:
+;h.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632192 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220920210123 20220815135249 59725 miek.nl. 04puOl2XJj5oN45Z3LKufhAopWkSXRpwbehgqgHOoxLzcBtVDft7sUUD SYGFfloMNNI4nCQ0Qj5UYv1LEtoLJg==
+miek.nl.		1800	IN	TXT	"nsec5" "AcIY52BpmxlnoOIxIgqq289Wmou/Pbne0llVE+WMif9leYZ3j5nRzFytdXsAEDJvp5YvqS5Uoy+/Mo6W0ZXzvXLLcFQ3OITbdo6nnb7O8wI=" "AcIbqpY57VtMA3X35OMTGwyMuqHbRkosan8y7B1dDc6X/VF/FP5lwQ63z/RrbQJwv+uRb1WP72+nw/d0a43y0ai5yYOWBrQk8hCMU5Zeqws="
+miek.nl.		1800	IN	TXT	"nsec5proof" "KMeq76fegawHta+/2XQ1Tn4d3SJzvJkrEy3x/uNItE+iFqUbRL4oTwIq7PKrS0tdnuwac+Ik3f9TyMCK83FCww=="
+miek.nl.		1800	IN	RRSIG	TXT 13 2 1800 20220920210123 20220815135249 59725 miek.nl. BH1AaGqLNHjG+Lj8THWN5+lhhc/GOzbQuoLJ8JRSxcHogxVRCw0UU1at iBgdmpKf9o7Iu3PXSwT4/7Jc/np7Ng==
+lralmwhhy0.miek.nl.	1800	IN	TXT	"nsec5" "WIvq0JqoIrntI/PhcdojFsuv80ktV3qANxFkHX9/ZJKk2RNviMMeVDADC70NYARUH6TizxcxiXlm2cdc1Es9aqiz4fEC4eRdqmw8CRCA8AY=" "WIzArREJE+1cR7JBaE+tsm+c/89s3KGX/lYq8q6lhKRDFTibrq+xxT4SbqILq4UbhuNs8K2crEkjaWjBwFk14KzCyo6qhe+rkdspcQv7rg0="
+lralmwhhy0.miek.nl.	1800	IN	RRSIG	TXT 13 3 1800 20220920210123 20220815135249 59725 miek.nl. vv/WR6vnsN2j3yG1QXlmVK4590aWm6NkN4AuRFij5bs3yPxuvGviDna9 Sbpt6+k0G9MLYPFKrKXbRgiDmS+tUA==
+h.miek.nl.		1800	IN	TXT	"nsec5proof" "cHzi6UDwz/k3bp431WqFjroKguNRB9afP5DhANMqBsv1pU773JsaXukbGZTatR/Xwha0EK7bdx0vYMZA89V/dg=="
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:45:00 CEST 2022
+;; MSG SIZE  rcvd: 1194
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 i.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 25928
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 8, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 5d60bcec20f8e0b3 (echoed)
+;; QUESTION SECTION:
+;i.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632192 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220920210123 20220815135249 59725 miek.nl. 04puOl2XJj5oN45Z3LKufhAopWkSXRpwbehgqgHOoxLzcBtVDft7sUUD SYGFfloMNNI4nCQ0Qj5UYv1LEtoLJg==
+miek.nl.		1800	IN	TXT	"nsec5" "AcIY52BpmxlnoOIxIgqq289Wmou/Pbne0llVE+WMif9leYZ3j5nRzFytdXsAEDJvp5YvqS5Uoy+/Mo6W0ZXzvXLLcFQ3OITbdo6nnb7O8wI=" "AcIbqpY57VtMA3X35OMTGwyMuqHbRkosan8y7B1dDc6X/VF/FP5lwQ63z/RrbQJwv+uRb1WP72+nw/d0a43y0ai5yYOWBrQk8hCMU5Zeqws="
+miek.nl.		1800	IN	TXT	"nsec5proof" "KMeq76fegawHta+/2XQ1Tn4d3SJzvJkrEy3x/uNItE+iFqUbRL4oTwIq7PKrS0tdnuwac+Ik3f9TyMCK83FCww=="
+miek.nl.		1800	IN	RRSIG	TXT 13 2 1800 20220920210123 20220815135249 59725 miek.nl. BH1AaGqLNHjG+Lj8THWN5+lhhc/GOzbQuoLJ8JRSxcHogxVRCw0UU1at iBgdmpKf9o7Iu3PXSwT4/7Jc/np7Ng==
+rbndw4jfrk.miek.nl.	1800	IN	TXT	"nsec5" "NfhFJMcaKHiW7CLHymxHYwh3enfevN3qFBoSV/dZNpWmvsCMR7fBL7a4CQkJBt6r0uE+h7C+p2K3DzER9/47wv7zbYtkv8+Qi/FbLkONfAY=" "NfkYdeByq+Zy/WUvZqIwMkMrXjR6T6sOj1EB/ghpc1jvPIaAMfghQeNk9usAbwaeFJ/P1XstEwMMWuA8OYjuetX7jO8qrjIxBRPIAaTnxg4="
+rbndw4jfrk.miek.nl.	1800	IN	RRSIG	TXT 13 3 1800 20220920210123 20220815135249 59725 miek.nl. cYMS43IAQpeQRsbAecsHMT/+/FlL6H2NHsV7K7JRMhttiDjE7AdyzGUm sHT7mxYshXdifAVj4fs4bFjXSm77sg==
+i.miek.nl.		1800	IN	TXT	"nsec5proof" "rE2eVKKuQxv5qk5CmKLqYqgG7nfa4+KuSW0y1DG761cEYfdqH+kOGJct1JC1W9ashXKBpPa2sVR5sD/9+/xf6g=="
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:45:00 CEST 2022
+;; MSG SIZE  rcvd: 1194
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 j.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 636
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 8, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 1df77e5976e5724b (echoed)
+;; QUESTION SECTION:
+;j.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632192 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220920210123 20220815135249 59725 miek.nl. 04puOl2XJj5oN45Z3LKufhAopWkSXRpwbehgqgHOoxLzcBtVDft7sUUD SYGFfloMNNI4nCQ0Qj5UYv1LEtoLJg==
+miek.nl.		1800	IN	TXT	"nsec5" "AcIY52BpmxlnoOIxIgqq289Wmou/Pbne0llVE+WMif9leYZ3j5nRzFytdXsAEDJvp5YvqS5Uoy+/Mo6W0ZXzvXLLcFQ3OITbdo6nnb7O8wI=" "AcIbqpY57VtMA3X35OMTGwyMuqHbRkosan8y7B1dDc6X/VF/FP5lwQ63z/RrbQJwv+uRb1WP72+nw/d0a43y0ai5yYOWBrQk8hCMU5Zeqws="
+miek.nl.		1800	IN	TXT	"nsec5proof" "KMeq76fegawHta+/2XQ1Tn4d3SJzvJkrEy3x/uNItE+iFqUbRL4oTwIq7PKrS0tdnuwac+Ik3f9TyMCK83FCww=="
+miek.nl.		1800	IN	RRSIG	TXT 13 2 1800 20220920210123 20220815135249 59725 miek.nl. BH1AaGqLNHjG+Lj8THWN5+lhhc/GOzbQuoLJ8JRSxcHogxVRCw0UU1at iBgdmpKf9o7Iu3PXSwT4/7Jc/np7Ng==
+y9n4uezrvn.miek.nl.	1800	IN	TXT	"nsec5" "ZJDEOkHXB4D8MMS/UewnaNLAfv5x0+3+PpPSBp/UZmYjQ40EB/BsOSHVfvpjBMTwUFdOtcqCi1xgI9IRrRaanCBIn2/Fvy0AoRcHSbRlSgI=" "ZJLyU1DvKALC5frWGtGgOPEOZTd9/MSR10QggN9ZGE0hTTEzNuC2xc9/7bTGT587Rp1g4NRO/cybeL3M3sUAekEoS7XPYZP+UPYcyPXvXQU="
+y9n4uezrvn.miek.nl.	1800	IN	RRSIG	TXT 13 3 1800 20220920210123 20220815135249 59725 miek.nl. yRxNYD/5JZREqPukXkgrBT0t9UGb9fZmKUYSk0gYaCFr9KaJqiYQbSW7 Gpc9LIW68H0Mc2OpJwc10g9NawUaOg==
+j.miek.nl.		1800	IN	TXT	"nsec5proof" "ojphJVhp/d2kXJsYyeS5x8lXhlZj/pOw0bMvLGImtn8l9iO3q5tmvsoMY78V/5HlpBuJlW8awEh7mey92PN+wQ=="
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:45:00 CEST 2022
+;; MSG SIZE  rcvd: 1194
+

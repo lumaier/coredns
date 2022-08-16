@@ -1,17 +1,31 @@
-NAMES="ethz.ch
-google.ch
-kk.migros.ch
-ashdlkjafl.ch"
+NAMES="a
+b
+c
+d
+e
+f
+g
+h
+i
+j
+k
+l
+m
+n
+o
+p"
 
 current_time=$(date "+%Y.%m.%d-%H.%M.%S")
 
-filename="messagesize".$current_time".txt"
+dir="./measurements/messagesize_"$1_$current_time
+mkdir $dir
+filename=$dir"/msgsize.txt"
 touch $filename
-temp="temp.txt"
+temp=$dir"/log.txt"
 touch $temp
 
 host=localhost
-port=53
+port=1054
 
 while getopts h:p: flag
 do
@@ -23,9 +37,7 @@ done
 
 for name in $NAMES
 do 
-    dig @$host -p$port $name +dnssec | tee -a $temp
+    dig @$host -p$port $name".miek.nl" +dnssec | tee -a $temp
 done
 
 grep "MSG SIZE" $temp | tee -a $filename
-
-rm -f $temp

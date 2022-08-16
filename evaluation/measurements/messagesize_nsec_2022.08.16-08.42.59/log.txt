@@ -1,0 +1,280 @@
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 a.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 10860
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 9ed702899435a814 (echoed)
+;; QUESTION SECTION:
+;a.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632114 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220921003934 20220815185027 59725 miek.nl. EcTGCRiKYgiY4dNyfIi1FAe2BO6LZ1uP+H33TOuukc6Kng3s8bwmtpH2 zMeGFjRayIgEuA9NmIGBVohcqPJiyA==
+9zzm1h608h.miek.nl.	14400	IN	NSEC	a006nlel92.miek.nl. A RRSIG NSEC
+9zzm1h608h.miek.nl.	14400	IN	RRSIG	NSEC 13 3 14400 20220921003934 20220815185027 59725 miek.nl. otDJ3Be7QFEVlbRjbHRpv/QYzPsv78bW7HCp8nW8J2CoJ8TZHoQ7/Vdg KRuve41fGs+ywBEpJVV/0id7qWISSA==
+miek.nl.		14400	IN	NSEC	0006lgjqoc.miek.nl. NS SOA RRSIG NSEC DNSKEY CDS CDNSKEY
+miek.nl.		14400	IN	RRSIG	NSEC 13 2 14400 20220921003934 20220815185027 59725 miek.nl. pwh7ddOrPWZtjHqWUDd2A9HrAQrereR19jwruO/steVG/ALa9SyVMVH3 lpO4hWA8GBLr8Sh7J7A5rkbJ6736cA==
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:42:59 CEST 2022
+;; MSG SIZE  rcvd: 564
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 b.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 1670
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 6594738f538ffb84 (echoed)
+;; QUESTION SECTION:
+;b.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632114 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220921003934 20220815185027 59725 miek.nl. EcTGCRiKYgiY4dNyfIi1FAe2BO6LZ1uP+H33TOuukc6Kng3s8bwmtpH2 zMeGFjRayIgEuA9NmIGBVohcqPJiyA==
+azzzc6i1mc.miek.nl.	14400	IN	NSEC	b00vdn9bzp.miek.nl. A RRSIG NSEC
+azzzc6i1mc.miek.nl.	14400	IN	RRSIG	NSEC 13 3 14400 20220921003934 20220815185027 59725 miek.nl. mM8VFvKEaNZ3YRn64TYiTiEcPq9wN7LkyZZ2PNx/Ngf/YFucN1jf2dNu +HzV5rkrjF1tsa3fwFnnB8xMsnBN+A==
+miek.nl.		14400	IN	NSEC	0006lgjqoc.miek.nl. NS SOA RRSIG NSEC DNSKEY CDS CDNSKEY
+miek.nl.		14400	IN	RRSIG	NSEC 13 2 14400 20220921003934 20220815185027 59725 miek.nl. pwh7ddOrPWZtjHqWUDd2A9HrAQrereR19jwruO/steVG/ALa9SyVMVH3 lpO4hWA8GBLr8Sh7J7A5rkbJ6736cA==
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:42:59 CEST 2022
+;; MSG SIZE  rcvd: 564
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 c.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 59852
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 5670a80ebfb72a8c (echoed)
+;; QUESTION SECTION:
+;c.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632114 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220921003934 20220815185027 59725 miek.nl. EcTGCRiKYgiY4dNyfIi1FAe2BO6LZ1uP+H33TOuukc6Kng3s8bwmtpH2 zMeGFjRayIgEuA9NmIGBVohcqPJiyA==
+bzzo4y79eg.miek.nl.	14400	IN	NSEC	c00d0jsqyb.miek.nl. A RRSIG NSEC
+bzzo4y79eg.miek.nl.	14400	IN	RRSIG	NSEC 13 3 14400 20220921003934 20220815185027 59725 miek.nl. xBuKZINHt5NH2Tf/b5N5e87h4EJYCIc8t0Of8SFBt+T7w/CTfCfEIaHL YZwTG3+X1zAzA1O8bHRlntM9r9RyHg==
+miek.nl.		14400	IN	NSEC	0006lgjqoc.miek.nl. NS SOA RRSIG NSEC DNSKEY CDS CDNSKEY
+miek.nl.		14400	IN	RRSIG	NSEC 13 2 14400 20220921003934 20220815185027 59725 miek.nl. pwh7ddOrPWZtjHqWUDd2A9HrAQrereR19jwruO/steVG/ALa9SyVMVH3 lpO4hWA8GBLr8Sh7J7A5rkbJ6736cA==
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:42:59 CEST 2022
+;; MSG SIZE  rcvd: 564
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 d.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 28562
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: e758940ad74c1c42 (echoed)
+;; QUESTION SECTION:
+;d.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632114 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220921003934 20220815185027 59725 miek.nl. EcTGCRiKYgiY4dNyfIi1FAe2BO6LZ1uP+H33TOuukc6Kng3s8bwmtpH2 zMeGFjRayIgEuA9NmIGBVohcqPJiyA==
+czzu16tasf.miek.nl.	14400	IN	NSEC	d0067tm2b9.miek.nl. A RRSIG NSEC
+czzu16tasf.miek.nl.	14400	IN	RRSIG	NSEC 13 3 14400 20220921003934 20220815185027 59725 miek.nl. lQARPrMUJCS9cFo3onVYJl1tqDfWfxsXZmEVswqO1Vcn03PYls2t73ks NTJRb8Gn40Q8yUxXYIlBSD/Xu2ZDVA==
+miek.nl.		14400	IN	NSEC	0006lgjqoc.miek.nl. NS SOA RRSIG NSEC DNSKEY CDS CDNSKEY
+miek.nl.		14400	IN	RRSIG	NSEC 13 2 14400 20220921003934 20220815185027 59725 miek.nl. pwh7ddOrPWZtjHqWUDd2A9HrAQrereR19jwruO/steVG/ALa9SyVMVH3 lpO4hWA8GBLr8Sh7J7A5rkbJ6736cA==
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:42:59 CEST 2022
+;; MSG SIZE  rcvd: 564
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 e.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 8564
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 0d92bbd3a95ecf5e (echoed)
+;; QUESTION SECTION:
+;e.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632114 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220921003934 20220815185027 59725 miek.nl. EcTGCRiKYgiY4dNyfIi1FAe2BO6LZ1uP+H33TOuukc6Kng3s8bwmtpH2 zMeGFjRayIgEuA9NmIGBVohcqPJiyA==
+dzzhp791q2.miek.nl.	14400	IN	NSEC	e006ccb3bu.miek.nl. A RRSIG NSEC
+dzzhp791q2.miek.nl.	14400	IN	RRSIG	NSEC 13 3 14400 20220921003934 20220815185027 59725 miek.nl. TVLYRNvZeucmK4p0t2/dgOOMeJuVDZT8QgHxDXUy21tt3xcvgerjEWpJ JWwe/evtZplhYGCsTUOXtkv6MCkvQg==
+miek.nl.		14400	IN	NSEC	0006lgjqoc.miek.nl. NS SOA RRSIG NSEC DNSKEY CDS CDNSKEY
+miek.nl.		14400	IN	RRSIG	NSEC 13 2 14400 20220921003934 20220815185027 59725 miek.nl. pwh7ddOrPWZtjHqWUDd2A9HrAQrereR19jwruO/steVG/ALa9SyVMVH3 lpO4hWA8GBLr8Sh7J7A5rkbJ6736cA==
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:42:59 CEST 2022
+;; MSG SIZE  rcvd: 564
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 f.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 54547
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 9242388c8f4db012 (echoed)
+;; QUESTION SECTION:
+;f.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632114 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220921003934 20220815185027 59725 miek.nl. EcTGCRiKYgiY4dNyfIi1FAe2BO6LZ1uP+H33TOuukc6Kng3s8bwmtpH2 zMeGFjRayIgEuA9NmIGBVohcqPJiyA==
+ezzyd0pwgq.miek.nl.	14400	IN	NSEC	f004x5hlw2.miek.nl. A RRSIG NSEC
+ezzyd0pwgq.miek.nl.	14400	IN	RRSIG	NSEC 13 3 14400 20220921003934 20220815185027 59725 miek.nl. idVz7CGkDeAFzCZzXdOaLTzsq/82/+RqJgBJTd240CGxBETGJ6Xw6W1N 9UUWQMlM/QhBCgGjmPJTQNoXmouDlg==
+miek.nl.		14400	IN	NSEC	0006lgjqoc.miek.nl. NS SOA RRSIG NSEC DNSKEY CDS CDNSKEY
+miek.nl.		14400	IN	RRSIG	NSEC 13 2 14400 20220921003934 20220815185027 59725 miek.nl. pwh7ddOrPWZtjHqWUDd2A9HrAQrereR19jwruO/steVG/ALa9SyVMVH3 lpO4hWA8GBLr8Sh7J7A5rkbJ6736cA==
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:42:59 CEST 2022
+;; MSG SIZE  rcvd: 564
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 g.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 22600
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: cf1b58f2a3279244 (echoed)
+;; QUESTION SECTION:
+;g.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632114 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220921003934 20220815185027 59725 miek.nl. EcTGCRiKYgiY4dNyfIi1FAe2BO6LZ1uP+H33TOuukc6Kng3s8bwmtpH2 zMeGFjRayIgEuA9NmIGBVohcqPJiyA==
+fzzekca7ca.miek.nl.	14400	IN	NSEC	g003fxfag0.miek.nl. A RRSIG NSEC
+fzzekca7ca.miek.nl.	14400	IN	RRSIG	NSEC 13 3 14400 20220921003934 20220815185027 59725 miek.nl. KyIG7p9nRNOKzyJZEkAJF1s4kleUy6Ki2zjAf1w5KPOjQH8XnxZ2mE9V X3fNrMVnXD12zSlvZJ84D2Wltpvvog==
+miek.nl.		14400	IN	NSEC	0006lgjqoc.miek.nl. NS SOA RRSIG NSEC DNSKEY CDS CDNSKEY
+miek.nl.		14400	IN	RRSIG	NSEC 13 2 14400 20220921003934 20220815185027 59725 miek.nl. pwh7ddOrPWZtjHqWUDd2A9HrAQrereR19jwruO/steVG/ALa9SyVMVH3 lpO4hWA8GBLr8Sh7J7A5rkbJ6736cA==
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:42:59 CEST 2022
+;; MSG SIZE  rcvd: 564
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 h.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 60223
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 703bd6944d452ec7 (echoed)
+;; QUESTION SECTION:
+;h.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632114 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220921003934 20220815185027 59725 miek.nl. EcTGCRiKYgiY4dNyfIi1FAe2BO6LZ1uP+H33TOuukc6Kng3s8bwmtpH2 zMeGFjRayIgEuA9NmIGBVohcqPJiyA==
+gzz0r9fmo4.miek.nl.	14400	IN	NSEC	h00iwwch3e.miek.nl. A RRSIG NSEC
+gzz0r9fmo4.miek.nl.	14400	IN	RRSIG	NSEC 13 3 14400 20220921003934 20220815185027 59725 miek.nl. Kj81EENZs+5woJ4lgSVtsPgZZI+mE468zKPsP/xmyGAepQLYaGb1/6iE RjhpZLObURDXXw6w8rWCE22hmUPozQ==
+miek.nl.		14400	IN	NSEC	0006lgjqoc.miek.nl. NS SOA RRSIG NSEC DNSKEY CDS CDNSKEY
+miek.nl.		14400	IN	RRSIG	NSEC 13 2 14400 20220921003934 20220815185027 59725 miek.nl. pwh7ddOrPWZtjHqWUDd2A9HrAQrereR19jwruO/steVG/ALa9SyVMVH3 lpO4hWA8GBLr8Sh7J7A5rkbJ6736cA==
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:42:59 CEST 2022
+;; MSG SIZE  rcvd: 564
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 i.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 7022
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: aa8174e2991fb4bd (echoed)
+;; QUESTION SECTION:
+;i.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632114 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220921003934 20220815185027 59725 miek.nl. EcTGCRiKYgiY4dNyfIi1FAe2BO6LZ1uP+H33TOuukc6Kng3s8bwmtpH2 zMeGFjRayIgEuA9NmIGBVohcqPJiyA==
+hzzzmfzrf2.miek.nl.	14400	IN	NSEC	i00jqbm2jw.miek.nl. A RRSIG NSEC
+hzzzmfzrf2.miek.nl.	14400	IN	RRSIG	NSEC 13 3 14400 20220921003934 20220815185027 59725 miek.nl. Y5E5ItVJXGhAqq8+9RbN1rjHTWjsycclCxA18tmDA6VbCU/6KBOVQZt3 tv2YyWnxtXmJDiHyvn9qFz1eE6shNQ==
+miek.nl.		14400	IN	NSEC	0006lgjqoc.miek.nl. NS SOA RRSIG NSEC DNSKEY CDS CDNSKEY
+miek.nl.		14400	IN	RRSIG	NSEC 13 2 14400 20220921003934 20220815185027 59725 miek.nl. pwh7ddOrPWZtjHqWUDd2A9HrAQrereR19jwruO/steVG/ALa9SyVMVH3 lpO4hWA8GBLr8Sh7J7A5rkbJ6736cA==
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:42:59 CEST 2022
+;; MSG SIZE  rcvd: 564
+
+
+; <<>> DiG 9.16.1-Ubuntu <<>> @localhost -p1054 j.miek.nl +dnssec
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 16654
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 1b0fff303f504b1d (echoed)
+;; QUESTION SECTION:
+;j.miek.nl.			IN	A
+
+;; AUTHORITY SECTION:
+miek.nl.		1800	IN	SOA	ns1.miek.nl. miek.miek.nl. 1660632114 14400 3600 604800 14400
+miek.nl.		1800	IN	RRSIG	SOA 13 2 1800 20220921003934 20220815185027 59725 miek.nl. EcTGCRiKYgiY4dNyfIi1FAe2BO6LZ1uP+H33TOuukc6Kng3s8bwmtpH2 zMeGFjRayIgEuA9NmIGBVohcqPJiyA==
+izzledz2j8.miek.nl.	14400	IN	NSEC	j009npi9ax.miek.nl. A RRSIG NSEC
+izzledz2j8.miek.nl.	14400	IN	RRSIG	NSEC 13 3 14400 20220921003934 20220815185027 59725 miek.nl. mekJiMKrOeyESCZKmaEmVM45UxXWC/Irae74QEIn0wDS+1TEJWyQ3OSU zyGcSXxvrSIr+0K6ghlbQmmG1juHFw==
+miek.nl.		14400	IN	NSEC	0006lgjqoc.miek.nl. NS SOA RRSIG NSEC DNSKEY CDS CDNSKEY
+miek.nl.		14400	IN	RRSIG	NSEC 13 2 14400 20220921003934 20220815185027 59725 miek.nl. pwh7ddOrPWZtjHqWUDd2A9HrAQrereR19jwruO/steVG/ALa9SyVMVH3 lpO4hWA8GBLr8Sh7J7A5rkbJ6736cA==
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1054(127.0.0.1)
+;; WHEN: Di Aug 16 08:42:59 CEST 2022
+;; MSG SIZE  rcvd: 564
+
