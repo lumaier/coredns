@@ -9,7 +9,4 @@ miek.nl {
 		chunksize 3600
         vrf_keys ./evaluation/testdata/zonedata/vrfkeys_miek.nl.
     }
-    errors {
-        stacktrace
-    }
 }

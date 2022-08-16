@@ -1,6 +1,3 @@
 miek.nl {
     file ./evaluation/testdata/zonedata/db.miek.nl miek.nl
-    errors {
-        stacktrace
-    }
 }

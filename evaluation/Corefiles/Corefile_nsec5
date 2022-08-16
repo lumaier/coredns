@@ -7,7 +7,4 @@ miek.nl {
         directory ./evaluation/testdata/zonedata
         vrf_keys ./evaluation/testdata/zonedata/vrfkeys_miek.nl.
     }
-    errors {
-        stacktrace
-    }
 }
