@@ -1,0 +1,6 @@
+$TTL    30M
+$ORIGIN miek.nl.
+@       IN      SOA     ns1 miek.miek.nl. ( 1282630060 4H 1H 7D 4H )
+ob8qzvoedf	IN	A	10.37.233.86
+yyvon7evqi	IN	A	10.233.190.205
+kjjes4nc1c	IN	A	10.145.160.165
