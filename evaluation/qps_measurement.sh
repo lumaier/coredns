@@ -20,4 +20,9 @@ done
 filtered=$evaldir"/qps.txt"
 touch $filtered
 
+out=$evaldir"/pretty_qps.txt"
+touch $out
+
 grep 'Queries per second\|Average Latency\|Latency StdDev\|Response codes' $temp | tee -a $filtered
+
+grep 'Queries per second' $filtered | cut -c25- | tee -a $out
