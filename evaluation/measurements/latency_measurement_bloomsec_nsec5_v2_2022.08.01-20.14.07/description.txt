@@ -1,2 +1,0 @@
-1000 qps
-zone of 2'500'000 domain names
