@@ -1,9 +1,9 @@
-MAX_QPS=40000
+MAX_QPS=64000
 NR_CLIENTS=24
-NS_IP=129.132.85.126
+NS_IP=167.71.45.171
 # NS_IP=127.0.0.1
 PORT=1054
-TIME_RUN=10
+TIME_RUN=5
 
 current_time=$(date "+%Y.%m.%d-%H.%M.%S")
 evaldir=./measurements/qps_measurement_$1_$current_time
