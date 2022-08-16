@@ -1,0 +1,192 @@
+  Response codes:       SERVFAIL 20000 (100.00%)
+  Queries per second:   1999.977600
+  Average Latency (s):  0.000206 (min 0.000144, max 0.002836)
+  Latency StdDev (s):   0.000064
+  Response codes:       SERVFAIL 40000 (100.00%)
+  Queries per second:   3999.959600
+  Average Latency (s):  0.000181 (min 0.000135, max 0.006120)
+  Latency StdDev (s):   0.000135
+  Response codes:       SERVFAIL 60000 (100.00%)
+  Queries per second:   5999.929801
+  Average Latency (s):  0.000201 (min 0.000124, max 0.020781)
+  Latency StdDev (s):   0.000584
+  Response codes:       SERVFAIL 80000 (100.00%)
+  Queries per second:   7999.906401
+  Average Latency (s):  0.000181 (min 0.000127, max 0.008968)
+  Latency StdDev (s):   0.000193
+  Response codes:       SERVFAIL 100000 (100.00%)
+  Queries per second:   9999.857002
+  Average Latency (s):  0.000182 (min 0.000124, max 0.009894)
+  Latency StdDev (s):   0.000262
+  Response codes:       SERVFAIL 120000 (100.00%)
+  Queries per second:   11999.805603
+  Average Latency (s):  0.000169 (min 0.000116, max 0.008699)
+  Latency StdDev (s):   0.000182
+  Response codes:       SERVFAIL 140000 (100.00%)
+  Queries per second:   13999.762004
+  Average Latency (s):  0.000190 (min 0.000122, max 0.012418)
+  Latency StdDev (s):   0.000370
+  Response codes:       SERVFAIL 160000 (100.00%)
+  Queries per second:   15999.721605
+  Average Latency (s):  0.000170 (min 0.000109, max 0.007044)
+  Latency StdDev (s):   0.000171
+  Response codes:       SERVFAIL 179997 (100.00%)
+  Queries per second:   17999.471407
+  Average Latency (s):  0.000181 (min 0.000125, max 0.016542)
+  Latency StdDev (s):   0.000344
+  Response codes:       SERVFAIL 200000 (100.00%)
+  Queries per second:   19999.592008
+  Average Latency (s):  0.000182 (min 0.000126, max 0.006605)
+  Latency StdDev (s):   0.000165
+  Response codes:       SERVFAIL 125570 (61.51%), NXDOMAIN 78561 (38.49%)
+  Queries per second:   20402.299023
+  Average Latency (s):  0.002207 (min 0.000113, max 0.027610)
+  Latency StdDev (s):   0.003530
+  Response codes:       NXDOMAIN 184442 (100.00%)
+  Queries per second:   18434.573466
+  Average Latency (s):  0.005402 (min 0.000501, max 0.028023)
+  Latency StdDev (s):   0.003912
+  Response codes:       NXDOMAIN 171607 (100.00%)
+  Queries per second:   17148.639362
+  Average Latency (s):  0.005809 (min 0.000479, max 0.804682)
+  Latency StdDev (s):   0.004685
+  Response codes:       NXDOMAIN 179698 (100.00%)
+  Queries per second:   17960.521595
+  Average Latency (s):  0.005547 (min 0.000429, max 0.034125)
+  Latency StdDev (s):   0.004023
+  Response codes:       NXDOMAIN 184653 (100.00%)
+  Queries per second:   18455.514886
+  Average Latency (s):  0.005397 (min 0.000521, max 0.032028)
+  Latency StdDev (s):   0.003935
+  Response codes:       NXDOMAIN 185229 (100.00%)
+  Queries per second:   18513.310105
+  Average Latency (s):  0.005381 (min 0.000490, max 0.031253)
+  Latency StdDev (s):   0.003912
+  Response codes:       NXDOMAIN 181459 (100.00%)
+  Queries per second:   18136.197135
+  Average Latency (s):  0.005492 (min 0.000421, max 0.035872)
+  Latency StdDev (s):   0.003989
+  Response codes:       NXDOMAIN 164917 (100.00%)
+  Queries per second:   16482.880011
+  Average Latency (s):  0.006045 (min 0.000485, max 0.038588)
+  Latency StdDev (s):   0.004422
+  Response codes:       NXDOMAIN 184370 (100.00%)
+  Queries per second:   18427.563245
+  Average Latency (s):  0.005405 (min 0.000380, max 0.036360)
+  Latency StdDev (s):   0.003869
+  Response codes:       NXDOMAIN 185508 (100.00%)
+  Queries per second:   18541.191954
+  Average Latency (s):  0.005372 (min 0.000513, max 0.028116)
+  Latency StdDev (s):   0.003900
+  Response codes:       NXDOMAIN 185391 (100.00%)
+  Queries per second:   18529.472086
+  Average Latency (s):  0.005372 (min 0.000402, max 0.029615)
+  Latency StdDev (s):   0.003882
+  Response codes:       NXDOMAIN 182177 (100.00%)
+  Queries per second:   18205.065684
+  Average Latency (s):  0.005471 (min 0.000405, max 0.040113)
+  Latency StdDev (s):   0.003969
+  Response codes:       NXDOMAIN 170262 (100.00%)
+  Queries per second:   17017.252329
+  Average Latency (s):  0.005833 (min 0.000386, max 0.035195)
+  Latency StdDev (s):   0.004238
+  Response codes:       NXDOMAIN 185555 (100.00%)
+  Queries per second:   18545.674502
+  Average Latency (s):  0.005371 (min 0.000388, max 0.033147)
+  Latency StdDev (s):   0.003901
+  Response codes:       NXDOMAIN 185267 (100.00%)
+  Queries per second:   18517.189571
+  Average Latency (s):  0.005378 (min 0.000520, max 0.030908)
+  Latency StdDev (s):   0.003907
+  Response codes:       NXDOMAIN 185231 (100.00%)
+  Queries per second:   18513.556262
+  Average Latency (s):  0.005327 (min 0.000378, max 0.032586)
+  Latency StdDev (s):   0.003874
+  Response codes:       NXDOMAIN 169074 (100.00%)
+  Queries per second:   16898.523206
+  Average Latency (s):  0.005897 (min 0.000388, max 0.034086)
+  Latency StdDev (s):   0.004289
+  Response codes:       NXDOMAIN 184645 (100.00%)
+  Queries per second:   18454.925585
+  Average Latency (s):  0.005396 (min 0.000497, max 0.028817)
+  Latency StdDev (s):   0.003865
+  Response codes:       NXDOMAIN 185203 (100.00%)
+  Queries per second:   18510.496841
+  Average Latency (s):  0.005381 (min 0.000386, max 0.035779)
+  Latency StdDev (s):   0.003915
+  Response codes:       NXDOMAIN 184684 (100.00%)
+  Queries per second:   18460.759092
+  Average Latency (s):  0.005369 (min 0.000487, max 0.028264)
+  Latency StdDev (s):   0.003875
+  Response codes:       NXDOMAIN 184738 (100.00%)
+  Queries per second:   18463.945792
+  Average Latency (s):  0.005394 (min 0.000512, max 0.030255)
+  Latency StdDev (s):   0.003830
+  Response codes:       NXDOMAIN 166902 (100.00%)
+  Queries per second:   16681.468919
+  Average Latency (s):  0.005972 (min 0.000482, max 0.043875)
+  Latency StdDev (s):   0.004520
+  Response codes:       NXDOMAIN 185359 (100.00%)
+  Queries per second:   18526.157094
+  Average Latency (s):  0.005377 (min 0.000502, max 0.031267)
+  Latency StdDev (s):   0.003860
+  Response codes:       NXDOMAIN 184380 (100.00%)
+  Queries per second:   18428.452219
+  Average Latency (s):  0.005405 (min 0.000478, max 0.029513)
+  Latency StdDev (s):   0.003857
+  Response codes:       NXDOMAIN 184492 (100.00%)
+  Queries per second:   18439.651948
+  Average Latency (s):  0.005402 (min 0.000500, max 0.029920)
+  Latency StdDev (s):   0.003872
+  Response codes:       NXDOMAIN 170350 (100.00%)
+  Queries per second:   17023.153587
+  Average Latency (s):  0.005852 (min 0.000463, max 0.031203)
+  Latency StdDev (s):   0.004261
+  Response codes:       NXDOMAIN 182732 (100.00%)
+  Queries per second:   18263.602477
+  Average Latency (s):  0.005454 (min 0.000479, max 0.030288)
+  Latency StdDev (s):   0.003932
+  Response codes:       NXDOMAIN 185129 (100.00%)
+  Queries per second:   18503.298638
+  Average Latency (s):  0.005383 (min 0.000502, max 0.028715)
+  Latency StdDev (s):   0.003871
+  Response codes:       NXDOMAIN 185483 (100.00%)
+  Queries per second:   18538.522783
+  Average Latency (s):  0.005372 (min 0.000510, max 0.032122)
+  Latency StdDev (s):   0.003830
+  Response codes:       NXDOMAIN 185195 (100.00%)
+  Queries per second:   18509.965517
+  Average Latency (s):  0.005381 (min 0.000386, max 0.037610)
+  Latency StdDev (s):   0.003899
+  Response codes:       NXDOMAIN 167958 (100.00%)
+  Queries per second:   16787.048911
+  Average Latency (s):  0.005935 (min 0.000478, max 0.043689)
+  Latency StdDev (s):   0.004404
+  Response codes:       NXDOMAIN 184642 (100.00%)
+  Queries per second:   18454.446825
+  Average Latency (s):  0.005398 (min 0.000485, max 0.030985)
+  Latency StdDev (s):   0.003867
+  Response codes:       NXDOMAIN 184808 (100.00%)
+  Queries per second:   18471.163594
+  Average Latency (s):  0.005378 (min 0.000481, max 0.029913)
+  Latency StdDev (s):   0.003882
+  Response codes:       NXDOMAIN 184576 (100.00%)
+  Queries per second:   18447.960940
+  Average Latency (s):  0.005400 (min 0.000493, max 0.032362)
+  Latency StdDev (s):   0.003875
+  Response codes:       NXDOMAIN 177379 (100.00%)
+  Queries per second:   17725.591349
+  Average Latency (s):  0.005619 (min 0.000507, max 1.010773)
+  Latency StdDev (s):   0.005033
+  Response codes:       NXDOMAIN 175264 (100.00%)
+  Queries per second:   17517.068658
+  Average Latency (s):  0.005687 (min 0.000496, max 0.030143)
+  Latency StdDev (s):   0.004122
+  Response codes:       NXDOMAIN 184560 (100.00%)
+  Queries per second:   18446.295404
+  Average Latency (s):  0.005399 (min 0.000375, max 0.028490)
+  Latency StdDev (s):   0.003855
+  Response codes:       NXDOMAIN 185158 (100.00%)
+  Queries per second:   18506.015869
+  Average Latency (s):  0.005382 (min 0.000454, max 0.028140)
+  Latency StdDev (s):   0.003899
