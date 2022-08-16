@@ -1,0 +1,1548 @@
+======================= bloomsec_v2 ===========================
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 2000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:16:55 2022
+[Status] Stopping after 10.000000 seconds
+1660648616.888898: 1999.926077
+1660648617.889945: 1999.906098
+1660648618.891001: 1999.888118
+1660648619.892054: 1999.894112
+1660648620.893108: 1999.892114
+1660648621.894154: 1999.908096
+1660648622.895226: 1999.856154
+1660648623.896270: 2000.911049
+1660648624.897316: 1999.908096
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         20000
+  Queries completed:    20000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 20000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000113
+  Queries per second:   1999.977400
+
+  Average Latency (s):  0.000293 (min 0.000208, max 0.004809)
+  Latency StdDev (s):   0.000128
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 4000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:17:05 2022
+[Status] Stopping after 10.000000 seconds
+1660648626.895429: 3998.881152
+1660648627.896498: 4000.723227
+1660648628.897569: 3999.716304
+1660648629.898640: 3999.716304
+1660648630.899709: 3999.724295
+1660648631.900760: 4000.795164
+1660648632.901819: 3999.764250
+1660648633.902882: 3999.748268
+1660648634.903962: 3999.680345
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         40000
+  Queries completed:    40000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 40000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000122
+  Queries per second:   3999.951201
+
+  Average Latency (s):  0.000276 (min 0.000178, max 0.004195)
+  Latency StdDev (s):   0.000130
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 6000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:17:15 2022
+[Status] Stopping after 10.000000 seconds
+1660648636.901954: 5998.779266
+1660648637.903017: 5999.622401
+1660648638.904107: 6000.459499
+1660648639.905186: 5999.526511
+1660648640.906283: 6000.417542
+1660648641.907357: 5999.556476
+1660648642.908437: 5999.520518
+1660648643.909516: 6000.525433
+1660648644.910592: 6000.543415
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         60000
+  Queries completed:    60000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 60000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000185
+  Queries per second:   5999.889002
+
+  Average Latency (s):  0.000264 (min 0.000177, max 0.006600)
+  Latency StdDev (s):   0.000160
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 8000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:17:25 2022
+[Status] Stopping after 10.000000 seconds
+1660648646.908579: 7995.524744
+1660648647.909650: 8000.431538
+1660648648.910716: 8001.470433
+1660648649.911782: 8000.471497
+1660648650.912845: 8000.495473
+1660648651.913901: 7999.552473
+1660648652.914963: 8000.503465
+1660648653.916019: 7999.552473
+1660648654.917077: 8000.535434
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         80000
+  Queries completed:    80000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 80000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000368
+  Queries per second:   7999.705611
+
+  Average Latency (s):  0.000261 (min 0.000173, max 0.006278)
+  Latency StdDev (s):   0.000146
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 10000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:17:35 2022
+[Status] Stopping after 10.000000 seconds
+1660648656.915353: 9997.602972
+1660648657.916408: 9999.450580
+1660648658.917460: 9999.480546
+1660648659.918519: 10001.408508
+1660648660.919570: 9999.490535
+1660648661.920621: 10000.489486
+1660648662.921667: 9998.541526
+1660648663.922712: 10000.549426
+1660648664.923761: 10000.509466
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         100000
+  Queries completed:    100000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 100000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000172
+  Queries per second:   9999.828003
+
+  Average Latency (s):  0.000261 (min 0.000170, max 0.006883)
+  Latency StdDev (s):   0.000186
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 12000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:17:45 2022
+[Status] Stopping after 10.000000 seconds
+1660648666.921771: 11997.507012
+1660648667.922843: 11999.136925
+1660648668.923917: 12000.111880
+1660648669.924982: 12000.219766
+1660648670.926047: 12000.219766
+1660648671.927109: 12000.255728
+1660648672.928172: 11999.244803
+1660648673.929240: 12000.183804
+1660648674.930312: 12000.135854
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         120000
+  Queries completed:    120000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 120000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000244
+  Queries per second:   11999.707207
+
+  Average Latency (s):  0.000267 (min 0.000178, max 0.006192)
+  Latency StdDev (s):   0.000171
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 14000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:17:55 2022
+[Status] Stopping after 10.000000 seconds
+1660648676.928161: 13996.275918
+1660648677.929219: 14000.187801
+1660648678.930267: 14000.327657
+1660648679.931309: 13999.412612
+1660648680.932361: 13999.272765
+1660648681.933412: 14001.284650
+1660648682.934458: 13999.356673
+1660648683.935504: 14000.355628
+1660648684.936551: 13999.342688
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         140000
+  Queries completed:    140000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 140000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000221
+  Queries per second:   13999.690607
+
+  Average Latency (s):  0.000267 (min 0.000172, max 0.006717)
+  Latency StdDev (s):   0.000182
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 16000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:18:05 2022
+[Status] Stopping after 10.000000 seconds
+1660648686.934957: 15991.921637
+1660648687.936020: 16001.989885
+1660648688.937074: 16001.134804
+1660648689.938134: 16000.039958
+1660648690.939205: 15997.866285
+1660648691.940248: 16002.309591
+1660648692.941286: 16000.391594
+1660648693.942322: 16000.423561
+1660648694.943360: 15999.392630
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         160000
+  Queries completed:    160000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 160000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000196
+  Queries per second:   15999.686406
+
+  Average Latency (s):  0.000287 (min 0.000172, max 0.005403)
+  Latency StdDev (s):   0.000220
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 18000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:18:15 2022
+[Status] Stopping after 10.000000 seconds
+1660648696.941535: 17993.125212
+1660648697.942621: 18002.449340
+1660648698.943702: 18000.541415
+1660648699.944789: 17998.435700
+1660648700.945863: 18000.667283
+1660648701.946934: 17998.723367
+1660648702.948000: 18000.811135
+1660648703.949066: 18000.811135
+1660648704.950148: 18000.523434
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         180000
+  Queries completed:    180000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 180000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000372
+  Queries per second:   17999.330425
+
+  Average Latency (s):  0.000268 (min 0.000159, max 0.004396)
+  Latency StdDev (s):   0.000165
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 20000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:18:25 2022
+[Status] Stopping after 10.000000 seconds
+1660648706.948583: 19994.106159
+1660648707.949630: 20001.058891
+1660648708.950656: 19999.480533
+1660648709.951686: 19999.400617
+1660648710.952719: 20000.339649
+1660648711.953754: 20000.299690
+1660648712.954802: 20000.039958
+1660648713.955852: 20000.000000
+1660648714.956912: 19998.801271
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         199999
+  Queries completed:    199999 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 199999 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000159
+  Queries per second:   19999.582007
+
+  Average Latency (s):  0.000338 (min 0.000165, max 0.009421)
+  Latency StdDev (s):   0.000469
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 22000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:18:35 2022
+[Status] Stopping after 10.000000 seconds
+1660648716.954980: 21993.203354
+1660648717.955679: 22002.620169
+1660648718.956737: 21987.736974
+1660648719.957797: 22010.668691
+1660648720.958861: 22000.591371
+1660648721.959912: 21996.881278
+1660648722.960961: 21997.924178
+1660648723.962035: 22003.368382
+1660648724.963108: 22001.392506
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         219999
+  Queries completed:    219999 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 219999 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000417
+  Queries per second:   21998.982642
+
+  Average Latency (s):  0.000409 (min 0.000156, max 0.015342)
+  Latency StdDev (s):   0.000709
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 24000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:18:45 2022
+[Status] Stopping after 10.000000 seconds
+1660648726.961905: 23941.574048
+1660648727.962977: 23998.273850
+1660648728.964047: 24052.264077
+1660648729.965110: 24000.487482
+1660648730.966178: 24001.366541
+1660648731.967256: 24000.127862
+1660648732.968312: 23997.658473
+1660648733.969362: 24001.798112
+1660648734.970470: 24000.407548
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         239999
+  Queries completed:    239999 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 239999 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000195
+  Queries per second:   23999.432011
+
+  Average Latency (s):  0.000476 (min 0.000156, max 0.011608)
+  Latency StdDev (s):   0.000781
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 26000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:18:55 2022
+[Status] Stopping after 10.000000 seconds
+1660648736.968316: 25991.760635
+1660648737.969375: 25999.466565
+1660648738.970434: 26000.465507
+1660648739.971500: 26001.282633
+1660648740.972555: 25933.640010
+1660648741.973606: 26063.607149
+1660648742.974657: 26001.672242
+1660648743.975717: 25998.441652
+1660648744.976774: 25998.519565
+[Timeout] Query timed out: msg id 52586
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         259999
+  Queries completed:    259998 (100.00%)
+  Queries lost:         1 (0.00%)
+
+  Response codes:       NXDOMAIN 259998 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000538
+  Queries per second:   25998.401286
+
+  Average Latency (s):  0.000579 (min 0.000154, max 0.009653)
+  Latency StdDev (s):   0.000867
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 28000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:19:05 2022
+[Status] Stopping after 10.000000 seconds
+1660648746.975188: 27992.831470
+1660648747.976257: 27991.077538
+1660648748.977317: 28008.311190
+1660648749.978360: 27998.797254
+1660648750.979403: 27982.813925
+1660648751.979483: 28017.758579
+1660648752.980522: 28000.907058
+1660648753.981558: 25490.591747
+1660648754.982598: 30503.276592
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         280000
+  Queries completed:    280000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 280000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000398
+  Queries per second:   27998.885644
+
+  Average Latency (s):  0.001035 (min 0.000150, max 0.023212)
+  Latency StdDev (s):   0.001594
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 30000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:19:15 2022
+[Status] Stopping after 10.000000 seconds
+1660648756.981873: 29988.542019
+1660648757.982929: 30004.315443
+1660648758.983976: 29914.679331
+1660648759.985025: 30085.440373
+1660648760.986073: 29999.560461
+1660648761.987115: 29968.772539
+1660648762.988167: 30029.409062
+1660648763.989222: 30000.349631
+1660648764.990271: 29984.546211
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         300000
+  Queries completed:    300000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 300000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000517
+  Queries per second:   29998.449080
+
+  Average Latency (s):  0.000861 (min 0.000159, max 0.017089)
+  Latency StdDev (s):   0.001134
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 32000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:19:25 2022
+[Status] Stopping after 10.000000 seconds
+1660648766.988568: 31987.253448
+1660648767.989643: 32002.597208
+1660648768.990718: 31961.641236
+1660648769.991769: 32037.328767
+1660648770.992837: 31996.827388
+1660648771.993906: 31988.803969
+1660648772.994972: 32016.870017
+1660648773.996032: 31969.112740
+1660648774.997100: 32026.795383
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         320000
+  Queries completed:    320000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 320000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001264
+  Queries per second:   31995.955711
+
+  Average Latency (s):  0.000980 (min 0.000155, max 0.018302)
+  Latency StdDev (s):   0.001186
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 34000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:19:35 2022
+[Status] Stopping after 10.000000 seconds
+1660648776.996029: 33960.933489
+1660648777.997080: 34016.248922
+1660648778.998133: 33992.206207
+1660648779.999184: 34019.245773
+1660648781.000237: 33998.199896
+1660648782.001276: 33998.675376
+1660648783.002324: 34003.364474
+1660648784.003383: 33997.996122
+1660648785.003422: 34002.673896
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         339999
+  Queries completed:    339999 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 339999 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000319
+  Queries per second:   33998.815438
+
+  Average Latency (s):  0.000939 (min 0.000155, max 0.049897)
+  Latency StdDev (s):   0.001118
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 36000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:19:45 2022
+[Status] Stopping after 10.000000 seconds
+1660648787.002878: 35869.123391
+1660648788.003947: 36005.510110
+1660648789.005013: 36057.562638
+1660648790.006080: 35769.833588
+1660648791.007149: 36252.246349
+1660648792.008214: 36032.625254
+1660648793.009274: 36002.836993
+1660648794.010366: 35997.690522
+1660648795.011457: 35859.876874
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         360000
+  Queries completed:    360000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 360000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000726
+  Queries per second:   35997.386590
+
+  Average Latency (s):  0.001023 (min 0.000153, max 0.022940)
+  Latency StdDev (s):   0.001183
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 38000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:19:56 2022
+[Status] Stopping after 10.000000 seconds
+1660648797.009643: 37952.353030
+1660648798.010706: 38013.591552
+1660648799.011781: 37870.289439
+1660648800.012856: 38092.051045
+1660648801.013929: 38059.162519
+1660648802.014989: 37964.757357
+1660648803.016060: 38008.293118
+1660648804.017126: 38026.463790
+1660648805.018191: 37049.542238
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         370259
+  Queries completed:    370259 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 370259 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001922
+  Queries per second:   37018.784990
+
+  Average Latency (s):  0.001276 (min 0.000156, max 0.024724)
+  Latency StdDev (s):   0.001606
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 40000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:20:06 2022
+[Status] Stopping after 10.000000 seconds
+1660648807.017740: 39978.143430
+1660648808.018802: 39902.623414
+1660648809.019871: 40083.151111
+1660648810.020934: 39915.569749
+1660648811.022001: 40109.203480
+1660648812.023059: 39912.772287
+1660648813.024129: 40048.148481
+1660648814.025211: 40008.710575
+1660648815.026348: 39840.701123
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         399998
+  Queries completed:    399998 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 399998 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000521
+  Queries per second:   39997.716119
+
+  Average Latency (s):  0.001092 (min 0.000159, max 0.025564)
+  Latency StdDev (s):   0.001283
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 42000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:20:16 2022
+[Status] Stopping after 10.000000 seconds
+1660648817.024482: 41949.449684
+1660648818.025580: 41937.952129
+1660648819.026639: 42051.467496
+1660648820.027707: 42048.092637
+1660648821.028761: 41998.733335
+1660648822.029808: 41844.189134
+1660648823.030934: 42090.605978
+1660648824.032013: 41994.687732
+1660648825.033231: 42071.756600
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         419998
+  Queries completed:    419998 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 419998 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000478
+  Queries per second:   41997.792506
+
+  Average Latency (s):  0.001246 (min 0.000147, max 0.032856)
+  Latency StdDev (s):   0.001392
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 44000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:20:26 2022
+[Status] Stopping after 10.000000 seconds
+1660648827.031295: 38760.952152
+1660648828.032418: 36436.082280
+1660648829.033497: 42764.856720
+1660648830.034554: 44581.876956
+1660648831.035619: 55325.078791
+1660648832.036692: 46105.528768
+1660648833.037761: 43948.019567
+1660648834.038830: 44045.914917
+1660648835.039901: 44017.856875
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         439999
+  Queries completed:    439999 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 439999 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000270
+  Queries per second:   43998.712035
+
+  Average Latency (s):  0.001713 (min 0.000161, max 0.029953)
+  Latency StdDev (s):   0.001591
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 46000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:20:36 2022
+[Status] Stopping after 10.000000 seconds
+1660648837.037878: 45875.967862
+1660648838.038961: 46091.083357
+1660648839.040026: 45794.229146
+1660648840.041091: 46218.777002
+1660648841.042153: 45985.163756
+1660648842.043212: 45949.339649
+1660648843.044287: 46070.474240
+1660648844.045339: 45961.648346
+1660648845.046401: 45906.247565
+[Timeout] Query timed out: msg id 46743
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         460000
+  Queries completed:    459999 (100.00%)
+  Queries lost:         1 (0.00%)
+
+  Response codes:       NXDOMAIN 459999 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000518
+  Queries per second:   45997.517329
+
+  Average Latency (s):  0.001274 (min 0.000161, max 0.027112)
+  Latency StdDev (s):   0.001372
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 48000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:20:47 2022
+[Status] Stopping after 10.000000 seconds
+1660648848.759198: 47981.906889
+1660648849.760257: 46508.747237
+1660648850.761315: 43655.812151
+1660648851.762362: 42645.350318
+1660648852.763402: 48486.573963
+1660648853.764451: 58396.741818
+1660648854.765510: 48307.841995
+1660648855.766547: 47772.459959
+1660648856.767592: 47988.851650
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         479998
+  Queries completed:    479998 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 479998 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000299
+  Queries per second:   47998.364849
+
+  Average Latency (s):  0.001640 (min 0.000160, max 0.025886)
+  Latency StdDev (s):   0.001455
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 50000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:20:57 2022
+[Status] Stopping after 10.000000 seconds
+1660648858.765986: 49892.463236
+1660648859.767048: 50040.856610
+1660648860.768120: 49712.707977
+1660648861.769186: 50274.407482
+1660648862.770249: 50058.787509
+1660648863.771309: 49914.091063
+1660648864.772369: 50039.957645
+1660648865.773428: 49939.114478
+1660648866.774486: 50045.052335
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         499998
+  Queries completed:    499998 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 499998 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001313
+  Queries per second:   49993.235888
+
+  Average Latency (s):  0.001337 (min 0.000157, max 0.027891)
+  Latency StdDev (s):   0.001381
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 52000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:21:07 2022
+[Status] Stopping after 10.000000 seconds
+1660648868.773718: 51947.403279
+1660648869.774775: 32653.485266
+1660648870.775833: 40861.768249
+1660648871.776889: 42913.683151
+1660648872.777944: 51107.082028
+1660648873.778997: 58496.403287
+1660648874.780050: 58062.859809
+1660648875.781098: 58004.211586
+1660648876.782151: 58265.646274
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         510325
+  Queries completed:    510325 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 510325 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001568
+  Queries per second:   51024.499359
+
+  Average Latency (s):  0.001844 (min 0.000158, max 0.025198)
+  Latency StdDev (s):   0.001513
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 54000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:21:17 2022
+[Status] Stopping after 10.000000 seconds
+1660648878.782035: 53978.160996
+1660648879.783102: 53999.382659
+1660648880.784180: 53992.795766
+1660648881.785251: 53833.344488
+1660648882.786325: 54151.840923
+1660648883.787396: 54025.139076
+1660648884.788468: 53866.255374
+1660648885.789547: 53855.889495
+[Timeout] Query timed out: msg id 46222
+1660648886.790616: 45371.497869
+[Timeout] Query timed out: msg id 56394
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         520895
+  Queries completed:    520893 (100.00%)
+  Queries lost:         2 (0.00%)
+
+  Response codes:       NXDOMAIN 520893 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.002095
+  Queries per second:   52078.389577
+
+  Average Latency (s):  0.001422 (min 0.000155, max 0.029373)
+  Latency StdDev (s):   0.001339
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 56000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:21:32 2022
+[Status] Stopping after 10.000000 seconds
+1660648893.654208: 55948.127855
+1660648894.655281: 55939.976405
+1660648895.656348: 56017.229616
+1660648896.657409: 55761.836691
+1660648897.658505: 56285.311299
+1660648898.659574: 55959.179637
+1660648899.660646: 56023.942334
+1660648900.661708: 55986.542292
+1660648901.662767: 56027.666701
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         560000
+  Queries completed:    560000 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 560000 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.000593
+  Queries per second:   55996.679397
+
+  Average Latency (s):  0.001409 (min 0.000163, max 0.032762)
+  Latency StdDev (s):   0.001205
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 58000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:21:42 2022
+[Status] Stopping after 10.000000 seconds
+1660648903.661404: 57791.740755
+1660648904.662473: 58045.948881
+1660648905.663546: 57992.773754
+1660648906.664620: 57310.448578
+1660648907.665688: 58543.475568
+1660648908.666757: 27405.703303
+1660648909.667815: 42666.858464
+1660648910.668876: 45765.442865
+1660648911.669937: 56913.614655
+[Timeout] Query timed out: msg id 7227
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         520778
+  Queries completed:    520777 (100.00%)
+  Queries lost:         1 (0.00%)
+
+  Response codes:       NXDOMAIN 520777 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.002163
+  Queries per second:   52066.438029
+
+  Average Latency (s):  0.001805 (min 0.000165, max 0.026471)
+  Latency StdDev (s):   0.001518
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 60000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:21:56 2022
+[Status] Stopping after 10.000000 seconds
+1660648917.730060: 57534.840465
+1660648918.731142: 58514.687109
+1660648919.732215: 58344.396463
+1660648920.733310: 58412.038817
+1660648921.734399: 58562.225736
+1660648922.735485: 58619.339397
+[Timeout] Query timed out: msg id 7498
+1660648923.736558: 58465.266769
+[Timeout] Query timed out: msg id 17023
+1660648924.737633: 57315.385960
+1660648925.738704: 58753.075456
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         582779
+  Queries completed:    582777 (100.00%)
+  Queries lost:         2 (0.00%)
+
+  Response codes:       NXDOMAIN 582777 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001772
+  Queries per second:   58267.375021
+
+  Average Latency (s):  0.001680 (min 0.000177, max 0.026251)
+  Latency StdDev (s):   0.001150
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 62000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:22:06 2022
+[Status] Stopping after 10.000000 seconds
+1660648927.738521: 49685.327260
+1660648928.739602: 37761.180164
+1660648929.740670: 45742.147387
+1660648930.741743: 45184.517013
+1660648931.742812: 49281.318271
+1660648932.743872: 58526.961421
+1660648933.744931: 58495.053738
+1660648934.745985: 58013.853399
+1660648935.747044: 57716.877826
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         518817
+  Queries completed:    518817 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 518817 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001632
+  Queries per second:   51873.234288
+
+  Average Latency (s):  0.001907 (min 0.000185, max 0.019388)
+  Latency StdDev (s):   0.001387
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 64000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:22:16 2022
+[Status] Stopping after 10.000000 seconds
+1660648937.746602: 57588.297161
+1660648938.747671: 58212.770548
+1660648939.748738: 57770.359027
+1660648940.749801: 57659.707731
+1660648941.750858: 58183.500040
+1660648942.751932: 58228.462631
+1660648943.752997: 57850.389335
+1660648944.754066: 57978.021495
+1660648945.755128: 58176.216858
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         553836
+  Queries completed:    553836 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 553836 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.002479
+  Queries per second:   55369.873808
+
+  Average Latency (s):  0.001786 (min 0.000178, max 0.179521)
+  Latency StdDev (s):   0.001357
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 66000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:22:26 2022
+[Status] Stopping after 10.000000 seconds
+1660648947.755111: 44494.281005
+1660648948.756174: 44296.912382
+1660648949.757244: 47710.949284
+1660648950.758312: 57001.122801
+1660648951.759379: 58179.922023
+1660648952.760449: 58392.520004
+1660648953.761506: 58674.980546
+1660648954.762593: 58063.884557
+1660648955.763654: 57547.941634
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         543014
+  Queries completed:    543014 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 543014 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001819
+  Queries per second:   54291.524372
+
+  Average Latency (s):  0.001823 (min 0.000179, max 0.023821)
+  Latency StdDev (s):   0.001256
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 68000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:22:36 2022
+[Status] Stopping after 10.000000 seconds
+1660648957.763377: 57850.273758
+1660648958.764456: 58439.943301
+1660648959.765529: 58206.544378
+1660648960.766607: 58350.098594
+1660648961.767676: 58486.477955
+1660648962.768768: 57449.265402
+1660648963.769820: 48902.554513
+1660648964.770871: 44093.657566
+1660648965.771928: 44441.025836
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         531465
+  Queries completed:    531465 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 531465 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001616
+  Queries per second:   53137.912913
+
+  Average Latency (s):  0.001861 (min 0.000163, max 0.019037)
+  Latency StdDev (s):   0.001285
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 70000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:22:46 2022
+[Status] Stopping after 10.000000 seconds
+1660648967.771386: 53489.819383
+1660648968.772466: 58190.154633
+1660648969.773523: 58292.384949
+1660648970.774589: 58410.734157
+1660648971.775650: 58560.866920
+1660648972.776715: 58542.652076
+1660648973.777784: 58450.516398
+1660648974.778856: 58248.557546
+1660648975.779911: 58331.460309
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         578823
+  Queries completed:    578823 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 578823 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001695
+  Queries per second:   57872.490613
+
+  Average Latency (s):  0.001708 (min 0.000184, max 0.013254)
+  Latency StdDev (s):   0.001160
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 72000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:22:56 2022
+[Status] Stopping after 10.000000 seconds
+1660648977.779518: 58472.837412
+1660648978.780573: 58387.401292
+1660648979.781624: 58457.561103
+1660648980.782659: 58971.964017
+1660648981.783695: 58818.064485
+1660648982.784736: 28493.338435
+1660648983.785774: 43297.057654
+1660648984.786803: 45462.219376
+1660648985.787483: 55527.241476
+[Timeout] Query timed out: msg id 21213
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         524910
+  Queries completed:    524909 (100.00%)
+  Queries lost:         1 (0.00%)
+
+  Response codes:       NXDOMAIN 524909 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001614
+  Queries per second:   52482.429336
+
+  Average Latency (s):  0.001879 (min 0.000179, max 0.024840)
+  Latency StdDev (s):   0.001406
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 74000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:23:08 2022
+[Status] Stopping after 10.000000 seconds
+1660648989.411494: 57869.038486
+1660648990.412568: 58154.542022
+1660648991.413636: 58206.835100
+1660648992.414698: 58257.130927
+1660648993.415769: 58128.744115
+1660648994.416842: 58399.337511
+1660648995.417914: 57476.385315
+1660648996.418980: 57913.264460
+1660648997.420033: 57748.191155
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         579059
+  Queries completed:    579059 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 579059 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001510
+  Queries per second:   57897.157529
+
+  Average Latency (s):  0.001706 (min 0.000180, max 0.018411)
+  Latency StdDev (s):   0.001161
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 76000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:23:18 2022
+[Status] Stopping after 10.000000 seconds
+1660648999.419241: 58091.713243
+1660649000.420315: 40269.750288
+1660649001.421380: 43196.995200
+1660649002.422555: 42762.753764
+1660649003.423689: 47244.424822
+1660649004.424758: 57557.471063
+1660649005.425811: 58471.429585
+1660649006.426882: 58111.762303
+1660649007.427937: 58105.698488
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         522037
+  Queries completed:    522037 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 522037 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001583
+  Queries per second:   52195.437462
+
+  Average Latency (s):  0.001895 (min 0.000180, max 0.018696)
+  Latency StdDev (s):   0.001351
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 78000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:23:28 2022
+[Status] Stopping after 10.000000 seconds
+1660649009.427214: 58349.905660
+1660649010.428288: 58709.945519
+1660649011.429351: 58482.832749
+1660649012.430419: 58756.248327
+1660649013.431487: 57754.318388
+1660649014.432561: 58713.941227
+1660649015.433621: 58352.146724
+1660649016.434871: 58367.041199
+1660649017.436004: 58127.141948
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         555215
+  Queries completed:    555215 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 555215 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.002366
+  Queries per second:   55508.366720
+
+  Average Latency (s):  0.001782 (min 0.000168, max 0.020877)
+  Latency StdDev (s):   0.001349
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 80000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:23:38 2022
+[Status] Stopping after 10.000000 seconds
+1660649019.435978: 42914.197578
+1660649020.437037: 43921.487145
+1660649021.438087: 53452.874482
+1660649022.439157: 57606.361194
+1660649023.440220: 57780.579244
+1660649024.441282: 57984.420545
+1660649025.442335: 57616.330005
+1660649026.443394: 57964.615472
+1660649027.444452: 57877.765324
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         544777
+  Queries completed:    544777 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 544777 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001730
+  Queries per second:   54468.276988
+
+  Average Latency (s):  0.001817 (min 0.000176, max 0.022648)
+  Latency StdDev (s):   0.001256
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 82000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:23:48 2022
+[Status] Stopping after 10.000000 seconds
+1660649029.443504: 58187.270410
+1660649030.444556: 58384.579422
+1660649031.445630: 58365.315651
+1660649032.446706: 58317.250638
+1660649033.447780: 58459.214803
+1660649034.448848: 43837.181890
+1660649035.449934: 36944.877863
+[Timeout] Query timed out: msg id 30959
+[Timeout] Query timed out: msg id 34001
+1660649036.451024: 43915.132506
+1660649037.452095: 47450.180856
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         520499
+  Queries completed:    520497 (100.00%)
+  Queries lost:         2 (0.00%)
+
+  Response codes:       NXDOMAIN 520497 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001614
+  Queries per second:   52041.300534
+
+  Average Latency (s):  0.001854 (min 0.000184, max 0.019483)
+  Latency StdDev (s):   0.001371
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 84000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:23:58 2022
+[Status] Stopping after 10.000000 seconds
+1660649039.452064: 57743.023367
+1660649040.453142: 57838.649935
+1660649041.454224: 57904.347496
+1660649042.455294: 58077.856693
+1660649043.456373: 58336.055396
+1660649044.457441: 58471.552382
+1660649045.458522: 58178.109464
+1660649046.459591: 57855.152842
+1660649047.460656: 58144.076558
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         580411
+  Queries completed:    580411 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 580411 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001876
+  Queries per second:   58030.213532
+
+  Average Latency (s):  0.001704 (min 0.000173, max 0.010473)
+  Latency StdDev (s):   0.001154
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 86000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:24:08 2022
+[Status] Stopping after 10.000000 seconds
+1660649049.460994: 58176.496444
+1660649050.462052: 58824.763400
+1660649051.463120: 55153.096493
+1660649052.464192: 44374.430610
+1660649053.465247: 44915.614027
+1660649054.466304: 48306.939565
+1660649055.467354: 56845.312422
+1660649056.468411: 58578.082966
+1660649057.469457: 58451.859355
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         542669
+  Queries completed:    542669 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 542669 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001900
+  Queries per second:   54256.591248
+
+  Average Latency (s):  0.001824 (min 0.000178, max 0.012561)
+  Latency StdDev (s):   0.001234
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 88000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:24:18 2022
+[Status] Stopping after 10.000000 seconds
+1660649059.469628: 57894.631690
+1660649060.470699: 58220.645688
+1660649061.471769: 58172.755152
+1660649062.472831: 58072.327189
+1660649063.473890: 58510.037870
+1660649064.475144: 58643.461100
+1660649065.476216: 57856.977320
+1660649066.477292: 57628.991205
+[Timeout] Query timed out: msg id 26110
+1660649067.478354: 58265.122440
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         581048
+  Queries completed:    581047 (100.00%)
+  Queries lost:         1 (0.00%)
+
+  Response codes:       NXDOMAIN 581047 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001690
+  Queries per second:   58094.881965
+
+  Average Latency (s):  0.001692 (min 0.000177, max 0.028696)
+  Latency StdDev (s):   0.001150
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 90000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:24:28 2022
+[Status] Stopping after 10.000000 seconds
+1660649069.477816: 31793.553182
+1660649070.478885: 42971.063933
+1660649071.479944: 44400.979363
+1660649072.481003: 51269.705382
+1660649073.482060: 58143.542276
+1660649074.483132: 58771.996420
+1660649075.484206: 58740.912260
+1660649076.485271: 58381.823358
+1660649077.486322: 58465.552704
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         521197
+  Queries completed:    521197 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 521197 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001638
+  Queries per second:   52111.164191
+
+  Average Latency (s):  0.001899 (min 0.000185, max 0.021721)
+  Latency StdDev (s):   0.001441
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 92000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:24:38 2022
+[Status] Stopping after 10.000000 seconds
+1660649079.485772: 57173.224862
+1660649080.486812: 57697.994086
+1660649081.487486: 58178.787497
+1660649082.488520: 58143.879229
+1660649083.489546: 58309.174787
+1660649084.490575: 58578.722495
+1660649085.491609: 45246.215413
+1660649086.492682: 34696.770365
+1660649087.493736: 41798.943913
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         518486
+  Queries completed:    518486 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 518486 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001907
+  Queries per second:   51838.714357
+
+  Average Latency (s):  0.001909 (min 0.000187, max 0.020174)
+  Latency StdDev (s):   0.001404
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 94000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:24:48 2022
+[Status] Stopping after 10.000000 seconds
+1660649089.494287: 57430.812508
+1660649090.495360: 57490.312894
+1660649091.496416: 57510.269156
+1660649092.497448: 57681.472720
+1660649093.498482: 57665.374003
+1660649094.499486: 57910.857499
+1660649095.500519: 57026.092047
+1660649096.501549: 57641.629122
+1660649097.502590: 57606.032121
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         575844
+  Queries completed:    575844 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 575844 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001983
+  Queries per second:   57572.983277
+
+  Average Latency (s):  0.001715 (min 0.000167, max 0.018690)
+  Latency StdDev (s):   0.001163
+
+DNS Performance Testing Tool
+Version 2.9.0
+
+[Status] Command line: dnsperf -d ./testdata/queries/queries_nex -D -p 1054 -s 167.71.45.171 -c 24 -Q 96000 -l 10 -S 1
+[Status] Sending queries (to 167.71.45.171:1054)
+[Status] Started at: Tue Aug 16 11:24:58 2022
+[Status] Stopping after 10.000000 seconds
+1660649099.502964: 58158.873361
+1660649100.504091: 58864.659529
+1660649101.505157: 58751.371038
+1660649102.506221: 55413.040525
+1660649103.507298: 42353.385404
+1660649104.508373: 42618.185451
+1660649105.509449: 45092.480491
+1660649106.510525: 55454.331140
+1660649107.511594: 58502.460869
+[Status] Testing complete (time limit)
+
+Statistics:
+
+  Queries sent:         534076
+  Queries completed:    534076 (100.00%)
+  Queries lost:         0 (0.00%)
+
+  Response codes:       NXDOMAIN 534076 (100.00%)
+  Average packet size:  request 47, response 1427
+  Run time (s):         10.001944
+  Queries per second:   53397.219581
+
+  Average Latency (s):  0.001853 (min 0.000181, max 0.020480)
+  Latency StdDev (s):   0.001269
+
