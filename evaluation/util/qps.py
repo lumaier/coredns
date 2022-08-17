@@ -19,13 +19,23 @@ df4=pd.read_csv(filename,sep='\\s+',names=['NSEC5'])
 filename='/home/luca/Documents/bth/coredns/evaluation/measurements/qps_measurement_nsec_2022.08.16-08.53.38/pretty_qps.txt'
 df3=pd.read_csv(filename,sep='\\s+',names=['NSEC'])
 
-df = pd.concat([df,df1,df2,df3,df4],axis=1)
+filename='/home/luca/Documents/bth/coredns/evaluation/measurements/qps_measurement_bloomsec_v2_2022.08.16-11.16.55/pretty_qps.txt'
+df5=pd.read_csv(filename,sep='\\s+',names=['BloomSEC (fp=0.1)'])
+
+filename='/home/luca/Documents/bth/coredns/evaluation/measurements/qps_measurement_bloomsec_v3_2022.08.16-11.51.42/pretty_qps.txt'
+df6=pd.read_csv(filename,sep='\\s+',names=['BloomSEC (fp=0.01)'])
+
+df = pd.concat([df,df3,df2,df4,df1,df5,df6],axis=1)
 dfm = pd.melt(df, id_vars='numbers', var_name='System', value_name='vals')
 
 r=sns.lineplot(data=dfm, x="numbers", y="vals", hue="System", linewidth = 1,legend='brief')
 r.set(yscale='log')
-r.set_ylabel("achieved throughput", fontsize = 12)
-r.set_xlabel("queries/second", fontsize = 12)
+r.set_ylabel("achieved throughput")
+r.set_xlabel("queries/second")
 
+
+plt.ylim(2000,90000)
+plt.xlim(2000,90000)
+plt.yticks([10000,30000,50000,70000],[10000,30000,50000,70000])
 plt.grid()
 plt.show()

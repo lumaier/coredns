@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-const N = 10000
+const N = 200
 
 func TestResolver(t *testing.T) {
 	output := make([][][]byte, N)
@@ -17,7 +17,10 @@ func TestResolver(t *testing.T) {
 	for i := 0; i < N; i++ {
 		for j := 0; j < 2; j++ {
 			hash := sha1.Sum(output[i][0])
-			Equal(output[i][1], hash[:])
+			b := Equal(output[i][1], hash[:])
+			if !b {
+				log.Infof("err")
+			}
 		}
 	}
 	log.Infof("%d queries elapsed in %d mikrosec", N, time.Since(start).Nanoseconds()/1000)

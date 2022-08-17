@@ -7,7 +7,7 @@ import (
 	"github.com/ProtonMail/go-ecvrf/ecvrf"
 )
 
-const N = 10000
+const N = 200
 
 const vrf_pubkey = "L+9spXqxohFCjVQNAlEZziifcnvdDjmbZO/Hl86pCo4="
 const vrf_privkey = "XFKVYiagDkqCbNTXmTxedPOGD87Prc3IvuPebYEcyFAv72ylerGiEUKNVA0CURnOKJ9ye90OOZtk78eXzqkKjg=="
@@ -15,14 +15,14 @@ const vrf_privkey = "XFKVYiagDkqCbNTXmTxedPOGD87Prc3IvuPebYEcyFAv72ylerGiEUKNVA0
 func TestResolver(t *testing.T) {
 	s, _ := fromBase64(vrf_pubkey)
 	pubkey, _ := ecvrf.NewPublicKey(s)
-	output := make([][][]byte, N)
+	output := make([][][]byte, N*2)
 	for i, _ := range output {
 		output[i] = create_output()
 	}
 	start := time.Now()
 	for i := 0; i < N; i++ {
 		for j := 0; j < 2; j++ {
-			_, vrf, _ := pubkey.Verify(output[i][0], output[i][1])
+			_, vrf, _ := pubkey.Verify(output[2*i+j][0], output[2*i+j][2])
 			Equal(output[i][2], vrf)
 		}
 	}
