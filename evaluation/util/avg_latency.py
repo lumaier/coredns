@@ -27,14 +27,14 @@ temp5['System']='BloomSEC (fp=0.001)'
 
 
 df=pd.concat([df,temp,temp2,temp3,temp4,temp5],axis=0).reset_index()
-df['latency']=df['latency']*1000.
+# df=pd.concat([df,temp],axis=0).reset_index()
+df['latency'] = df['latency']*1000.0
 
+sns.set(font_scale = 1.2)
+g = sns.displot(x='latency', hue='System', data=df)
+plt.xlabel("Latency [ms]")
+plt.ylabel("Number of queries")
+
+plt.xlim(0.15,0.5)
 plt.grid()
-r=sns.ecdfplot(data=df, x='latency', hue='System')
-r.set_ylabel("proportion")
-r.set_xlabel("latency [ms]")
-
-
-plt.xlim(0.15,0.7)
-
 plt.show()

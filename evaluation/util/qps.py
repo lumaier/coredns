@@ -29,13 +29,12 @@ df = pd.concat([df,df3,df2,df4,df1,df5,df6],axis=1)
 dfm = pd.melt(df, id_vars='numbers', var_name='System', value_name='vals')
 
 r=sns.lineplot(data=dfm, x="numbers", y="vals", hue="System", linewidth = 1,legend='brief')
-r.set(yscale='log')
 r.set_ylabel("achieved throughput")
 r.set_xlabel("queries/second")
 
 
 plt.ylim(2000,90000)
 plt.xlim(2000,90000)
-plt.yticks([10000,30000,50000,70000],[10000,30000,50000,70000])
+plt.yticks([0,20000,40000,60000,80000],[0,20000,40000,60000,80000])
 plt.grid()
 plt.show()
